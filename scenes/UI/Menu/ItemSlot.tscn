@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://6e4j46ntd53x"]
+
+[ext_resource type="Script" uid="uid://k0e77ufxcdxd" path="res://scenes/UI/Menu/draggable_item.gd" id="1_428eu"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xrrx1"]
+size = Vector2(100, 100)
+
+[node name="ItemSlot" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1052.0
+offset_bottom = -548.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_xrrx1")
+script = ExtResource("1_428eu")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.41
+anchor_right = 1.0
+anchor_bottom = 0.64
+grow_horizontal = 2
+grow_vertical = 2
+text = "SLOT"
+horizontal_alignment = 1

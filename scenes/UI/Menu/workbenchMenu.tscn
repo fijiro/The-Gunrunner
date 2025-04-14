@@ -1,0 +1,93 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8ahvbdgptg25"]
+
+[ext_resource type="Script" uid="uid://dmcr05s2rahpd" path="res://scripts/workbench_menu.gd" id="1_g37tu"]
+
+[node name="WorkbenchMenu" type="CanvasLayer"]
+script = ExtResource("1_g37tu")
+
+[node name="UI" type="Panel" parent="."]
+offset_left = 42.0
+offset_top = 22.0
+offset_right = 1108.0
+offset_bottom = 603.0
+
+[node name="TextEdit" type="TextEdit" parent="UI"]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 47.0
+offset_right = 639.0
+offset_bottom = 87.0
+text = "BUILD-A-GUN FABRICATOR"
+placeholder_text = "TEXT
+"
+editable = false
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = 856.0
+offset_top = 355.0
+offset_right = 974.0
+offset_bottom = 405.0
+color = Color(0, 1, 1, 1)
+
+[node name="gripBox" type="ReferenceRect" parent="UI"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 163.0
+offset_right = 270.0
+offset_bottom = 305.0
+border_color = Color(0.177083, 0.520191, 0.98345, 1)
+border_width = 3.0
+
+[node name="receiverBox" type="ReferenceRect" parent="UI"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 162.0
+offset_right = 496.0
+offset_bottom = 304.0
+border_color = Color(0.177083, 0.520191, 0.98345, 1)
+border_width = 3.0
+
+[node name="barrelBox" type="ReferenceRect" parent="UI"]
+layout_mode = 0
+offset_left = 583.0
+offset_top = 160.0
+offset_right = 725.0
+offset_bottom = 302.0
+border_color = Color(0.177083, 0.520191, 0.98345, 1)
+border_width = 3.0
+
+[node name="CloseButton" type="Button" parent="."]
+offset_left = 883.0
+offset_top = 466.0
+offset_right = 1026.0
+offset_bottom = 554.0
+text = "FINISH"
+
+[node name="AddGrip" type="Button" parent="."]
+offset_left = 170.0
+offset_top = 453.0
+offset_right = 313.0
+offset_bottom = 549.0
+text = "ADD GRIP"
+
+[node name="AddReceiver" type="Button" parent="."]
+offset_left = 395.0
+offset_top = 455.0
+offset_right = 538.0
+offset_bottom = 551.0
+text = "ADD RECEIVER"
+
+[node name="AddBarrel" type="Button" parent="."]
+offset_left = 634.0
+offset_top = 457.0
+offset_right = 777.0
+offset_bottom = 553.0
+text = "ADD BARREL"
+
+[node name="BuildButton" type="Button" parent="."]
+offset_left = 904.0
+offset_top = 380.0
+offset_right = 1009.0
+offset_bottom = 425.0
+text = "BUILD"
