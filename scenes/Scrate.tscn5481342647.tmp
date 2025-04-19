@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://5q41qki46vl0"]
 
 [ext_resource type="Script" uid="uid://clakuk4yfaue7" path="res://scripts/scrate.gd" id="1_tnso0"]
-[ext_resource type="PackedScene" uid="uid://c4d07a76ccojr" path="res://scenes/UI/Menu/ScrateMenu.tscn" id="2_f31ni"]
+[ext_resource type="PackedScene" uid="uid://c4d07a76ccojr" path="res://scenes/UI/Menu/ScrateUI.tscn" id="2_f31ni"]
 [ext_resource type="PackedScene" uid="uid://dupqjrut5li2m" path="res://scenes/Gun/Stock/ak_stock.tscn" id="3_oxpti"]
-[ext_resource type="PackedScene" uid="uid://flvrdlal5a7y" path="res://scenes/Gun/Receiver/ak_receiver.tscn" id="4_7cmu3"]
+[ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory_base.gd" id="4_hrmjd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_116pu"]
 
@@ -22,10 +22,10 @@ size = Vector3(0.3, 0.57, 0.675)
 
 [node name="ShipmentCrate" type="Node3D"]
 script = ExtResource("1_tnso0")
+zoom_duration = null
 scrate_ui_scene = ExtResource("2_f31ni")
 zoom_target = NodePath("CameraPosition")
 start_item = ExtResource("3_oxpti")
-start_item2 = ExtResource("4_7cmu3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_116pu")
@@ -45,5 +45,8 @@ shape = SubResource("BoxShape3D_116pu")
 [node name="CameraPosition" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0236118, 0.509822, 1.1222)
 
-[node name="Inventory" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.281423, 0)
+[node name="ScrateInventory" type="Node" parent="."]
+script = ExtResource("4_hrmjd")
+dummy_scene = ExtResource("3_oxpti")
+ui_scene = ExtResource("2_f31ni")
+metadata/_custom_type_script = "uid://bw4h4e6lw16o7"

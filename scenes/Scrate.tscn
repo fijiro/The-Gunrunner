@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://5q41qki46vl0"]
+
+[ext_resource type="Script" uid="uid://clakuk4yfaue7" path="res://scripts/scrate.gd" id="1_tnso0"]
+[ext_resource type="PackedScene" uid="uid://c4d07a76ccojr" path="res://scenes/UI/ScrateUI.tscn" id="2_f31ni"]
+[ext_resource type="PackedScene" uid="uid://dxo5ngr6nq0ue" path="res://scenes/Gun/Barrel/ak_Barrel.tscn" id="3_hrmjd"]
+[ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="4_hrmjd"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_116pu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tnso0"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f31ni"]
+albedo_color = Color(0.36, 0.28272, 0.0288, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iam1k"]
+material = SubResource("StandardMaterial3D_f31ni")
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_116pu"]
+size = Vector3(0.3, 0.57, 0.675)
+
+[node name="ShipmentCrate" type="Node3D"]
+script = ExtResource("1_tnso0")
+zoom_target = NodePath("CameraPosition")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_116pu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_tnso0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_iam1k")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.825, 0.83)
+shape = SubResource("BoxShape3D_116pu")
+
+[node name="CameraPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0236118, 0.509822, 1.1222)
+
+[node name="ScrateInventory" type="Node" parent="."]
+script = ExtResource("4_hrmjd")
+dummy_scene = ExtResource("3_hrmjd")
+ui_scene = ExtResource("2_f31ni")
+metadata/_custom_type_script = "uid://bw4h4e6lw16o7"

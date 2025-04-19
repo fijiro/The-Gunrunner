@@ -13,7 +13,7 @@ var input_enabled: bool = true
 func _ready() -> void:
 	head = $Head
 	camera = $Head/Camera3D
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and input_enabled:
@@ -58,8 +58,6 @@ func _physics_process(delta):
 	
 func get_camera() -> Camera3D:
 	return $Head/Camera3D
-	
+
 func set_input_enabled(enabled: bool):
 	input_enabled = enabled
-	print("INPUT ", enabled)
-	

@@ -1,6 +1,6 @@
-extends CanvasLayer
+class_name PlayerUI extends CanvasLayer
 var selected_slots := []
-signal pressed
+#signal pressed
 #func _ready() -> void:
 	#$GridContainer/ItemSlot0.connect("pressed", _on_slot_pressed)
 func set_ui_visible(enabled: bool): 
