@@ -54,5 +54,5 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	# Regenerate old icon
 	(data["icon"] as DraggableItem).regenerate_icon()
 	
-func regenerate_icon():
-	texture = await icon_renderer.render_icon(item)
+func regenerate_icon(force: bool = false):
+	texture = await icon_renderer.render_icon(item, force)

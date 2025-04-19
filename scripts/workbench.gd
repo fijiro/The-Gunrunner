@@ -119,7 +119,7 @@ func _build_weapon():
 	(inventory.get_ui_slot(2) as DraggableItem).regenerate_icon()
 	receiver.position = Vector3(0,0,0)
 	#receiver.rotation = rotation
-	(inventory.get_ui_slot(1) as DraggableItem).regenerate_icon()
+	(inventory.get_ui_slot(1) as DraggableItem).regenerate_icon(true)
 	
 #func _move_part(item_slot : Node3D):
 #	var item = item_slot.get_child(0)
