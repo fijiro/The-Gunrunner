@@ -1,12 +1,12 @@
 # ak_grip
-extends Node
+extends Grip
 
-@export var type := "grip"
-@export var accuracy := 1
-@export var price := 50
-@export var weight := 0.5
-@export var ergo := 2
-
-#func get_attach(type: String) -> Node:
-#	if type == "Receiver": return $Receiver_Attach
-#	else: return null
+func _init() -> void:
+	super._init()
+	part = "AK Grip"
+	desc = "Standard AK-platform Grip."
+	type = "grip"
+	accuracy = 1
+	price = 50
+	weight = 0.5
+	ergo = 2

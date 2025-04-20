@@ -1,8 +1,12 @@
 # ak_stock
-extends Node
+extends Stock
 
-@export var type := "stock"
-@export var accuracy := 1
-@export var price := 50
-@export var weight := 2
-@export var ergo := 0.5
+func _init() -> void:
+	super._init()
+	part = "AK Stock"
+	desc = "AK-platform stock."
+	type = "stock"
+	accuracy = 1
+	price = 50
+	weight = 2
+	ergo = 1

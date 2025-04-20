@@ -1,8 +1,12 @@
 # ak_barrel
-extends Node
+extends Barrel
 
-@export var type := "barrel"
-@export var accuracy := 2
-@export var price := 50
-@export var weight := 2
-@export var ergo := 0.5
+func _init():
+	super._init()
+	part = "AK Barrel"
+	desc = "AK-platform barrel."
+	type = "ak_barrel"
+	accuracy = 3
+	price = 200  
+	weight = 2.7  
+	ergo = 0.7  

@@ -1,8 +1,12 @@
 # ak_receiver
-extends Node
+extends Receiver
 
-@export var type := "receiver"
-@export var accuracy := 1
-@export var price := 100
-@export var weight := 3
-@export var ergo := 0.5
+func _init() -> void:
+	super._init()
+	part = "AK Receiver"
+	desc = "AK-platform receiver."
+	type = "receiver"
+	accuracy = 1
+	price = 100
+	weight = 3.5
+	ergo = 1
