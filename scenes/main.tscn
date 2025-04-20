@@ -51,10 +51,13 @@ mesh = SubResource("BoxMesh_a202f")
 skeleton = NodePath("../CollisionShape3D")
 
 [node name="Workbench" parent="." instance=ExtResource("5_lhr70")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.783875, 0.504993, -5.04032)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.783875, 0.504993, -6.09394)
 
 [node name="ShipmentCrate" parent="." instance=ExtResource("6_wp0k4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05415, 0.25, -3.56847)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.05415, 0.25, -3.56847)
+
+[node name="ShipmentCrate2" parent="." instance=ExtResource("6_wp0k4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.14043, 0, -3.56891)
 
 [node name="IconRenderer" type="Node" parent="."]
 script = ExtResource("5_vcsgt")
