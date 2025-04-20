@@ -28,6 +28,7 @@ physics_material_override = SubResource("PhysicsMaterial_wkqak")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("BoxShape3D_1n7vs")
+disabled = true
 
 [node name="Grip_Attach" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.100331, -0.0441332, 0)

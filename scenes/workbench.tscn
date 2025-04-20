@@ -1,10 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://nd2xy7bggbpd"]
+[gd_scene load_steps=10 format=3 uid="uid://nd2xy7bggbpd"]
 
 [ext_resource type="Script" uid="uid://ntbric6j67wk" path="res://scripts/workbench.gd" id="1_1cdeh"]
 [ext_resource type="PackedScene" uid="uid://b8ahvbdgptg25" path="res://scenes/UI/WorkbenchUI.tscn" id="2_p3ame"]
 [ext_resource type="PackedScene" uid="uid://d1qyoh5usnukp" path="res://scenes/Gun/Grip/ak_Grip.tscn" id="3_7rqw5"]
-[ext_resource type="PackedScene" uid="uid://flvrdlal5a7y" path="res://scenes/Gun/Receiver/ak_receiver.tscn" id="4_8j27g"]
-[ext_resource type="PackedScene" uid="uid://dxo5ngr6nq0ue" path="res://scenes/Gun/Barrel/ak_Barrel.tscn" id="5_hjm4f"]
 [ext_resource type="Script" uid="uid://cqcovtgk3uwnp" path="res://scripts/ui/inventory/workbench_inventory.gd" id="6_a0vkv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5602k"]
@@ -15,7 +13,7 @@ albedo_color = Color(0.219608, 0.219608, 0.219608, 0.470588)
 material = SubResource("StandardMaterial3D_5602k")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l4ogl"]
-size = Vector3(0.5, 0.5, 0.5)
+size = Vector3(0.25, 0.5, 0.5)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7rqw5"]
 
@@ -25,9 +23,6 @@ size = Vector3(0.5, 0.5, 0.5)
 script = ExtResource("1_1cdeh")
 workbench_ui_scene = ExtResource("2_p3ame")
 zoom_target = NodePath("CameraPosition")
-gripScene = ExtResource("3_7rqw5")
-receiverScene = ExtResource("4_8j27g")
-barrelScene = ExtResource("5_hjm4f")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_7tolv")
