@@ -1,5 +1,5 @@
 class_name IconRenderer
-extends Node
+extends Node3D
 
 var _is_rendering := false
 var _queue: Array = []
@@ -12,7 +12,7 @@ func _ready() -> void:
 	viewport.size = Vector2(100, 100)
 	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 	viewport.add_child(camera)
-	camera.look_at_from_position(Vector3(0, 0, 0.3), Vector3.ZERO, Vector3.UP)
+	camera.global_position = global_position
 
 func render_icon(item: Node3D, force: bool) -> ImageTexture:
 	if item == null:
@@ -36,19 +36,21 @@ func _process_queue():
 	var item: Node3D = entry["item"]
 	var completer = entry["completer"]
 	var texture = await _render_icon(item)
-	var key = item.name
-	_cache[key] = texture
+	_cache[item.name] = texture
 	completer.texture = texture
 	completer.done = true
 	_is_rendering = false
 	call_deferred("_process_queue")
 
 func _render_icon(item: Node3D) -> ImageTexture:
+	get_child(0).visible = true
 	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 	var clone = item.duplicate()
 	clone.visible = true
-	viewport.add_child(clone)
+	camera.add_child(clone)
+	clone.position.z -= 0.3
 	await RenderingServer.frame_post_draw
 	var image = viewport.get_texture().get_image()
 	clone.queue_free()
+	get_child(0).visible = false
 	return ImageTexture.create_from_image(image)
