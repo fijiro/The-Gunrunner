@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://b5xknw504sxw4" path="res://guns/grips/ak_grip.gd" id="1_3c87k"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ysp4"]
-albedo_color = Color(0.415686, 0.176471, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3c87k"]
+albedo_color = Color(0.34, 0.192667, 0, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3ysp4"]
-material = SubResource("StandardMaterial3D_3ysp4")
+material = SubResource("StandardMaterial3D_3c87k")
 radius = 0.05
 height = 0.15
 radial_segments = 16
