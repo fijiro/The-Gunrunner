@@ -7,9 +7,8 @@ var type: String = "type"
 func setup(item_node: Node3D = null, inventory_node: InventoryBase = null) -> void:
 	item = item_node
 	inventory = inventory_node
-	if name == "GripSlot": type = "grip"
-	elif name == "ReceiverSlot": type = "receiver"
-	elif name == "BarrelSlot": type = "barrel"
+	if item != null and item.is_class("GunPart"):
+		type = (item as GunPart).type
 	regenerate_icon()
 	
 func _ready():
@@ -24,12 +23,12 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	preview.expand = true
 	preview.custom_minimum_size = Vector2(50,50)
 	set_drag_preview(preview)
-	# drop the data. data has texture and icon
+	# drop the data. data has icon,item and inventory
 	var item_data: Dictionary
 	item_data.set("item", item)
 	item_data.set("inventory", inventory)
 	item_data.set("icon", self)
-	item_data["type"] = item.type if item else null
+	item_data.set("type", "type")
 	return item_data
 	
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
