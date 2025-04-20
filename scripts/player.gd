@@ -15,7 +15,7 @@ var input_enabled: bool = true
 func _ready() -> void:
 	head = $Head
 	camera = $Head/Camera3D
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	escape_ui = escape_ui_scene.instantiate()
 	get_node("/root/Main/UI").add_child(escape_ui)
 	escape_ui.visible = false
@@ -27,12 +27,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		rotation_x = clamp(rotation_x, deg_to_rad(-90), deg_to_rad(90))
 		rotation.y = rotation_y
 		head.rotation.x = rotation_x
+
 func _input(event):
 	if event.is_action_pressed("escape"):
 		escape_ui.visible = not escape_ui.visible
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		input_enabled = not input_enabled
-		
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if not input_enabled else Input.MOUSE_MODE_CAPTURED)
+
 func _physics_process(delta):
 	if not input_enabled:
 		return  # Skip movement if input is disabled
