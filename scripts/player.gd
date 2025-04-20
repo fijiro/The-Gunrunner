@@ -4,6 +4,8 @@ extends CharacterBody3D
 @export var jump_velocity: float = 8.0
 @export var gravity: float = 20.0
 @export var mouse_sensitivity: float = 0.002
+@export var escape_ui_scene: PackedScene
+var escape_ui: CanvasLayer
 var head
 var camera
 var rotation_y := 0.0
@@ -14,6 +16,9 @@ func _ready() -> void:
 	head = $Head
 	camera = $Head/Camera3D
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	escape_ui = escape_ui_scene.instantiate()
+	get_node("/root/Main/UI").add_child(escape_ui)
+	escape_ui.visible = false
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and input_enabled:
@@ -22,6 +27,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		rotation_x = clamp(rotation_x, deg_to_rad(-90), deg_to_rad(90))
 		rotation.y = rotation_y
 		head.rotation.x = rotation_x
+func _input(event):
+	if event.is_action_pressed("escape"):
+		escape_ui.visible = not escape_ui.visible
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		input_enabled = not input_enabled
+		
 func _physics_process(delta):
 	if not input_enabled:
 		return  # Skip movement if input is disabled

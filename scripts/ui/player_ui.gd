@@ -14,6 +14,3 @@ func _on_item_slot_pressed(slot_index):
 	if selected_slots.size() == 2:
 		#combine_items(selected_slots[0], selected_slots[1])
 		selected_slots.clear()
-func _on_slot_pressed(index):
-	var item_slot = get_node("GridContainer/ItemSlot%s" % index)
-	item_slot.queue_free()
