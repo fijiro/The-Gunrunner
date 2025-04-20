@@ -7,6 +7,6 @@ func _init():
 	desc = "AK-platform barrel."
 	type = "barrel"
 	accuracy = 3
-	price = 200  
-	weight = 2.7  
-	ergo = 0.7  
+	price = 200
+	weight = 2.7
+	ergo = 0.7
