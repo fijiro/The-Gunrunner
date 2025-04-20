@@ -3,9 +3,6 @@ extends Node3D
 @export var zoom_duration: float = 1.0
 @export var workbench_ui_scene: PackedScene  # drag your menu scene here
 @export var zoom_target: NodePath
-@export var gripScene: PackedScene
-@export var receiverScene: PackedScene
-@export var barrelScene: PackedScene
 
 var player_in_range = false
 var player_camera: Camera3D
@@ -67,14 +64,6 @@ func exit_workbench():
 			player.set_input_enabled(true)
 	#_move_part(get_node("ReceiverPosition"))
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-func _add_part(part: String, partScene: PackedScene):
-	var part_pos = get_node(part + "Position")
-	var part_instance = partScene.instantiate()
-	if part_pos && part_instance:
-		if part_pos.get_child_count() == 1: part_pos.remove_child(part_pos.get_child(0))
-		part_pos.add_child(part_instance)
-		part_instance.position = Vector3.ZERO
 
 func _build_weapon():
 	var grip = (inventory.get_ui_slot(0) as DraggableItem).item
