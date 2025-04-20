@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d1qyoh5usnukp"]
 
-[ext_resource type="Script" uid="uid://b5xknw504sxw4" path="res://guns/grips/ak_grip.gd" id="1_3c87k"]
+[ext_resource type="Script" uid="uid://b5xknw504sxw4" path="res://parts/grips/ak_grip.gd" id="1_3c87k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3c87k"]
 albedo_color = Color(0.34, 0.192667, 0, 1)

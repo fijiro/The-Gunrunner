@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dupqjrut5li2m"]
 
-[ext_resource type="Script" uid="uid://bm5ea4gx4ixa8" path="res://guns/stocks/ak_stock.gd" id="1_4jwtu"]
+[ext_resource type="Script" uid="uid://bm5ea4gx4ixa8" path="res://parts/stocks/ak_stock.gd" id="1_4jwtu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2qyn"]
 albedo_color = Color(0.34, 0.192667, 0, 1)
