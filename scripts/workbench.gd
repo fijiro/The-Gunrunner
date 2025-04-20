@@ -19,9 +19,6 @@ func _ready():
 	inventory.ui.visible = false
 	# Hook up close callback and buttons
 	inventory.ui.connect("menu_closed", Callable(self, "exit_workbench"))
-	#inventory.ui.connect("add_grip", Callable(self, "_add_grip"))
-	#inventory.ui.connect("add_receiver", Callable(self, "_add_receiver"))
-	#inventory.ui.connect("add_barrel", Callable(self, "_add_barrel"))
 	inventory.ui.connect("build_weapon", Callable(self, "_build_weapon"))
 
 
@@ -71,38 +68,29 @@ func exit_workbench():
 	#_move_part(get_node("ReceiverPosition"))
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-#func _add_grip(): _add_part("Grip", gripScene)
-#func _add_receiver(): _add_part("Receiver", receiverScene)
-#func _add_barrel(): _add_part("Barrel", barrelScene)
-
 func _add_part(part: String, partScene: PackedScene):
 	var part_pos = get_node(part + "Position")
 	var part_instance = partScene.instantiate()
 	if part_pos && part_instance:
-		#print("FOUND PARTS: ", part_pos.get_child_count())
 		if part_pos.get_child_count() == 1: part_pos.remove_child(part_pos.get_child(0))
 		part_pos.add_child(part_instance)
 		part_instance.position = Vector3.ZERO
-	#else: print("ERROR: MISSING PART")
 
 func _build_weapon():
-	#var grip = get_node("GripPosition").get_child(0) if get_node("GripPosition").get_child_count() > 0 else null
-	#var receiver = get_node("ReceiverPosition").get_child(0) if get_node("ReceiverPosition").get_child_count() > 0 else null
-	#var barrel = get_node("BarrelPosition").get_child(0) if get_node("BarrelPosition").get_child_count() > 0 else null
 	var grip = (inventory.get_ui_slot(0) as DraggableItem).item
-	var barrel = (inventory.get_ui_slot(2) as DraggableItem).item
 	var receiver = (inventory.get_ui_slot(1) as DraggableItem).item
+	var barrel = (inventory.get_ui_slot(2) as DraggableItem).item
 	if null in [grip, receiver, barrel]: return
 	else: print("OMG BUILD POSSIBLE HOLY SHIT")
 	grip.visible = true
 	grip.global_position = (get_node("GripPosition") as Marker3D).global_position
 	grip.rotation = (get_node("GripPosition") as Marker3D).rotation
 	receiver.visible = true
-	receiver.global_position = (get_node("GripPosition") as Marker3D).global_position
-	receiver.rotation = (get_node("GripPosition") as Marker3D).rotation
+	receiver.global_position = (get_node("ReceiverPosition") as Marker3D).global_position
+	receiver.rotation = (get_node("ReceiverPosition") as Marker3D).rotation
 	barrel.visible = true
-	barrel.global_position = (get_node("GripPosition") as Marker3D).global_position
-	barrel.rotation = (get_node("GripPosition") as Marker3D).rotation
+	barrel.global_position = (get_node("BarrelPosition") as Marker3D).global_position
+	barrel.rotation = (get_node("BarrelPosition") as Marker3D).rotation
 	grip.reparent(receiver, false)
 	barrel.reparent(receiver, false)
 	# Calculate correct positions for part
@@ -113,17 +101,15 @@ func _build_weapon():
 	var receiver_to_grip = receiver.find_child("Grip_Attach")
 	grip.global_transform = receiver_to_grip.global_transform * grip_to_receiver.transform.affine_inverse()
 	#ItemSlot Based implementation
+	var build_slot = (inventory.get_ui_slot(5) as DraggableItem)
+	build_slot.visible = true
+	(inventory.get_ui_slot(5) as DraggableItem).item = receiver	
+	receiver.position = Vector3(0,0,0)
+	receiver.rotation = rotation
+	(inventory.get_ui_slot(5) as DraggableItem).regenerate_icon(true)
 	(inventory.get_ui_slot(0) as DraggableItem).item = null
 	(inventory.get_ui_slot(0) as DraggableItem).regenerate_icon()
+	(inventory.get_ui_slot(1) as DraggableItem).item = null
+	(inventory.get_ui_slot(1) as DraggableItem).regenerate_icon()
 	(inventory.get_ui_slot(2) as DraggableItem).item = null
 	(inventory.get_ui_slot(2) as DraggableItem).regenerate_icon()
-	receiver.position = Vector3(0,0,0)
-	#receiver.rotation = rotation
-	(inventory.get_ui_slot(1) as DraggableItem).regenerate_icon(true)
-	
-#func _move_part(item_slot : Node3D):
-#	var item = item_slot.get_child(0)
-	#var workbench_slot = ui_instance.get_node("UI/%sBox" % [item.type])
-#	var player_inventory = player_camera.get_parent().get_parent().get_node("PlayerInventory")
-#	player_inventory.add_item(item)
-#	return

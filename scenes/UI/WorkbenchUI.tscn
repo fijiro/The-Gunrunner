@@ -55,6 +55,12 @@ layout_mode = 2
 [node name="BarrelSlot" parent="ItemSlots" instance=ExtResource("2_5ma14")]
 layout_mode = 2
 
+[node name="StockSlot" parent="ItemSlots" instance=ExtResource("2_5ma14")]
+layout_mode = 2
+
+[node name="HandguardSlot" parent="ItemSlots" instance=ExtResource("2_5ma14")]
+layout_mode = 2
+
 [node name="BuildSlot" parent="ItemSlots" instance=ExtResource("2_5ma14")]
 visible = false
 layout_mode = 2
@@ -65,30 +71,6 @@ offset_top = 466.0
 offset_right = 1026.0
 offset_bottom = 554.0
 text = "FINISH"
-
-[node name="AddGrip" type="Button" parent="."]
-visible = false
-offset_left = 170.0
-offset_top = 453.0
-offset_right = 313.0
-offset_bottom = 549.0
-text = "ADD GRIP"
-
-[node name="AddReceiver" type="Button" parent="."]
-visible = false
-offset_left = 395.0
-offset_top = 455.0
-offset_right = 538.0
-offset_bottom = 551.0
-text = "ADD RECEIVER"
-
-[node name="AddBarrel" type="Button" parent="."]
-visible = false
-offset_left = 634.0
-offset_top = 457.0
-offset_right = 777.0
-offset_bottom = 553.0
-text = "ADD BARREL"
 
 [node name="BuildButton" type="Button" parent="."]
 offset_left = 904.0
