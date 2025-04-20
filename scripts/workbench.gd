@@ -8,7 +8,6 @@ var player_in_range = false
 var player_camera: Camera3D
 var original_camera_transform: Transform3D
 var zoomed_in = false
-var ui_instance: CanvasLayer
 @onready var inventory: WorkbenchInventory = $WorkbenchInventory
 func _ready():
 	$Area3D.body_entered.connect(_on_body_entered)
