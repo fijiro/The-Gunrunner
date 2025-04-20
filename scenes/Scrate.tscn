@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://clakuk4yfaue7" path="res://scripts/scrate.gd" id="1_tnso0"]
 [ext_resource type="PackedScene" uid="uid://c4d07a76ccojr" path="res://scenes/UI/ScrateUI.tscn" id="2_f31ni"]
-[ext_resource type="PackedScene" uid="uid://dxo5ngr6nq0ue" path="res://scenes/Gun/Barrel/ak_Barrel.tscn" id="3_hrmjd"]
+[ext_resource type="PackedScene" uid="uid://dxo5ngr6nq0ue" path="res://scenes/Part/Barrel/ak_Barrel.tscn" id="3_hrmjd"]
 [ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="4_hrmjd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_116pu"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cbohcdy8hi5qh" path="res://images/7db83396-ee9d-4c95-8b04-19b37dbe4cc1-2635000782.jpg" id="1_c01mt"]
 [ext_resource type="PackedScene" uid="uid://dcnalrmgg8gld" path="res://scenes/Player.tscn" id="4_q8u5g"]
-[ext_resource type="PackedScene" uid="uid://dupqjrut5li2m" path="res://scenes/Gun/Stock/ak_Stock.tscn" id="5_c01mt"]
+[ext_resource type="PackedScene" uid="uid://dupqjrut5li2m" path="res://scenes/Part/Stock/ak_Stock.tscn" id="5_c01mt"]
 [ext_resource type="PackedScene" uid="uid://nd2xy7bggbpd" path="res://scenes/Workbench.tscn" id="5_lhr70"]
 [ext_resource type="Script" uid="uid://be1nh11w0wt4d" path="res://scripts/ui/icon_renderer.gd" id="5_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://5q41qki46vl0" path="res://scenes/Scrate.tscn" id="6_wp0k4"]
