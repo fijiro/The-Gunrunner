@@ -35,3 +35,9 @@ func add_item(item: Node3D) -> bool:
 func get_ui_slot(index: int) -> DraggableItem:
 	return ui.get_node("ItemSlots").get_child(index) if index > -1 else null
 	
+func get_slots() -> Array[DraggableItem]:
+	var slots: Array[DraggableItem] = []
+	for item in ui.get_node("ItemSlots").get_children():
+		if item is DraggableItem: slots.append(item as DraggableItem)
+		else: push_warning("Item is not a DraggableItem!")
+	return slots
