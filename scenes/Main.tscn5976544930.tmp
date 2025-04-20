@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dxo5ngr6nq0ue" path="res://scenes/Part/Barrel/ak_Barrel.tscn" id="6_bjd11"]
 [ext_resource type="PackedScene" uid="uid://bxne2ne1es1t0" path="res://scenes/Part/Magazine/ak_Magazine.tscn" id="6_nxtc6"]
 [ext_resource type="PackedScene" uid="uid://5q41qki46vl0" path="res://scenes/Scrate.tscn" id="6_wp0k4"]
-[ext_resource type="PackedScene" uid="uid://c083j4tpjc6d2" path="res://scenes/Part/Handguard/ak_Handguard.tscn" id="10_bjd11"]
+[ext_resource type="Script" uid="uid://cl6f7leydvfof" path="res://parts/magazines/ak_magazine.gd" id="8_lhr70"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_a0tk4"]
 panorama = ExtResource("1_c01mt")
@@ -65,6 +65,7 @@ skeleton = NodePath("../CollisionShape3D")
 
 [node name="Workbench" parent="." instance=ExtResource("5_lhr70")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.783875, 0.504993, -6.09394)
+zoom_duration = null
 
 [node name="AkGrip" parent="Workbench/WorkbenchInventory" index="0" instance=ExtResource("4_lhr70")]
 
@@ -73,10 +74,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.783875, 0.504993, -6.09394)
 [node name="AkBarrel" parent="Workbench/WorkbenchInventory" index="2" instance=ExtResource("6_bjd11")]
 
 [node name="AkMagazine" parent="Workbench/WorkbenchInventory" index="3" instance=ExtResource("6_nxtc6")]
+script = ExtResource("8_lhr70")
 
 [node name="AkStock" parent="Workbench/WorkbenchInventory" index="4" instance=ExtResource("5_c01mt")]
-
-[node name="AkHandguard" parent="Workbench/WorkbenchInventory" index="5" instance=ExtResource("10_bjd11")]
 
 [node name="ShipmentCrate" parent="." instance=ExtResource("6_wp0k4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.05415, 0.25, -3.56847)

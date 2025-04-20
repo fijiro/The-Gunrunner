@@ -1,7 +1,6 @@
 # Inventory.gd
-class_name InventoryBase extends Node
+class_name InventoryBase extends Node3D
 
-@export var dummy_scene: PackedScene
 @export var ui_scene: PackedScene
 var ui: CanvasLayer
 var items: Array[Node3D] = []
@@ -18,8 +17,11 @@ func _ready() -> void:
 	#Connect all nodes to item slots
 	for item_slot: TextureRect in ui.get_node("ItemSlots").get_children():
 		item_slot.setup(null, self)
-	#Add dummy
-	add_item(dummy_scene.instantiate())
+	#Add existing items in inventory
+	#add_item(dummy_scene.instantiate())
+	for child in get_children():
+		add_item(child)
+		pass
 
 func add_item(item: Node3D) -> bool:
 	if item == null: return false

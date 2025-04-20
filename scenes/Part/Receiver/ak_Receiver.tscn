@@ -38,3 +38,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.116748, -0.00359805, 0)
 
 [node name="Barrel_Attach" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.123324, 0, 0)
+
+[node name="Magazine_Attach" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0516541, -0.0430202, 0)
+
+[node name="Handguard_Attach" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.121544, 0.00299575, 0)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://nd2xy7bggbpd"]
+[gd_scene load_steps=9 format=3 uid="uid://nd2xy7bggbpd"]
 
-[ext_resource type="Script" uid="uid://ntbric6j67wk" path="res://scripts/workbench.gd" id="1_1cdeh"]
+[ext_resource type="Script" uid="uid://ntbric6j67wk" path="res://scripts/world/workbench.gd" id="1_1cdeh"]
 [ext_resource type="PackedScene" uid="uid://b8ahvbdgptg25" path="res://scenes/UI/WorkbenchUI.tscn" id="2_p3ame"]
-[ext_resource type="PackedScene" uid="uid://d1qyoh5usnukp" path="res://scenes/Part/Grip/ak_Grip.tscn" id="3_7rqw5"]
 [ext_resource type="Script" uid="uid://cqcovtgk3uwnp" path="res://scripts/ui/inventory/workbench_inventory.gd" id="6_a0vkv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5602k"]
@@ -51,8 +50,6 @@ physics_material_override = SubResource("PhysicsMaterial_7rqw5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_8j27g")
 
-[node name="WorkbenchInventory" type="Node" parent="."]
+[node name="WorkbenchInventory" type="Node3D" parent="."]
 script = ExtResource("6_a0vkv")
-dummy_scene = ExtResource("3_7rqw5")
 ui_scene = ExtResource("2_p3ame")
-metadata/_custom_type_script = "uid://cqcovtgk3uwnp"
