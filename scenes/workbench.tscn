@@ -19,10 +19,10 @@ size = Vector3(0.25, 0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8j27g"]
 
-[node name="Workbench" type="Node3D"]
+[node name="Workbench" type="Node3D" node_paths=PackedStringArray("inventory")]
 script = ExtResource("1_1cdeh")
-workbench_ui_scene = ExtResource("2_p3ame")
 zoom_target = NodePath("CameraPosition")
+inventory = NodePath("WorkbenchInventory")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_7tolv")

@@ -20,9 +20,10 @@ size = Vector3(1, 0.5, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_116pu"]
 size = Vector3(0.3, 0.57, 0.675)
 
-[node name="ShipmentCrate" type="Node3D"]
+[node name="ShipmentCrate" type="Node3D" node_paths=PackedStringArray("inventory")]
 script = ExtResource("1_tnso0")
 zoom_target = NodePath("CameraPosition")
+inventory = NodePath("ScrateInventory")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_116pu")
