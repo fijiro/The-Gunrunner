@@ -15,9 +15,8 @@ config/description="Description"
 config/version="0.1"
 run/main_scene="uid://of4xisxwlrda"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-boot_splash/bg_color=Color(1, 0, 0.833333, 1)
 boot_splash/image="uid://df4x5phv4okfl"
-config/icon="uid://df4x5phv4okfl"
+config/icon="uid://bawpwyjx17khs"
 run/bg_color=Color(1, 0, 0.833333, 1)
 run/description="Description"
 
