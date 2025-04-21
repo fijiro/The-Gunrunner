@@ -8,6 +8,7 @@ func _ready():
 #TODO:
 func _build_weapon():
 	var parts: Dictionary = (inventory as WorkbenchInventory).get_parts()
+	
 	print(parts)
 	var receiver: GunPart = parts["receiver"] if parts.has("receiver") else null
 	if null in [receiver]: return

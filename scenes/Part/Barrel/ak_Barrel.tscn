@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxo5ngr6nq0ue"]
+[gd_scene load_steps=4 format=3 uid="uid://dxo5ngr6nq0ue"]
 
 [ext_resource type="Script" uid="uid://bshr4jbimgdpv" path="res://parts/barrels/ak_barrel.gd" id="1_a0316"]
 
@@ -10,25 +10,12 @@ material = SubResource("StandardMaterial3D_g2qyn")
 radius = 0.02
 height = 0.42
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a0316"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_nihd6"]
-size = Vector3(0.04, 0.42, 0.04)
-
 [node name="AkBarrel" type="Node3D"]
 script = ExtResource("1_a0316")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_g2qyn")
-
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-physics_material_override = SubResource("PhysicsMaterial_a0316")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("BoxShape3D_nihd6")
-disabled = true
 
 [node name="Receiver_Attach" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.196396, 0.000673091, 0)

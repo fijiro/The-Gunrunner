@@ -30,7 +30,7 @@ func add_item(item: Node3D) -> bool:
 	else: add_child(item)
 	var item_slot: DraggableItem = get_ui_slot(items.find(item))
 	item_slot.setup(item, self)
-	item.visible = false
+	item.visible = true
 	return true
 
 ## Returns null or TextureRect slot for item.

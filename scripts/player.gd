@@ -15,7 +15,7 @@ var input_enabled: bool = true
 func _ready() -> void:
 	head = $Head
 	camera = $Head/Camera3D
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	escape_ui = escape_ui_scene.instantiate()
 	get_node("/root/Main/UI").add_child(escape_ui)
 	escape_ui.visible = false
