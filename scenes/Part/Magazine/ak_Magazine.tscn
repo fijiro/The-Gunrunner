@@ -7,7 +7,7 @@ albedo_color = Color(0.11, 0.11, 0.11, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6lfn3"]
 material = SubResource("StandardMaterial3D_hh72p")
-size = Vector3(0.07, 0.23, 0.03)
+size = Vector3(0.07, 0.15, 0.03)
 
 [node name="AkMagazine" type="Node3D"]
 script = ExtResource("1_6lfn3")
@@ -16,4 +16,4 @@ script = ExtResource("1_6lfn3")
 mesh = SubResource("BoxMesh_6lfn3")
 
 [node name="Receiver_Attach" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015668, 0.106796, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015668, 0.0700903, 0)
