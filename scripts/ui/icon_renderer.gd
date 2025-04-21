@@ -60,7 +60,8 @@ func _render_icon(item: Node3D) -> ImageTexture:
 	get_child(0).visible = false # Hide background
 	return ImageTexture.create_from_image(image)
 
-## Return the [AABB] of the node.
+## Return the [AABB] of the node. 
+## Credit: u/Magodra
 func get_node_aabb(node : Node, exclude_top_level_transform: bool = true) -> AABB:
 	var bounds : AABB = AABB()
 	# Get the aabb of the visual instance
