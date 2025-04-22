@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://flvrdlal5a7y"]
+
+[ext_resource type="Script" uid="uid://dn6pf6b7m2d3h" path="res://parts/receivers/ak_receiver.gd" id="1_wkqak"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wqdy"]
+albedo_color = Color(0.196078, 0.14902, 0.152941, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8wqdy"]
+material = SubResource("StandardMaterial3D_8wqdy")
+radius = 0.04
+height = 0.25
+
+[node name="AkReceiver" type="Node3D"]
+script = ExtResource("1_wkqak")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_8wqdy")
+
+[node name="Grip_Attach" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0935079, -0.0334729, 0)
+
+[node name="Stock_Attach" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.116748, -0.00359805, 0)
+
+[node name="Barrel_Attach" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.123324, 0, 0)
+
+[node name="Magazine_Attach" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0516541, -0.0430202, 0)
+
+[node name="Handguard_Attach" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.121544, 0.00299575, 0)

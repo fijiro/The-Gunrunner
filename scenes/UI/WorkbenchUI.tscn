@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8ahvbdgptg25"]
 
-[ext_resource type="Script" uid="uid://dmcr05s2rahpd" path="res://scripts/ui/workbench_ui.gd" id="1_8l4iq"]
+[ext_resource type="Script" uid="uid://dmcr05s2rahpd" path="res://scripts/ui/menu/workbench_ui.gd" id="1_8l4iq"]
 [ext_resource type="PackedScene" uid="uid://6e4j46ntd53x" path="res://scenes/UI/ItemSlot.tscn" id="2_5ma14"]
 
 [node name="WorkbenchMenu" type="CanvasLayer"]
@@ -48,11 +48,22 @@ columns = 4
 
 [node name="GripSlot" parent="ItemSlots" instance=ExtResource("2_5ma14")]
 layout_mode = 2
+whitelist = Array[String](["grip"])
 
 [node name="ReceiverSlot" parent="ItemSlots" instance=ExtResource("2_5ma14")]
 layout_mode = 2
+whitelist = Array[String](["receiver"])
 
 [node name="BarrelSlot" parent="ItemSlots" instance=ExtResource("2_5ma14")]
+layout_mode = 2
+
+[node name="StockSlot" parent="ItemSlots" instance=ExtResource("2_5ma14")]
+layout_mode = 2
+
+[node name="MagazineSlot" parent="ItemSlots" instance=ExtResource("2_5ma14")]
+layout_mode = 2
+
+[node name="HandguardSlot" parent="ItemSlots" instance=ExtResource("2_5ma14")]
 layout_mode = 2
 
 [node name="BuildSlot" parent="ItemSlots" instance=ExtResource("2_5ma14")]
@@ -65,30 +76,6 @@ offset_top = 466.0
 offset_right = 1026.0
 offset_bottom = 554.0
 text = "FINISH"
-
-[node name="AddGrip" type="Button" parent="."]
-visible = false
-offset_left = 170.0
-offset_top = 453.0
-offset_right = 313.0
-offset_bottom = 549.0
-text = "ADD GRIP"
-
-[node name="AddReceiver" type="Button" parent="."]
-visible = false
-offset_left = 395.0
-offset_top = 455.0
-offset_right = 538.0
-offset_bottom = 551.0
-text = "ADD RECEIVER"
-
-[node name="AddBarrel" type="Button" parent="."]
-visible = false
-offset_left = 634.0
-offset_top = 457.0
-offset_right = 777.0
-offset_bottom = 553.0
-text = "ADD BARREL"
 
 [node name="BuildButton" type="Button" parent="."]
 offset_left = 904.0

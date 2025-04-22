@@ -1,0 +1,94 @@
+[gd_scene load_steps=21 format=3 uid="uid://of4xisxwlrda"]
+
+[ext_resource type="Texture2D" uid="uid://cbohcdy8hi5qh" path="res://images/7db83396-ee9d-4c95-8b04-19b37dbe4cc1-2635000782.jpg" id="1_c01mt"]
+[ext_resource type="PackedScene" uid="uid://d1qyoh5usnukp" path="res://scenes/Part/Grip/ak_Grip.tscn" id="4_lhr70"]
+[ext_resource type="PackedScene" uid="uid://dcnalrmgg8gld" path="res://scenes/Player.tscn" id="4_q8u5g"]
+[ext_resource type="PackedScene" uid="uid://dupqjrut5li2m" path="res://scenes/Part/Stock/ak_Stock.tscn" id="5_c01mt"]
+[ext_resource type="PackedScene" uid="uid://nd2xy7bggbpd" path="res://scenes/Workbench.tscn" id="5_lhr70"]
+[ext_resource type="Script" uid="uid://be1nh11w0wt4d" path="res://scripts/ui/icon_renderer.gd" id="5_vcsgt"]
+[ext_resource type="PackedScene" uid="uid://flvrdlal5a7y" path="res://scenes/Part/Receiver/ak_Receiver.tscn" id="5_wp0k4"]
+[ext_resource type="PackedScene" uid="uid://dxo5ngr6nq0ue" path="res://scenes/Part/Barrel/ak_Barrel.tscn" id="6_bjd11"]
+[ext_resource type="PackedScene" uid="uid://bxne2ne1es1t0" path="res://scenes/Part/Magazine/ak_Magazine.tscn" id="6_nxtc6"]
+[ext_resource type="PackedScene" uid="uid://5q41qki46vl0" path="res://scenes/Scrate.tscn" id="6_wp0k4"]
+[ext_resource type="PackedScene" uid="uid://c083j4tpjc6d2" path="res://scenes/Part/Handguard/ak_Handguard.tscn" id="10_bjd11"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_a0tk4"]
+panorama = ExtResource("1_c01mt")
+
+[sub_resource type="Sky" id="Sky_r3fl7"]
+sky_material = SubResource("PanoramaSkyMaterial_a0tk4")
+
+[sub_resource type="Environment" id="Environment_jka67"]
+background_mode = 2
+sky = SubResource("Sky_r3fl7")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a202f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a202f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sugp2"]
+albedo_color = Color(0.239216, 0.580392, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a202f"]
+material = SubResource("StandardMaterial3D_sugp2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rarhs"]
+albedo_color = Color(2.21401e-06, 0.434721, 0.535635, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vcsgt"]
+material = SubResource("StandardMaterial3D_rarhs")
+size = Vector3(2, 2, 0.01)
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jka67")
+
+[node name="World Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.00829686, -0.869943, 0.493082, 0.014636, 0.493152, 0.86982, -0.999858, -2.32798e-08, 0.0168241, 7.90739, 8.32861, 0)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("4_q8u5g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.78886, 0)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -25, 0)
+physics_material_override = SubResource("PhysicsMaterial_a202f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_a202f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_a202f")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Workbench" parent="." instance=ExtResource("5_lhr70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.783875, 0.504993, -6.09394)
+
+[node name="AkGrip" parent="Workbench/WorkbenchInventory" index="0" instance=ExtResource("4_lhr70")]
+
+[node name="AkReceiver" parent="Workbench/WorkbenchInventory" index="1" instance=ExtResource("5_wp0k4")]
+
+[node name="AkBarrel" parent="Workbench/WorkbenchInventory" index="2" instance=ExtResource("6_bjd11")]
+
+[node name="AkMagazine" parent="Workbench/WorkbenchInventory" index="3" instance=ExtResource("6_nxtc6")]
+
+[node name="AkStock" parent="Workbench/WorkbenchInventory" index="4" instance=ExtResource("5_c01mt")]
+
+[node name="AkHandguard" parent="Workbench/WorkbenchInventory" index="5" instance=ExtResource("10_bjd11")]
+
+[node name="ShipmentCrate" parent="." instance=ExtResource("6_wp0k4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.05415, 0.25, -3.56847)
+
+[node name="IconRenderer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.77557, 0)
+script = ExtResource("5_vcsgt")
+
+[node name="Background" type="MeshInstance3D" parent="IconRenderer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+visible = false
+mesh = SubResource("BoxMesh_vcsgt")
+skeleton = NodePath("../..")
+
+[editable path="Workbench"]
