@@ -48,9 +48,11 @@ columns = 4
 
 [node name="GripSlot" parent="ItemSlots" instance=ExtResource("2_5ma14")]
 layout_mode = 2
+whitelist = Array[String](["grip"])
 
 [node name="ReceiverSlot" parent="ItemSlots" instance=ExtResource("2_5ma14")]
 layout_mode = 2
+whitelist = Array[String](["receiver"])
 
 [node name="BarrelSlot" parent="ItemSlots" instance=ExtResource("2_5ma14")]
 layout_mode = 2

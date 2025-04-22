@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2gvbwpg4b8b0"]
+
+[ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="1_7fv6s"]
+[ext_resource type="PackedScene" uid="uid://d1khoen7g4diq" path="res://scenes/UI/PlayerUI.tscn" id="2_bq5aw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0bq7j"]
+albedo_color = Color(0, 0.388235, 0.603922, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0bq7j"]
+material = SubResource("StandardMaterial3D_0bq7j")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c4qij"]
+
+[node name="Npc" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_0bq7j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_c4qij")
+
+[node name="InventoryBase" type="Node3D" parent="."]
+script = ExtResource("1_7fv6s")
+ui_scene = ExtResource("2_bq5aw")
+metadata/_custom_type_script = "uid://bw4h4e6lw16o7"

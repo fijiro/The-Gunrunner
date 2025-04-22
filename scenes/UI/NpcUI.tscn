@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://lxlkr6l1vr0p"]
+
+[ext_resource type="PackedScene" uid="uid://6e4j46ntd53x" path="res://scenes/UI/ItemSlot.tscn" id="1_2gi2g"]
+
+[node name="NpcUI" type="CanvasLayer"]
+
+[node name="ItemSlots" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -154.0
+offset_right = 154.0
+offset_bottom = 100.0
+grow_horizontal = 2
+columns = 3
+
+[node name="ItemSlot0" parent="ItemSlots" instance=ExtResource("1_2gi2g")]
+layout_mode = 2
+
+[node name="ItemSlot1" parent="ItemSlots" instance=ExtResource("1_2gi2g")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="ItemSlots" instance=ExtResource("1_2gi2g")]
+layout_mode = 2
