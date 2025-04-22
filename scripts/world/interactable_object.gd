@@ -11,6 +11,9 @@ var zoomed_in = false
 func _ready():
 	$Area3D.body_entered.connect(_on_body_entered)
 	$Area3D.body_exited.connect(_on_body_exited)
+	# Usually an UI menu has an exit button
+	if inventory.ui.has_signal("menu_closed"):
+		inventory.ui.connect("menu_closed", Callable(self, "exit_menu"))
 	inventory.ui.visible = false
 
 func _on_body_entered(body):

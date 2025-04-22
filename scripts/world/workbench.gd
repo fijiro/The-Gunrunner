@@ -1,8 +1,7 @@
 extends InteractableObject
 func _ready():
 	super._ready()
-	# Hook up close callback and buttons
-	inventory.ui.connect("menu_closed", Callable(self, "exit_menu"))
+	# Hook up workbench-specific buttons
 	inventory.ui.connect("build_weapon", Callable(self, "_build_weapon"))
 
 #TODO:
