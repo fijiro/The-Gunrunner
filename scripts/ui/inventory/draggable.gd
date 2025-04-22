@@ -1,8 +1,11 @@
 class_name DraggableItem extends TextureRect
+
+signal dropped_data
 var item: Node3D
 var inventory: Node
 var icon_renderer: IconRenderer
 @export var whitelist: Array[String]
+
 func setup(item_node: Node3D = null, inventory_node: InventoryBase = null) -> void:
 	item = item_node
 	inventory = inventory_node
@@ -47,6 +50,8 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	regenerate_icon()
 	# Regenerate old icon
 	(data["icon"] as DraggableItem).regenerate_icon()
+	emit_signal("dropped_data")
+	data["icon"].emit_signal("dropped_data")
 	
 func regenerate_icon(force: bool = false):
 	texture = await icon_renderer.render_icon(item, force)

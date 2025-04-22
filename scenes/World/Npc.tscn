@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b2gvbwpg4b8b0"]
 
 [ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="1_7fv6s"]
-[ext_resource type="Script" uid="uid://dkme1hiyo32gy" path="res://scripts/world/interactable_object.gd" id="1_722vg"]
+[ext_resource type="Script" uid="uid://c7evdpxuynu6x" path="res://scripts/world/npc.gd" id="1_722vg"]
 [ext_resource type="PackedScene" uid="uid://lxlkr6l1vr0p" path="res://scenes/UI/NpcUI.tscn" id="2_00l0s"]
 [ext_resource type="PackedScene" uid="uid://flvrdlal5a7y" path="res://scenes/Part/Receiver/ak_Receiver.tscn" id="3_xum36"]
 
@@ -18,7 +18,6 @@ size = Vector3(3, 1, 3)
 
 [node name="Npc" type="CharacterBody3D" node_paths=PackedStringArray("inventory")]
 script = ExtResource("1_722vg")
-zoom_duration = 0.5
 zoom_target = NodePath("ZoomTarget")
 inventory = NodePath("NpcInventory")
 

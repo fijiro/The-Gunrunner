@@ -1,21 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://lxlkr6l1vr0p"]
+[gd_scene load_steps=5 format=3 uid="uid://lxlkr6l1vr0p"]
 
 [ext_resource type="PackedScene" uid="uid://6e4j46ntd53x" path="res://scenes/UI/ItemSlot.tscn" id="1_2gi2g"]
 [ext_resource type="Script" uid="uid://8l2ipnec3k0b" path="res://scripts/ui/menu/npc_ui.gd" id="1_lt0eq"]
+
+[sub_resource type="Gradient" id="Gradient_lt0eq"]
+colors = PackedColorArray(1, 0.54902, 0.101961, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wbfu5"]
+gradient = SubResource("Gradient_lt0eq")
+width = 30
+height = 40
 
 [node name="NpcUI" type="CanvasLayer"]
 script = ExtResource("1_lt0eq")
 
 [node name="Panel" type="Panel" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = 64.0
-offset_top = 156.0
-offset_right = -71.0
-offset_bottom = -46.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_top = 168.0
+offset_right = 1112.0
+offset_bottom = 614.0
 
 [node name="ItemSlots" type="GridContainer" parent="."]
 anchors_preset = 15
@@ -55,3 +58,27 @@ offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "DONE"
+
+[node name="SellButton" type="Button" parent="."]
+offset_left = 650.0
+offset_top = 487.0
+offset_right = 762.0
+offset_bottom = 535.0
+text = "SELL"
+icon = SubResource("GradientTexture2D_wbfu5")
+
+[node name="SellSlot" parent="." instance=ExtResource("1_2gi2g")]
+offset_left = 448.0
+offset_top = 448.0
+offset_right = 548.0
+offset_bottom = 548.0
+whitelist = Array[String](["receiver"])
+
+[node name="Price" type="Label" parent="."]
+offset_left = 653.0
+offset_top = 443.0
+offset_right = 761.0
+offset_bottom = 466.0
+text = "$PRICE"
+horizontal_alignment = 1
+vertical_alignment = 1
