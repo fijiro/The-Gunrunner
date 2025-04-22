@@ -23,3 +23,9 @@ layout_mode = 2
 
 [node name="ItemSlot2" parent="ItemSlots" instance=ExtResource("1_2gi2g")]
 layout_mode = 2
+
+[node name="ItemSlot3" parent="ItemSlots" instance=ExtResource("1_2gi2g")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="ItemSlots" instance=ExtResource("1_2gi2g")]
+layout_mode = 2
