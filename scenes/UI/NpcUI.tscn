@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://6e4j46ntd53x" path="res://scenes/UI/ItemSlot.tscn" id="1_2gi2g"]
 
 [node name="NpcUI" type="CanvasLayer"]
+visible = false
 
 [node name="ItemSlots" type="GridContainer" parent="."]
 custom_minimum_size = Vector2(100, 100)

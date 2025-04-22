@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2gvbwpg4b8b0"]
+[gd_scene load_steps=7 format=3 uid="uid://b2gvbwpg4b8b0"]
 
 [ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="1_7fv6s"]
-[ext_resource type="PackedScene" uid="uid://d1khoen7g4diq" path="res://scenes/UI/PlayerUI.tscn" id="2_bq5aw"]
+[ext_resource type="PackedScene" uid="uid://lxlkr6l1vr0p" path="res://scenes/UI/NpcUI.tscn" id="2_00l0s"]
+[ext_resource type="PackedScene" uid="uid://flvrdlal5a7y" path="res://scenes/Part/Receiver/ak_Receiver.tscn" id="3_xum36"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0bq7j"]
 albedo_color = Color(0, 0.388235, 0.603922, 1)
@@ -19,7 +20,8 @@ mesh = SubResource("CapsuleMesh_0bq7j")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_c4qij")
 
-[node name="InventoryBase" type="Node3D" parent="."]
+[node name="NpcInventory" type="Node3D" parent="."]
 script = ExtResource("1_7fv6s")
-ui_scene = ExtResource("2_bq5aw")
-metadata/_custom_type_script = "uid://bw4h4e6lw16o7"
+ui_scene = ExtResource("2_00l0s")
+
+[node name="AkReceiver" parent="NpcInventory" instance=ExtResource("3_xum36")]
