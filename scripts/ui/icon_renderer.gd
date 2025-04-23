@@ -15,7 +15,7 @@ func _ready() -> void:
 	camera.global_position = global_position
 
 func render_icon(item: Node3D, force: bool) -> ImageTexture:
-	if item == null:
+	if item == null or item.is_queued_for_deletion():
 		return null
 	if _cache.has(item.name) and not force:
 		return _cache[item.name]
@@ -29,11 +29,11 @@ func render_icon(item: Node3D, force: bool) -> ImageTexture:
 	return completer.texture
 
 func _process_queue():
-	if _is_rendering or _queue.is_empty():
-		return
+	if _is_rendering or _queue.is_empty(): return
 	_is_rendering = true
 	var entry = _queue.pop_front()
 	var item: Node3D = entry["item"]
+	if item.is_queued_for_deletion(): return
 	var completer = entry["completer"]
 	var texture = await _render_icon(item)
 	_cache[item.name] = texture

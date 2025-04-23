@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1khoen7g4diq"]
+[gd_scene load_steps=4 format=3 uid="uid://d1khoen7g4diq"]
 
 [ext_resource type="PackedScene" uid="uid://6e4j46ntd53x" path="res://scenes/UI/ItemSlot.tscn" id="1_74o4q"]
+[ext_resource type="Script" uid="uid://47qna8vsuxl7" path="res://scripts/ui/menu/player_ui.gd" id="1_kectx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lje87"]
+font_size = 42
+font_color = Color(1, 1, 0, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="PlayerUI" type="CanvasLayer"]
+script = ExtResource("1_kectx")
 
 [node name="MinimapContainer" type="SubViewportContainer" parent="."]
 visible = false
@@ -32,3 +40,12 @@ layout_mode = 2
 
 [node name="ItemSlot2" parent="ItemSlots" instance=ExtResource("1_74o4q")]
 layout_mode = 2
+
+[node name="Money" type="Label" parent="."]
+offset_left = 983.0
+offset_top = 7.0
+offset_right = 1145.0
+offset_bottom = 73.0
+text = "0 €"
+label_settings = SubResource("LabelSettings_lje87")
+horizontal_alignment = 2

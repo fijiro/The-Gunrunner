@@ -1,6 +1,5 @@
-[gd_scene load_steps=22 format=3 uid="uid://of4xisxwlrda"]
+[gd_scene load_steps=21 format=3 uid="uid://of4xisxwlrda"]
 
-[ext_resource type="Texture2D" uid="uid://2hwenwn7rs86" path="res://images/Nightsky.png" id="1_wp0k4"]
 [ext_resource type="PackedScene" uid="uid://d1qyoh5usnukp" path="res://scenes/Part/Grip/ak_Grip.tscn" id="4_lhr70"]
 [ext_resource type="PackedScene" uid="uid://dcnalrmgg8gld" path="res://scenes/World/Player.tscn" id="4_q8u5g"]
 [ext_resource type="PackedScene" uid="uid://dupqjrut5li2m" path="res://scenes/Part/Stock/ak_Stock.tscn" id="5_c01mt"]
@@ -13,11 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://c083j4tpjc6d2" path="res://scenes/Part/Handguard/ak_Handguard.tscn" id="10_bjd11"]
 [ext_resource type="PackedScene" uid="uid://b2gvbwpg4b8b0" path="res://scenes/World/Npc.tscn" id="12_bjd11"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_bjd11"]
-panorama = ExtResource("1_wp0k4")
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ap7x"]
+sky_top_color = Color(0.22776, 0.686502, 0.822227, 1)
+ground_bottom_color = Color(0.443982, 0.386758, 0.320462, 1)
 
 [sub_resource type="Sky" id="Sky_r3fl7"]
-sky_material = SubResource("PanoramaSkyMaterial_bjd11")
+sky_material = SubResource("ProceduralSkyMaterial_5ap7x")
 
 [sub_resource type="Environment" id="Environment_jka67"]
 background_mode = 2

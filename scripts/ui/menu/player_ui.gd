@@ -2,11 +2,14 @@ class_name PlayerUI extends CanvasLayer
 var selected_slots := []
 #signal pressed
 #func _ready() -> void:
-	#$GridContainer/ItemSlot0.connect("pressed", _on_slot_pressed)
-func set_ui_visible(enabled: bool): 
+	#$ItemSlots/ItemSlot0.connect("pressed", _on_slot_pressed)
+func set_ui_visible(enabled: bool) -> void: 
 	visible = enabled
 	
-func _on_item_slot_pressed(slot_index):
+func update_money(money: int) -> void:
+	$Money.text = "%s €" % money
+
+func _on_item_slot_pressed(slot_index) -> void:
 	if selected_slots.has(slot_index):
 		selected_slots.erase(slot_index)
 	else:

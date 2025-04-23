@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://nd2xy7bggbpd"]
+[gd_scene load_steps=10 format=3 uid="uid://nd2xy7bggbpd"]
 
 [ext_resource type="Script" uid="uid://ntbric6j67wk" path="res://scripts/world/workbench.gd" id="1_1cdeh"]
 [ext_resource type="PackedScene" uid="uid://b8ahvbdgptg25" path="res://scenes/UI/WorkbenchUI.tscn" id="2_p3ame"]
+[ext_resource type="PackedScene" uid="uid://0etrnktxs7vg" path="res://scenes/Part/Weapon.tscn" id="2_y8uph"]
 [ext_resource type="Script" uid="uid://cqcovtgk3uwnp" path="res://scripts/ui/inventory/workbench_inventory.gd" id="6_a0vkv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5602k"]
@@ -20,6 +21,7 @@ size = Vector3(0.25, 0.5, 0.5)
 
 [node name="Workbench" type="Node3D" node_paths=PackedStringArray("inventory")]
 script = ExtResource("1_1cdeh")
+weapon_scene = ExtResource("2_y8uph")
 zoom_target = NodePath("CameraPosition")
 inventory = NodePath("WorkbenchInventory")
 

@@ -68,17 +68,17 @@ text = "SELL"
 icon = SubResource("GradientTexture2D_wbfu5")
 
 [node name="SellSlot" parent="." instance=ExtResource("1_2gi2g")]
-offset_left = 448.0
-offset_top = 448.0
-offset_right = 548.0
-offset_bottom = 548.0
-whitelist = Array[String](["receiver"])
+offset_left = 480.0
+offset_top = 457.0
+offset_right = 580.0
+offset_bottom = 557.0
+whitelist = Array[String](["weapon"])
 
 [node name="Price" type="Label" parent="."]
 offset_left = 653.0
 offset_top = 443.0
 offset_right = 761.0
 offset_bottom = 466.0
-text = "$PRICE"
+text = "0€"
 horizontal_alignment = 1
 vertical_alignment = 1
