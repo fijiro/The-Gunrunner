@@ -47,6 +47,8 @@ func _render_icon(item: Node3D) -> ImageTexture:
 	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 	var clone: GunPart = item.duplicate()
 	clone.visible = true
+	clone.position = Vector3.ZERO
+	clone.rotation = Vector3.ZERO
 	camera.add_child(clone)
 	clone.position.z -= 0.3
 	var aabb: AABB = get_node_aabb(clone)
