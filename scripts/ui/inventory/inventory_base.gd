@@ -3,7 +3,7 @@ class_name InventoryBase extends Node3D
 
 @export var ui_scene: PackedScene
 var ui: CanvasLayer
-var items: Array[Node3D] = []
+#var items: Array[Node3D] = []
 # When inventory is created: 
 # 1. Generate UI, items (3D nodes) and set them invisible ✔
 # 	1.1 Dummy values for now ✔
@@ -15,8 +15,9 @@ func _ready() -> void:
 	ui = ui_scene.instantiate()
 	get_node("/root/Main/UI").add_child(ui)
 	#Connect all nodes to item slots
-	for item_slot: TextureRect in ui.get_node("ItemSlots").get_children():
+	for item_slot: DraggableItem in ui.get_node("ItemSlots").get_children():
 		item_slot.setup(null, self)
+		#item_slot.dropped_data.connect(add_item)
 	#Add existing items in inventory
 	for child in get_children():
 		add_item(child)
@@ -24,10 +25,11 @@ func _ready() -> void:
 ## Returns was item successfully added to inventory.
 func add_item(item: Node3D) -> bool:
 	if item == null: return false
-	items.append(item)
+	var item_slot: DraggableItem = get_first_empty_slot()
+	if(item_slot == null): return false
+	
 	if item.get_parent(): item.reparent(self)
 	else: add_child(item)
-	var item_slot: DraggableItem = get_ui_slot(items.find(item))
 	item_slot.setup(item, self)
 	item.visible = false
 	return true
@@ -42,3 +44,7 @@ func get_slots() -> Array[DraggableItem]:
 	for item in ui.get_node("ItemSlots").get_children():
 		if item is DraggableItem: slots.append(item)
 	return slots
+func get_first_empty_slot() -> DraggableItem:
+	for slot: DraggableItem in ui.get_node("ItemSlots").get_children():
+		if slot.item == null: return slot
+	return null

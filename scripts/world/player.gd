@@ -5,9 +5,10 @@ extends CharacterBody3D
 @export var gravity: float = 20.0
 @export var mouse_sensitivity: float = 0.002
 @export var escape_ui_scene: PackedScene
+@export var inventory: PlayerInventory
 var escape_ui: CanvasLayer
-var head
-var camera
+var head: Node3D
+var camera: Camera3D
 var rotation_y := 0.0
 var rotation_x := 0.0
 var input_enabled: bool = true 
@@ -33,6 +34,9 @@ func _input(event):
 		escape_ui.visible = not escape_ui.visible
 		input_enabled = not input_enabled
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if not input_enabled else Input.MOUSE_MODE_CAPTURED)
+	if event.is_action_pressed("item_slot_1"):
+		inventory.equip_slot(0)
+		
 
 func _physics_process(delta):
 	if not input_enabled:

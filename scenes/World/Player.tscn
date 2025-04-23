@@ -13,9 +13,10 @@ material = SubResource("StandardMaterial3D_mdl7e")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a202f"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("inventory")]
 script = ExtResource("1_g2els")
 escape_ui_scene = ExtResource("2_qu4a1")
+inventory = NodePath("PlayerInventory")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_a202f")
@@ -33,5 +34,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09612, -0.266973)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 0.964007, 0.265876, 0, -0.265876, 0.964007, 0, 0.221264, 0)
 
-[node name="Hand" type="Node3D" parent="."]
-transform = Transform3D(0.919287, 0, -0.393589, 0, 1, 0, 0.393589, 0, 0.919287, -0.513934, 0, -0.527657)
+[node name="Hand" type="Node3D" parent="Head"]
+transform = Transform3D(0.330103, 0, 0.943946, 0, 1, 0, -0.943946, 0, 0.330103, -0.422886, -0.303599, -0.710021)
