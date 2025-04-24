@@ -34,8 +34,9 @@ func _input(event):
 		escape_ui.visible = not escape_ui.visible
 		input_enabled = not input_enabled
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if not input_enabled else Input.MOUSE_MODE_CAPTURED)
-	if event.is_action_pressed("item_slot_1"):
-		inventory.equip_slot(0)
+	elif event.is_action_pressed("item_slot_1"): inventory.equip_slot(0)
+	elif event.is_action_pressed("item_slot_2"): inventory.equip_slot(1)
+	elif event.is_action_pressed("item_slot_3"): inventory.equip_slot(2)
 		
 
 func _physics_process(delta):

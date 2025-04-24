@@ -4,6 +4,7 @@ signal dropped_data
 var item: Node3D
 var inventory: Node
 var icon_renderer: IconRenderer
+var draggable = true
 @export var whitelist: Array[String]
 
 func setup(item_node: Node3D = null, inventory_node: InventoryBase = null) -> void:
@@ -16,6 +17,7 @@ func _ready():
 	mouse_filter = Control.MOUSE_FILTER_PASS
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
+	if !draggable: return null
 	#Create drag icon
 	var preview = TextureRect.new()
 	preview.name = "preview"
@@ -33,18 +35,18 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	# Old slot must have an item and new slot must be empty
-	if typeof(data) == TYPE_DICTIONARY and data.has("item") and data["item"] != null and item == null:
-		#Item must be whitelisted if whitelist exists in slot
-		if !whitelist.is_empty() and data["item"].type not in whitelist: return false
-		else: return true
-	else: return false
+	if !typeof(data) == TYPE_DICTIONARY or !data.has("item") or data["item"] == null or item != null: return false
+	#Item must be whitelisted if whitelist exists in slot
+	if !whitelist.is_empty() and data["item"].type not in whitelist: return false
+	return true
 
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	#Assign data to the new item slot
 	#print("dropping data ", data)
-	data["inventory"].remove_child(data["item"])
+	data["item"].get_parent().remove_child(data["item"])
 	inventory.add_child(data["item"])
 	item = data["item"]
+	item.visible = false
 	(data["icon"] as DraggableItem).item = null
 	# Regenerate slot icon
 	regenerate_icon()

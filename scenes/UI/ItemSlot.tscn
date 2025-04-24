@@ -5,12 +5,13 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xrrx1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fb20s"]
+resource_name = "slot"
 draw_center = false
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
 border_width_bottom = 8
-border_color = Color(1, 1, 0.333333, 1)
+border_color = Color(1, 1, 0, 1)
 border_blend = true
 
 [node name="ItemSlot" type="TextureRect"]
@@ -21,7 +22,7 @@ texture = SubResource("PlaceholderTexture2D_xrrx1")
 expand_mode = 2
 script = ExtResource("1_428eu")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Outline" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 100.0
