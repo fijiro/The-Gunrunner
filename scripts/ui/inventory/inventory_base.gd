@@ -35,8 +35,12 @@ func add_item(item: Node3D) -> bool:
 	return true
 
 ## Returns null or DraggableItem slot for index.
-func get_ui_slot(index: int) -> DraggableItem:
-	return ui.get_node("ItemSlots").get_child(index) if index > -1 else null
+func get_ui_slot(index: Variant) -> DraggableItem:
+	if index is int:
+		return ui.get_node("ItemSlots").get_child(index) if index > -1 else null
+	elif index is String:
+		return ui.get_node("ItemSlots").get_node(index)
+	else: return null
 	
 ## Returns all inventory slots.
 func get_slots() -> Array[DraggableItem]:
@@ -44,6 +48,7 @@ func get_slots() -> Array[DraggableItem]:
 	for item in ui.get_node("ItemSlots").get_children():
 		if item is DraggableItem: slots.append(item)
 	return slots
+
 func get_first_empty_slot() -> DraggableItem:
 	for slot: DraggableItem in ui.get_node("ItemSlots").get_children():
 		if slot.item == null: return slot
