@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d1qyoh5usnukp" path="res://scenes/Part/Grip/ak_Grip.tscn" id="4_lhr70"]
 [ext_resource type="PackedScene" uid="uid://dcnalrmgg8gld" path="res://scenes/World/Player.tscn" id="4_q8u5g"]
 [ext_resource type="PackedScene" uid="uid://dupqjrut5li2m" path="res://scenes/Part/Stock/ak_Stock.tscn" id="5_c01mt"]
-[ext_resource type="PackedScene" uid="uid://nd2xy7bggbpd" path="res://scenes/World/Workbench.tscn" id="5_lhr70"]
+[ext_resource type="PackedScene" uid="uid://nd2xy7bggbpd" path="res://scenes/World/Crafting/Workbench.tscn" id="5_lhr70"]
 [ext_resource type="Script" uid="uid://be1nh11w0wt4d" path="res://scripts/ui/icon_renderer.gd" id="5_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://flvrdlal5a7y" path="res://scenes/Part/Receiver/ak_Receiver.tscn" id="5_wp0k4"]
 [ext_resource type="PackedScene" uid="uid://dxo5ngr6nq0ue" path="res://scenes/Part/Barrel/ak_Barrel.tscn" id="6_bjd11"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://5q41qki46vl0" path="res://scenes/World/Scrate.tscn" id="6_wp0k4"]
 [ext_resource type="PackedScene" uid="uid://c083j4tpjc6d2" path="res://scenes/Part/Handguard/ak_Handguard.tscn" id="10_bjd11"]
 [ext_resource type="PackedScene" uid="uid://b2gvbwpg4b8b0" path="res://scenes/World/Npc.tscn" id="12_bjd11"]
-[ext_resource type="PackedScene" uid="uid://b1gas7b3mdm20" path="res://scenes/World/DrawingPress.tscn" id="12_yhnhi"]
+[ext_resource type="PackedScene" uid="uid://b1gas7b3mdm20" path="res://scenes/World/Crafting/DrawingPress.tscn" id="12_yhnhi"]
 [ext_resource type="PackedScene" uid="uid://bw04oqsmrrltc" path="res://scenes/Crafting/BrassCoil.tscn" id="13_2eexf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ap7x"]
