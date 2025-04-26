@@ -7,7 +7,7 @@ func _ready() -> void:
 	inventory.ui.connect("start_press", Callable(self, "press"))
 	#Render Coil and setup finish_slot
 	coil_slot = inventory.get_ui_slot("CoilSlot")
-	coil_slot.dropped_data.connect(_coil_slot_update.bind(coil_slot))
+	coil_slot.dropped_data.connect(_coil_slot_update)
 	finish_slot = _get_finish_slot()
 	finish_slot.setup(null,inventory)
 	
@@ -21,7 +21,7 @@ func press() -> void:
 func _get_finish_slot() -> DraggableItem:
 	return inventory.ui.get_node("FinishSlot")
 	
-func _coil_slot_update(coil_slot: DraggableItem):
+func _coil_slot_update():
 	var coil = coil_slot.item
 	if !coil: return
 	coil.visible = true
