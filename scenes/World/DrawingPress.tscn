@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1gas7b3mdm20"]
+[gd_scene load_steps=10 format=3 uid="uid://b1gas7b3mdm20"]
 
 [ext_resource type="Script" uid="uid://d2eppu6ou180r" path="res://scripts/world/drawing_press.gd" id="1_3s6xm"]
 [ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="2_jmv4w"]
+[ext_resource type="PackedScene" uid="uid://yldcfn52ps7b" path="res://scenes/Cartridge/Case/RifleCase.tscn" id="2_uuqrp"]
 [ext_resource type="PackedScene" uid="uid://capxwr2vn2ms1" path="res://scenes/UI/PressUI.tscn" id="3_3s6xm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5602k"]
@@ -20,6 +21,7 @@ size = Vector3(0.25, 0.5, 0.5)
 
 [node name="DrawingPress" type="Node3D" node_paths=PackedStringArray("inventory")]
 script = ExtResource("1_3s6xm")
+case_scene = ExtResource("2_uuqrp")
 zoom_target = NodePath("CameraPosition")
 inventory = NodePath("PressInventory")
 
@@ -46,4 +48,4 @@ ui_scene = ExtResource("3_3s6xm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0236118, 0.61928, 1.14704)
 
 [node name="Coil_Attach" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50713, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.50713, 0, 0)
