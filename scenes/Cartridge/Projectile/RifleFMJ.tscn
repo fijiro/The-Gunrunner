@@ -9,6 +9,7 @@ radius = 0.004
 height = 0.015
 radial_segments = 9
 rings = 7
+is_hemisphere = true
 
 [node name="RifleFmj" type="Node3D"]
 script = ExtResource("1_q0xey")
