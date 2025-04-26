@@ -62,7 +62,9 @@ mesh = SubResource("CylinderMesh_uyf1y")
 skeleton = NodePath("../MeshInstance3D")
 
 [node name="Projectile_Attach" type="Marker3D" parent="."]
-transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, 0.016833, 0, -0.000125182)
+transform = Transform3D(-1, 1.74846e-07, 8.74228e-08, 1.74846e-07, 1, 0, -8.74228e-08, 1.52855e-14, -1, 0.016833, 0, -0.000125182)
+gizmo_extents = 0.1
 
 [node name="Primer_Attach" type="Marker3D" parent="."]
-transform = Transform3D(1.31134e-07, -2.29282e-14, 1, 1.74846e-07, 1, 0, -1, 1.74846e-07, 1.31134e-07, -0.0197336, 0, -0.000125187)
+transform = Transform3D(-1, 1.74846e-07, 8.74228e-08, 1.74846e-07, 1, 0, -8.74228e-08, 1.52855e-14, -1, -0.0197336, 0, -0.000125187)
+gizmo_extents = 0.1
