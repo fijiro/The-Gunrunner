@@ -13,11 +13,10 @@ func _ready() -> void:
 	
 
 func press() -> void:
-	if finish_slot.item != null: return
+	if not coil_slot.item or finish_slot.item: return
 	var case := case_scene.instantiate()
 	inventory.add_child(case)
 	finish_slot.setup(case, inventory)
-	print(case.name, inventory.name)
 
 func _get_finish_slot() -> DraggableItem:
 	return inventory.ui.get_node("FinishSlot")
