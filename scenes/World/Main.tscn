@@ -26,6 +26,13 @@ sky_material = SubResource("ProceduralSkyMaterial_5ap7x")
 background_mode = 2
 sky = SubResource("Sky_r3fl7")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rarhs"]
+albedo_color = Color(2.21401e-06, 0.434721, 0.535635, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vcsgt"]
+material = SubResource("StandardMaterial3D_rarhs")
+size = Vector3(2, 2, 0.01)
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a202f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a202f"]
@@ -36,13 +43,6 @@ albedo_color = Color(0.239216, 0.580392, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_a202f"]
 material = SubResource("StandardMaterial3D_sugp2")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rarhs"]
-albedo_color = Color(2.21401e-06, 0.434721, 0.535635, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_vcsgt"]
-material = SubResource("StandardMaterial3D_rarhs")
-size = Vector3(2, 2, 0.01)
-
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -51,15 +51,17 @@ environment = SubResource("Environment_jka67")
 [node name="World Light" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.00829686, -0.869943, 0.493082, 0.014636, 0.493152, 0.86982, -0.999858, -2.32798e-08, 0.0168241, 7.90739, 8.32861, 0)
 
+[node name="IconRenderer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-06, 5.76593, -7.15256e-06)
+script = ExtResource("5_vcsgt")
+
+[node name="Background" type="MeshInstance3D" parent="IconRenderer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+visible = false
+mesh = SubResource("BoxMesh_vcsgt")
+skeleton = NodePath("../..")
+
 [node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("4_q8u5g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.78886, 0)
-
-[node name="BrassCoil" parent="Player/PlayerInventory" index="0" instance=ExtResource("13_2eexf")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.52647, -2.28886, -0.697048)
-
-[node name="LeadCoil" parent="Player/PlayerInventory" index="1" instance=ExtResource("3_hg358")]
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -25, 0)
@@ -71,6 +73,16 @@ shape = SubResource("BoxShape3D_a202f")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_a202f")
 skeleton = NodePath("../CollisionShape3D")
+
+[node name="Player" parent="." instance=ExtResource("4_q8u5g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.78886, 0)
+
+[node name="BrassCoil" parent="Player/PlayerInventory" index="0" instance=ExtResource("13_2eexf")]
+
+[node name="LeadCoil" parent="Player/PlayerInventory" index="1" instance=ExtResource("3_hg358")]
+
+[node name="Npc" parent="." instance=ExtResource("12_bjd11")]
+transform = Transform3D(-0.0225652, 0, 0.999745, 0, 1, 0, -0.999745, 0, -0.0225652, 4.61511, 1.2664, -3.77227)
 
 [node name="Workbench" parent="." instance=ExtResource("5_lhr70")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.783875, 0.504993, -6.09394)
@@ -90,21 +102,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.783875, 0.504993, -6.09394)
 [node name="ShipmentCrate" parent="." instance=ExtResource("6_wp0k4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.96983, 0.25, -3.60281)
 
-[node name="IconRenderer" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-06, 5.76593, -7.15256e-06)
-script = ExtResource("5_vcsgt")
-
-[node name="Background" type="MeshInstance3D" parent="IconRenderer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
-visible = false
-mesh = SubResource("BoxMesh_vcsgt")
-skeleton = NodePath("../..")
-
-[node name="Npc" parent="." instance=ExtResource("12_bjd11")]
-transform = Transform3D(-0.0225652, 0, 0.999745, 0, 1, 0, -0.999745, 0, -0.0225652, 4.61511, 1.2664, -3.77227)
-
 [node name="DrawingPress" parent="." instance=ExtResource("12_yhnhi")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.52647, 0.5, -0.697048)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.056, 0.5, -0.697)
 
 [editable path="Player"]
 [editable path="Workbench"]
