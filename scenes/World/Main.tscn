@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://of4xisxwlrda"]
+[gd_scene load_steps=25 format=3 uid="uid://of4xisxwlrda"]
 
 [ext_resource type="PackedScene" uid="uid://dyv8q7b12d1g5" path="res://scenes/Crafting/LeadCoil.tscn" id="3_hg358"]
 [ext_resource type="PackedScene" uid="uid://d1qyoh5usnukp" path="res://scenes/Part/Grip/ak_Grip.tscn" id="4_lhr70"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b2gvbwpg4b8b0" path="res://scenes/World/Npc.tscn" id="12_bjd11"]
 [ext_resource type="PackedScene" uid="uid://b1gas7b3mdm20" path="res://scenes/World/Crafting/DrawingPress.tscn" id="12_yhnhi"]
 [ext_resource type="PackedScene" uid="uid://bw04oqsmrrltc" path="res://scenes/Crafting/BrassCoil.tscn" id="13_2eexf"]
+[ext_resource type="PackedScene" uid="uid://c2dufqu8ev64u" path="res://scenes/World/Crafting/BulletPress.tscn" id="15_4ystg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ap7x"]
 sky_top_color = Color(0.22776, 0.686502, 0.822227, 1)
@@ -104,6 +105,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.969
 
 [node name="DrawingPress" parent="." instance=ExtResource("12_yhnhi")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.056, 0.5, -0.697)
+
+[node name="BulletPress" parent="." instance=ExtResource("15_4ystg")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.35725, 0.5, 1.71321)
 
 [editable path="Player"]
 [editable path="Workbench"]

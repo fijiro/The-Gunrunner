@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://c2dufqu8ev64u"]
+
+[ext_resource type="Script" uid="uid://cpy8m5jb2pxyx" path="res://scripts/world/crafting/bullet_press.gd" id="1_7eos0"]
+[ext_resource type="PackedScene" uid="uid://cv1qabwpjnk0" path="res://scenes/Cartridge/Projectile/RifleFMJ.tscn" id="2_jwhcy"]
+[ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="3_ve8yw"]
+[ext_resource type="PackedScene" uid="uid://capxwr2vn2ms1" path="res://scenes/UI/PressUI.tscn" id="4_isfkm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5602k"]
+transparency = 1
+albedo_color = Color(0.229218, 0.596097, 0, 0.658824)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7tolv"]
+material = SubResource("StandardMaterial3D_5602k")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l4ogl"]
+size = Vector3(0.25, 0.5, 0.5)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7rqw5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8j27g"]
+
+[node name="BulletPress" type="Node3D" node_paths=PackedStringArray("inventory")]
+script = ExtResource("1_7eos0")
+bullet_scene = ExtResource("2_jwhcy")
+zoom_target = NodePath("CameraPosition")
+inventory = NodePath("PressInventory")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_7tolv")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.565, 0.485267)
+shape = SubResource("BoxShape3D_l4ogl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_7rqw5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_8j27g")
+
+[node name="PressInventory" type="Node3D" parent="."]
+script = ExtResource("3_ve8yw")
+ui_scene = ExtResource("4_isfkm")
+
+[node name="CameraPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0236118, 0.61928, 1.14704)
+
+[node name="Coil_Attach" type="Marker3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.50713, 0, 0)
