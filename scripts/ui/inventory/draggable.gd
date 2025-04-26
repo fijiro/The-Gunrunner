@@ -42,7 +42,7 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	#Assign data to the new item slot
-	#print("dropping data ", data)
+	print("dropping data ", data)
 	data["item"].get_parent().remove_child(data["item"])
 	inventory.add_child(data["item"])
 	item = data["item"]
