@@ -45,7 +45,7 @@ func _process_queue():
 func _render_icon(item: Node3D) -> ImageTexture:
 	get_child(0).visible = true
 	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
-	var clone: GunPart = item.duplicate()
+	var clone: Node3D = item.duplicate()
 	clone.visible = true
 	clone.position = Vector3.ZERO
 	clone.rotation = Vector3.ZERO

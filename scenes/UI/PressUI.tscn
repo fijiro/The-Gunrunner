@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://capxwr2vn2ms1"]
+
+[ext_resource type="PackedScene" uid="uid://6e4j46ntd53x" path="res://scenes/UI/ItemSlot.tscn" id="1_8h137"]
+[ext_resource type="Script" uid="uid://b48s3bbcnens7" path="res://scripts/ui/menu/press_ui.gd" id="1_u24pu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u24pu"]
+font_size = 36
+
+[node name="PressUI" type="CanvasLayer"]
+script = ExtResource("1_u24pu")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 39.0
+offset_top = 122.0
+offset_right = 1117.0
+offset_bottom = 594.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 29.0
+offset_right = 677.0
+offset_bottom = 79.0
+text = "DRAWING PRESS"
+label_settings = SubResource("LabelSettings_u24pu")
+
+[node name="ItemSlots" type="GridContainer" parent="."]
+offset_left = 492.0
+offset_top = 264.0
+offset_right = 592.0
+offset_bottom = 364.0
+columns = 4
+
+[node name="CoilSlot" parent="ItemSlots" instance=ExtResource("1_8h137")]
+layout_mode = 2
+whitelist = Array[String](["coil"])
+
+[node name="FinishSlot" parent="." instance=ExtResource("1_8h137")]
+offset_left = 883.0
+offset_top = 264.0
+offset_right = 983.0
+offset_bottom = 364.0
+whitelist = Array[String](["case"])
+
+[node name="CloseButton" type="Button" parent="."]
+offset_left = 839.0
+offset_top = 439.0
+offset_right = 1041.0
+offset_bottom = 536.0
+text = "CLOSE"
+
+[node name="PressButton" type="Button" parent="."]
+offset_left = 434.0
+offset_top = 439.0
+offset_right = 642.0
+offset_bottom = 536.0
+text = "PRESS"

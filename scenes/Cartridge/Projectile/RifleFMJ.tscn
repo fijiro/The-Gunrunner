@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv1qabwpjnk0"]
+
+[ext_resource type="Material" uid="uid://brbn8u1qk37lm" path="res://scenes/Cartridge/Projectile/FMJ.tres" id="1_oqi1r"]
+[ext_resource type="Script" uid="uid://ctam6et4w57bl" path="res://database/cartridges/projectiles/projectile.gd" id="1_q0xey"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_oqi1r"]
+material = ExtResource("1_oqi1r")
+radius = 0.004
+height = 0.017
+radial_segments = 8
+rings = 8
+is_hemisphere = true
+
+[node name="RifleFmj" type="Node3D"]
+script = ExtResource("1_q0xey")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("SphereMesh_oqi1r")
+
+[node name="Case_Attach" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.000269165)

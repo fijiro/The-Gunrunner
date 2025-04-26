@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dupqjrut5li2m"]
 
-[ext_resource type="Script" uid="uid://bm5ea4gx4ixa8" path="res://parts/stocks/ak_stock.gd" id="1_4jwtu"]
-[ext_resource type="ArrayMesh" uid="uid://db6qgp7db77g6" path="res://scenes/Part/Stock/AK_STOCK_Cube_001.res" id="2_lnbo2"]
+[ext_resource type="Script" uid="uid://bm5ea4gx4ixa8" path="res://database/parts/stocks/ak_stock.gd" id="1_4jwtu"]
+[ext_resource type="ArrayMesh" uid="uid://djmsswndxjywu" path="res://scenes/Part/Stock/AK_STOCK_Cube_001.res" id="2_lnbo2"]
 
 [node name="AkStock" type="Node3D"]
 script = ExtResource("1_4jwtu")

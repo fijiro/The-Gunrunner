@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw04oqsmrrltc"]
+
+[ext_resource type="Material" uid="uid://dnj7h3we3uxtr" path="res://scenes/Cartridge/Case/Brass.tres" id="1_128dd"]
+[ext_resource type="Script" uid="uid://cf4kpkkhexl3r" path="res://database/crafting/coils/brass_coil.gd" id="1_rpmvm"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_75oe1"]
+material = ExtResource("1_128dd")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 1.0
+
+[node name="BrassCoil" type="Node3D"]
+script = ExtResource("1_rpmvm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_75oe1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_75oe1")
+
+[node name="Crafting_Attach" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.485748)

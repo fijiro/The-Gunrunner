@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyv8q7b12d1g5"]
+
+[ext_resource type="Script" uid="uid://lddq5fxx2ng8" path="res://database/crafting/coils/lead_coil.gd" id="1_cwj4y"]
+[ext_resource type="Material" uid="uid://brbn8u1qk37lm" path="res://scenes/Cartridge/Projectile/FMJ.tres" id="1_ut0jw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cwj4y"]
+material = ExtResource("1_ut0jw")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 1.0
+
+[node name="LeadCoil" type="Node3D"]
+script = ExtResource("1_cwj4y")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_cwj4y")
+
+[node name="Crafting_Attach" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.485748)

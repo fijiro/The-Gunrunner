@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwn5ukmxln763"]
+
+[ext_resource type="Material" uid="uid://b3jpfkfcu5qmw" path="res://scenes/Cartridge/Primer/Metal.tres" id="1_12r2v"]
+[ext_resource type="Script" uid="uid://ddsgi4rvu0mri" path="res://database/cartridges/primers/primer.gd" id="1_seoc0"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_12r2v"]
+material = ExtResource("1_12r2v")
+top_radius = 0.001
+bottom_radius = 0.001
+height = 0.001
+radial_segments = 8
+rings = 1
+cap_top = false
+
+[node name="Primer" type="Node3D"]
+script = ExtResource("1_seoc0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_12r2v")
+
+[node name="Case_Attach" type="Marker3D" parent="."]

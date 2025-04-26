@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://yldcfn52ps7b"]
+
+[ext_resource type="Script" uid="uid://b653g2gs6jsnt" path="res://database/cartridges/cases/case.gd" id="1_83yhl"]
+[ext_resource type="Material" uid="uid://dnj7h3we3uxtr" path="res://scenes/Cartridge/Case/Brass.tres" id="1_uyf1y"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3hoy1"]
+material = ExtResource("1_uyf1y")
+top_radius = 0.005
+bottom_radius = 0.005
+height = 0.029
+radial_segments = 8
+rings = 1
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_s8yj5"]
+material = ExtResource("1_uyf1y")
+top_radius = 0.005
+bottom_radius = 0.004
+height = 0.001
+radial_segments = 8
+rings = 2
+cap_top = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_83yhl"]
+material = ExtResource("1_uyf1y")
+top_radius = 0.004
+bottom_radius = 0.004
+height = 0.005
+radial_segments = 8
+rings = 1
+cap_bottom = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uyf1y"]
+material = ExtResource("1_uyf1y")
+top_radius = 0.004
+bottom_radius = 0.005
+height = 0.003
+radial_segments = 8
+rings = 1
+cap_top = false
+cap_bottom = false
+
+[node name="RifleCase" type="Node3D"]
+script = ExtResource("1_83yhl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.00035635)
+mesh = SubResource("CylinderMesh_3hoy1")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0146421)
+mesh = SubResource("CylinderMesh_s8yj5")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.0203288)
+mesh = SubResource("CylinderMesh_83yhl")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.01635)
+mesh = SubResource("CylinderMesh_uyf1y")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="Projectile_Attach" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0217061)
+
+[node name="Primer_Attach" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0148605)
