@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://of4xisxwlrda"]
+[gd_scene load_steps=29 format=3 uid="uid://of4xisxwlrda"]
 
 [ext_resource type="PackedScene" uid="uid://dyv8q7b12d1g5" path="res://scenes/Crafting/LeadCoil.tscn" id="3_hg358"]
 [ext_resource type="PackedScene" uid="uid://d1qyoh5usnukp" path="res://scenes/Part/Grip/ak_Grip.tscn" id="4_lhr70"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://bwn5ukmxln763" path="res://scenes/Cartridge/Primer/Primer.tscn" id="14_fa6wh"]
 [ext_resource type="PackedScene" uid="uid://c2dufqu8ev64u" path="res://scenes/World/Crafting/BulletPress.tscn" id="15_4ystg"]
 [ext_resource type="PackedScene" uid="uid://cn07wnn6x5iek" path="res://scenes/World/Crafting/CartridgeAssembler.tscn" id="16_0atlr"]
+[ext_resource type="PackedScene" uid="uid://yldcfn52ps7b" path="res://scenes/Cartridge/Case/RifleCase.tscn" id="18_8lnlx"]
+[ext_resource type="PackedScene" uid="uid://cv1qabwpjnk0" path="res://scenes/Cartridge/Bullet/RifleFMJ.tscn" id="19_apw6v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ap7x"]
 sky_top_color = Color(0.22776, 0.686502, 0.822227, 1)
@@ -80,10 +82,6 @@ skeleton = NodePath("../CollisionShape3D")
 [node name="Player" parent="." instance=ExtResource("4_q8u5g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.78886, 0)
 
-[node name="BrassCoil" parent="Player/PlayerInventory" index="0" instance=ExtResource("13_2eexf")]
-
-[node name="LeadCoil" parent="Player/PlayerInventory" index="1" instance=ExtResource("3_hg358")]
-
 [node name="Npc" parent="." instance=ExtResource("12_bjd11")]
 transform = Transform3D(-0.0225652, 0, 0.999745, 0, 1, 0, -0.999745, 0, -0.0225652, 4.61511, 1.2664, -3.77227)
 
@@ -108,8 +106,14 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.969
 [node name="DrawingPress" parent="." instance=ExtResource("12_yhnhi")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.056, 0.5, -0.697)
 
+[node name="BrassCoil" parent="DrawingPress/PressInventory" index="0" instance=ExtResource("13_2eexf")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.697, 2.28886, 4.056)
+
 [node name="BulletPress" parent="." instance=ExtResource("15_4ystg")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.35725, 0.5, 1.71321)
+
+[node name="LeadCoil" parent="BulletPress/PressInventory" index="0" instance=ExtResource("3_hg358")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.71321, 2.28886, 4.35725)
 
 [node name="CartridgeAssembler" parent="." instance=ExtResource("16_0atlr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.27491, 0.5, 4.23522)
@@ -117,6 +121,12 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.2749
 [node name="Primer" parent="CartridgeAssembler/AssemblerInventory" index="0" instance=ExtResource("14_fa6wh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.83803, -0.25, 7.24474)
 
+[node name="RifleCase" parent="CartridgeAssembler/AssemblerInventory" index="1" instance=ExtResource("18_8lnlx")]
+
+[node name="RifleFmj" parent="CartridgeAssembler/AssemblerInventory" index="2" instance=ExtResource("19_apw6v")]
+
 [editable path="Player"]
 [editable path="Workbench"]
+[editable path="DrawingPress"]
+[editable path="BulletPress"]
 [editable path="CartridgeAssembler"]

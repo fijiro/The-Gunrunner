@@ -10,7 +10,6 @@ bottom_radius = 0.001
 height = 0.001
 radial_segments = 8
 rings = 1
-cap_top = false
 
 [node name="Primer" type="Node3D"]
 script = ExtResource("1_seoc0")
@@ -20,5 +19,4 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 mesh = SubResource("CylinderMesh_12r2v")
 
 [node name="Case_Attach" type="Marker3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0106839, 0)
 gizmo_extents = 0.1

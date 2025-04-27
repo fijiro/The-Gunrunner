@@ -46,3 +46,6 @@ ui_scene = ExtResource("3_8nkjp")
 
 [node name="CameraPosition" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0236118, 0.61928, 1.14704)
+
+[node name="ProductPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515303, 0.460711)
