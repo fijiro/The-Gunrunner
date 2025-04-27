@@ -1,4 +1,4 @@
-class_name Primer extends Cartridge
+class_name Primer extends CartridgePart
 
 func _ready() -> void:
 	super._ready()

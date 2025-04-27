@@ -40,7 +40,7 @@ offset_left = 596.0
 offset_top = 264.0
 offset_right = 696.0
 offset_bottom = 364.0
-whitelist = Array[String](["case", "projectile", "primer", "propellant"])
+whitelist = Array[String](["case", "bullet", "primer", "propellant"])
 
 [node name="CloseButton" type="Button" parent="."]
 offset_left = 839.0

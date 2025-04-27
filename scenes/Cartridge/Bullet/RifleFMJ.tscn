@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cv1qabwpjnk0"]
 
-[ext_resource type="Material" uid="uid://brbn8u1qk37lm" path="res://scenes/Cartridge/Projectile/FMJ.tres" id="1_oqi1r"]
-[ext_resource type="Script" uid="uid://ctam6et4w57bl" path="res://database/cartridges/projectiles/projectile.gd" id="1_q0xey"]
+[ext_resource type="Material" uid="uid://brbn8u1qk37lm" path="res://scenes/Cartridge/Bullet/FMJ.tres" id="1_oqi1r"]
+[ext_resource type="Script" uid="uid://ctam6et4w57bl" path="res://database/cartridges/bullets/bullet.gd" id="1_q0xey"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_oqi1r"]
 material = ExtResource("1_oqi1r")

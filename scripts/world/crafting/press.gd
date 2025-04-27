@@ -1,5 +1,5 @@
 extends InteractableObject
-@export var case_scene: PackedScene
+@export var product_scene: PackedScene
 var finish_slot: DraggableItem
 var coil_slot: DraggableItem
 func _ready() -> void:
@@ -10,13 +10,12 @@ func _ready() -> void:
 	coil_slot.dropped_data.connect(_coil_slot_update)
 	finish_slot = _get_finish_slot()
 	finish_slot.setup(null,inventory)
-	
 
 func press() -> void:
 	if not coil_slot.item or finish_slot.item: return
-	var case := case_scene.instantiate()
-	inventory.add_child(case)
-	finish_slot.setup(case, inventory)
+	var product := product_scene.instantiate()
+	inventory.add_child(product)
+	finish_slot.setup(product, inventory)
 
 func _get_finish_slot() -> DraggableItem:
 	return inventory.ui.get_node("FinishSlot")

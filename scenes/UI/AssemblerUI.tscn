@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://dffyp6jpjwr8y"]
+
+[ext_resource type="Script" uid="uid://c015egtsrom3r" path="res://scripts/ui/menu/assembler_ui.gd" id="1_ndrju"]
+[ext_resource type="PackedScene" uid="uid://6e4j46ntd53x" path="res://scenes/UI/ItemSlot.tscn" id="1_s1tmv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s1tmv"]
+font_size = 41
+
+[node name="AssemblerUi" type="CanvasLayer"]
+script = ExtResource("1_ndrju")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 40.0
+offset_top = 200.0
+offset_right = 1083.0
+offset_bottom = 614.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 340.0
+offset_top = 234.0
+offset_right = 806.0
+offset_bottom = 291.0
+text = "CARTRIDGE ASSEMBLER"
+label_settings = SubResource("LabelSettings_s1tmv")
+
+[node name="ItemSlots" type="GridContainer" parent="."]
+offset_left = 136.0
+offset_top = 372.0
+offset_right = 444.0
+offset_bottom = 472.0
+columns = 4
+
+[node name="ItemSlot" parent="ItemSlots" instance=ExtResource("1_s1tmv")]
+layout_mode = 2
+whitelist = Array[String](["primer"])
+
+[node name="ItemSlot2" parent="ItemSlots" instance=ExtResource("1_s1tmv")]
+layout_mode = 2
+whitelist = Array[String](["case"])
+
+[node name="ItemSlot3" parent="ItemSlots" instance=ExtResource("1_s1tmv")]
+layout_mode = 2
+whitelist = Array[String](["propellant"])
+
+[node name="ItemSlot4" parent="ItemSlots" instance=ExtResource("1_s1tmv")]
+layout_mode = 2
+whitelist = Array[String](["bullet"])
+
+[node name="ProductSlot" parent="." instance=ExtResource("1_s1tmv")]
+offset_left = 734.0
+offset_top = 371.0
+offset_right = 834.0
+offset_bottom = 471.0
+
+[node name="CloseButton" type="Button" parent="."]
+offset_left = 876.0
+offset_top = 516.0
+offset_right = 1057.0
+offset_bottom = 591.0
+text = "CLOSE"
+
+[node name="AssembleButton" type="Button" parent="."]
+offset_left = 582.0
+offset_top = 383.0
+offset_right = 689.0
+offset_bottom = 458.0
+text = "CRAFT"

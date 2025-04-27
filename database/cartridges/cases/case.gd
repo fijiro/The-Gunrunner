@@ -1,4 +1,4 @@
-class_name Case extends Cartridge
+class_name Case extends CartridgePart
 
 func _ready() -> void:
 	super._ready()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b1gas7b3mdm20"]
 
-[ext_resource type="Script" uid="uid://d2eppu6ou180r" path="res://scripts/world/crafting/drawing_press.gd" id="1_3s6xm"]
+[ext_resource type="Script" uid="uid://cpy8m5jb2pxyx" path="res://scripts/world/crafting/press.gd" id="1_6dxbe"]
 [ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="2_jmv4w"]
 [ext_resource type="PackedScene" uid="uid://yldcfn52ps7b" path="res://scenes/Cartridge/Case/RifleCase.tscn" id="2_uuqrp"]
 [ext_resource type="PackedScene" uid="uid://capxwr2vn2ms1" path="res://scenes/UI/PressUI.tscn" id="3_3s6xm"]
@@ -20,8 +20,8 @@ size = Vector3(0.25, 0.5, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_8j27g"]
 
 [node name="DrawingPress" type="Node3D" node_paths=PackedStringArray("inventory")]
-script = ExtResource("1_3s6xm")
-case_scene = ExtResource("2_uuqrp")
+script = ExtResource("1_6dxbe")
+product_scene = ExtResource("2_uuqrp")
 zoom_target = NodePath("CameraPosition")
 inventory = NodePath("PressInventory")
 
