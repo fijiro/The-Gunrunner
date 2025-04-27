@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bw04oqsmrrltc"]
 
 [ext_resource type="Material" uid="uid://dnj7h3we3uxtr" path="res://scenes/Cartridge/Case/Brass.tres" id="1_128dd"]
-[ext_resource type="Script" uid="uid://cf4kpkkhexl3r" path="res://database/crafting/coils/brass_coil.gd" id="1_rpmvm"]
+[ext_resource type="Script" uid="uid://cf4kpkkhexl3r" path="res://database/items/crafting/coils/brass_coil.gd" id="1_rpmvm"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_75oe1"]
 material = ExtResource("1_128dd")

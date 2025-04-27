@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c083j4tpjc6d2"]
 
-[ext_resource type="Script" uid="uid://drmdeg1vmaib6" path="res://database/parts/handguards/ak_handguard.gd" id="1_llab6"]
+[ext_resource type="Script" uid="uid://drmdeg1vmaib6" path="res://database/items/parts/handguards/ak_handguard.gd" id="1_llab6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t3mms"]
 albedo_color = Color(0.34, 0.192667, 0, 1)

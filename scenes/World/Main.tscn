@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://of4xisxwlrda"]
+[gd_scene load_steps=27 format=3 uid="uid://of4xisxwlrda"]
 
 [ext_resource type="PackedScene" uid="uid://dyv8q7b12d1g5" path="res://scenes/Crafting/LeadCoil.tscn" id="3_hg358"]
 [ext_resource type="PackedScene" uid="uid://d1qyoh5usnukp" path="res://scenes/Part/Grip/ak_Grip.tscn" id="4_lhr70"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b2gvbwpg4b8b0" path="res://scenes/World/Npc.tscn" id="12_bjd11"]
 [ext_resource type="PackedScene" uid="uid://b1gas7b3mdm20" path="res://scenes/World/Crafting/DrawingPress.tscn" id="12_yhnhi"]
 [ext_resource type="PackedScene" uid="uid://bw04oqsmrrltc" path="res://scenes/Crafting/BrassCoil.tscn" id="13_2eexf"]
+[ext_resource type="PackedScene" uid="uid://bwn5ukmxln763" path="res://scenes/Cartridge/Primer/Primer.tscn" id="14_fa6wh"]
 [ext_resource type="PackedScene" uid="uid://c2dufqu8ev64u" path="res://scenes/World/Crafting/BulletPress.tscn" id="15_4ystg"]
 [ext_resource type="PackedScene" uid="uid://cn07wnn6x5iek" path="res://scenes/World/Crafting/CartridgeAssembler.tscn" id="16_0atlr"]
 
@@ -113,5 +114,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.3572
 [node name="CartridgeAssembler" parent="." instance=ExtResource("16_0atlr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.27491, 0.5, 4.23522)
 
+[node name="Primer" parent="CartridgeAssembler/AssemblerInventory" index="0" instance=ExtResource("14_fa6wh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.83803, -0.25, 7.24474)
+
 [editable path="Player"]
 [editable path="Workbench"]
+[editable path="CartridgeAssembler"]

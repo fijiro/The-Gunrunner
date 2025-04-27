@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxne2ne1es1t0"]
 
-[ext_resource type="Script" uid="uid://cl6f7leydvfof" path="res://database/parts/magazines/ak_magazine.gd" id="1_6lfn3"]
+[ext_resource type="Script" uid="uid://cl6f7leydvfof" path="res://database/items/parts/magazines/ak_magazine.gd" id="1_6lfn3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hh72p"]
 albedo_color = Color(0.11, 0.11, 0.11, 1)

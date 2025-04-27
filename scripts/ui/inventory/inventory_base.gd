@@ -22,7 +22,7 @@ func _ready() -> void:
 	for child in get_children():
 		add_item(child)
 		
-## Returns was item successfully added to inventory.
+## Return true if item was successfully added to inventory.
 func add_item(item: Node3D) -> bool:
 	if item == null: return false
 	var item_slot: DraggableItem = get_first_empty_slot()
@@ -48,8 +48,14 @@ func get_slots() -> Array[DraggableItem]:
 	for item in ui.get_node("ItemSlots").get_children():
 		if item is DraggableItem: slots.append(item)
 	return slots
-
+## Returns first empty slot under ItemSlots.
 func get_first_empty_slot() -> DraggableItem:
 	for slot: DraggableItem in ui.get_node("ItemSlots").get_children():
 		if slot.item == null: return slot
 	return null
+## Returns existing items under ItemSlots
+func get_items() -> Dictionary[String, Item]:
+	var items: Dictionary[String, Item] = {}
+	for slot in get_slots():
+		if slot.item != null: items.set((slot.item as Item).type, slot.item)
+	return items

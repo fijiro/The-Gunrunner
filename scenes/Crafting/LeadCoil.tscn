@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dyv8q7b12d1g5"]
 
-[ext_resource type="Script" uid="uid://lddq5fxx2ng8" path="res://database/crafting/coils/lead_coil.gd" id="1_cwj4y"]
+[ext_resource type="Script" uid="uid://lddq5fxx2ng8" path="res://database/items/crafting/coils/lead_coil.gd" id="1_cwj4y"]
 [ext_resource type="Material" uid="uid://brbn8u1qk37lm" path="res://scenes/Cartridge/Bullet/FMJ.tres" id="1_ut0jw"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_cwj4y"]

@@ -32,7 +32,7 @@ folder_colors={
 "res://audio/": "red",
 "res://build/": "gray",
 "res://database/": "yellow",
-"res://database/parts/": "yellow",
+"res://database/items/parts/": "yellow",
 "res://icons/": "gray",
 "res://images/": "orange",
 "res://scenes/": "green",

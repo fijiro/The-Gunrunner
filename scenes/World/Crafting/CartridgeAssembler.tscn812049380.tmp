@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cn07wnn6x5iek"]
+[gd_scene load_steps=9 format=3 uid="uid://cn07wnn6x5iek"]
 
 [ext_resource type="Script" uid="uid://cd6yaw1ovi5ql" path="res://scripts/world/crafting/assembler.gd" id="1_8nkjp"]
-[ext_resource type="PackedScene" uid="uid://b3h1foxedo06f" path="res://scenes/Cartridge/Cartridge.tscn" id="2_dmvep"]
 [ext_resource type="PackedScene" uid="uid://dffyp6jpjwr8y" path="res://scenes/UI/AssemblerUI.tscn" id="3_8nkjp"]
 [ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="3_qfce5"]
 
@@ -21,7 +20,7 @@ size = Vector3(0.25, 0.5, 0.5)
 
 [node name="CartridgeAssembler" type="Node3D" node_paths=PackedStringArray("inventory")]
 script = ExtResource("1_8nkjp")
-product_scene = ExtResource("2_dmvep")
+zoom_duration = null
 zoom_target = NodePath("CameraPosition")
 inventory = NodePath("AssemblerInventory")
 
