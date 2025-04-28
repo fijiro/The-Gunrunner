@@ -9,4 +9,5 @@ func _ready() -> void:
 	type = "cartridge_part"
 	price = 1
 	weight = 0
+	max_stack = 10
 	pass
