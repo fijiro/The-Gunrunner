@@ -23,9 +23,9 @@ func _ready() -> void:
 		add_item(child)
 		
 ## Return true if item was successfully added to inventory.
-func add_item(item: Node3D) -> bool:
+func add_item(item: Node3D, slot: DraggableItem = null) -> bool:
 	if item == null: return false
-	var item_slot: DraggableItem = get_first_empty_slot()
+	var item_slot: DraggableItem = slot if slot else get_first_empty_slot()
 	if(item_slot == null): return false
 	
 	if item.get_parent(): item.reparent(self)

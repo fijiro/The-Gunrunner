@@ -17,10 +17,10 @@ func assemble() -> void:
 	var product: CartridgePart = product_scene.instantiate()
 	var case: CartridgePart = items.get("case")
 	if items.size() < 3: return
-	else: print("BUILD POSSIBLE")
-	if !inventory.add_item(product): print("ERROR: COULDNT ADD ITEM")
+	else: print("ASSEMBLY POSSIBLE")
+	if !inventory.add_item(product, product_slot): print("ERROR: COULDNT ADD ITEM")
 	product_slot.visible = true
-	product_slot.item = product
+	#product_slot.item = product
 	for part_name in items.keys():
 		var part: CartridgePart = items[part_name]
 		part.visible = true
@@ -30,7 +30,7 @@ func assemble() -> void:
 		var part_to_case: Marker3D = part.find_child("Case_Attach")
 		if case_to_part and part_to_case:
 			part.global_transform = case_to_part.global_transform * part_to_case.transform.affine_inverse()
-			part.rotation += case_to_part.rotation
+			part.rotation = case_to_part.rotation
 		else: print("ERROR: NO ATTACH POINT FOUND")
 		# Recalculate stats
 		product.price += part.price
@@ -40,13 +40,13 @@ func assemble() -> void:
 		
 	product.position = $ProductPosition.position
 	product.rotation = $ProductPosition.rotation
-	product.scale = Vector3(10,10,10)
+	#product.scale = Vector3(10,10,10)
 	product.visible = true
+	#Remove items after building
 	for slot: DraggableItem in inventory.get_slots():
 		if slot != product_slot:
-			slot.item = null
-			#slot.visible = false
-		slot.regenerate_icon(true)
+			slot.setup(null, inventory) 
+	product_slot.regenerate_icon(true)
 	
 func _get_product_slot() -> DraggableItem:
 	return inventory.ui.get_node("ProductSlot")

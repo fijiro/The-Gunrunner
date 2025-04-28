@@ -7,4 +7,4 @@ func _ready() -> void:
 	type = "case"
 	accuracy = 1
 	price = 1
-	weight = 0.010
+	weight = 0.005

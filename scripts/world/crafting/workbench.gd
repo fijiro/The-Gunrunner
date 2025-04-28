@@ -7,7 +7,7 @@ func _ready():
 
 #TODO:
 func _build_weapon() -> void:
-	var parts: Dictionary = (inventory as WorkbenchInventory).get_parts()
+	var parts: Dictionary = inventory.get_items()
 	print(parts)
 	var weapon: GunPart = weapon_scene.instantiate()
 	var receiver: GunPart = parts["receiver"] if parts.has("receiver") else null

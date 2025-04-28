@@ -32,7 +32,8 @@ background_mode = 2
 sky = SubResource("Sky_r3fl7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rarhs"]
-albedo_color = Color(2.21401e-06, 0.434721, 0.535635, 1)
+metallic = 0.49
+roughness = 0.25
 
 [sub_resource type="BoxMesh" id="BoxMesh_vcsgt"]
 material = SubResource("StandardMaterial3D_rarhs")
@@ -62,7 +63,6 @@ script = ExtResource("5_vcsgt")
 
 [node name="Background" type="MeshInstance3D" parent="IconRenderer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
-visible = false
 mesh = SubResource("BoxMesh_vcsgt")
 skeleton = NodePath("../..")
 
@@ -124,6 +124,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.838
 [node name="RifleCase" parent="CartridgeAssembler/AssemblerInventory" index="1" instance=ExtResource("18_8lnlx")]
 
 [node name="RifleFmj" parent="CartridgeAssembler/AssemblerInventory" index="2" instance=ExtResource("19_apw6v")]
+price = 100.0
 
 [editable path="Player"]
 [editable path="Workbench"]

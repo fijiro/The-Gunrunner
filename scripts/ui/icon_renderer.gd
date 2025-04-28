@@ -15,7 +15,7 @@ func _ready() -> void:
 	camera.global_position = global_position
 
 func render_icon(item: Node3D, force: bool) -> ImageTexture:
-	if item == null or item.is_queued_for_deletion():
+	if item == null or item.is_queued_for_deletion() or !item.get_child_count():
 		return null
 	if _cache.has(item.name) and not force:
 		return _cache[item.name]
@@ -43,7 +43,7 @@ func _process_queue():
 	call_deferred("_process_queue")
 
 func _render_icon(item: Node3D) -> ImageTexture:
-	get_child(0).visible = true
+	get_child(0).visible = true # Show background
 	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 	var clone: Node3D = item.duplicate()
 	clone.visible = true
@@ -57,7 +57,7 @@ func _render_icon(item: Node3D) -> ImageTexture:
 	clone.scale *= scale_multi
 	await RenderingServer.frame_post_draw
 	var image = viewport.get_texture().get_image()
-
+	camera.remove_child(clone)
 	clone.queue_free()
 	get_child(0).visible = false # Hide background
 	return ImageTexture.create_from_image(image)

@@ -13,15 +13,6 @@ rings = 1
 cap_top = false
 cap_bottom = false
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_s8yj5"]
-material = ExtResource("1_uyf1y")
-top_radius = 0.005
-bottom_radius = 0.004
-height = 0.001
-radial_segments = 8
-rings = 1
-cap_top = false
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_83yhl"]
 material = ExtResource("1_uyf1y")
 top_radius = 0.004
@@ -41,6 +32,15 @@ rings = 1
 cap_top = false
 cap_bottom = false
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_s8yj5"]
+material = ExtResource("1_uyf1y")
+top_radius = 0.005
+bottom_radius = 0.004
+height = 0.001
+radial_segments = 8
+rings = 1
+cap_top = false
+
 [node name="RifleCase" type="Node3D"]
 script = ExtResource("1_83yhl")
 
@@ -48,11 +48,7 @@ script = ExtResource("1_83yhl")
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.00451676, 0, -0.000125185)
 mesh = SubResource("CylinderMesh_3hoy1")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.0195152, 0, -0.000125187)
-mesh = SubResource("CylinderMesh_s8yj5")
-
-[node name="q" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0154557, 0, -0.000125183)
 mesh = SubResource("CylinderMesh_83yhl")
 
@@ -60,6 +56,10 @@ mesh = SubResource("CylinderMesh_83yhl")
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0114769, 0, -0.000125183)
 mesh = SubResource("CylinderMesh_uyf1y")
 skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.0195152, 0, -0.000125187)
+mesh = SubResource("CylinderMesh_s8yj5")
 
 [node name="Bullet_Attach" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016833, 0, -0.000125182)

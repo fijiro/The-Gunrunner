@@ -4,6 +4,3 @@
 
 [node name="Cartridge" type="Node3D"]
 script = ExtResource("1_7371n")
-part = "Cartridge"
-price = 0
-weight = 0.0
