@@ -11,7 +11,7 @@ func _build_weapon() -> void:
 	print(parts)
 	var weapon: GunPart = weapon_scene.instantiate()
 	var receiver: GunPart = parts["receiver"] if parts.has("receiver") else null
-	var build_slot = (inventory.get_ui_slot(6) as DraggableItem)
+	var build_slot = (inventory.get_ui_slot(6) as ItemSlot)
 	if null in [receiver]: return
 	else: print("BUILD POSSIBLE")
 	if !inventory.add_item(weapon): print("ERROR: COULDNT ADD ITEM")
@@ -38,8 +38,8 @@ func _build_weapon() -> void:
 	weapon.position = $ReceiverPosition.position
 	weapon.rotation = $ReceiverPosition.rotation
 	weapon.visible = true
-	for icon: DraggableItem in inventory.get_slots():
-		if icon != (inventory.get_ui_slot(6) as DraggableItem):
+	for icon: ItemSlot in inventory.get_slots():
+		if icon != (inventory.get_ui_slot(6) as ItemSlot):
 			icon.item = null
 			#icon.visible = false
 		icon.regenerate_icon(true)

@@ -1,7 +1,7 @@
 extends InteractableObject
 @export var product_scene: PackedScene
-var finish_slot: DraggableItem
-var coil_slot: DraggableItem
+var finish_slot: ItemSlot
+var coil_slot: ItemSlot
 func _ready() -> void:
 	super._ready()
 	inventory.ui.connect("start_press", Callable(self, "press"))
@@ -17,7 +17,7 @@ func press() -> void:
 	inventory.add_child(product)
 	finish_slot.setup(product, inventory)
 
-func _get_finish_slot() -> DraggableItem:
+func _get_finish_slot() -> ItemSlot:
 	return inventory.ui.get_node("FinishSlot")
 	
 func _coil_slot_update():

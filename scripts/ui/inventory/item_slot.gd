@@ -1,4 +1,4 @@
-class_name DraggableItem extends TextureRect
+class_name ItemSlot extends TextureRect
 
 signal dropped_data
 var item: Node3D
@@ -46,11 +46,11 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	inventory.add_child(data["item"])
 	item = data["item"]
 	item.visible = false
-	(data["icon"] as DraggableItem).item = null
+	(data["icon"] as ItemSlot).item = null
 	# Regenerate slot icon
 	regenerate_icon()
 	# Regenerate old icon
-	(data["icon"] as DraggableItem).regenerate_icon()
+	(data["icon"] as ItemSlot).regenerate_icon()
 	emit_signal("dropped_data")
 	data["icon"].emit_signal("dropped_data")
 	

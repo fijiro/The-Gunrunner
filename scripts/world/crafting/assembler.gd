@@ -1,6 +1,6 @@
 extends InteractableObject
 @export var product_scene: PackedScene
-var product_slot: DraggableItem
+var product_slot: ItemSlot
 func _ready() -> void:
 	super._ready()
 	inventory.ui.connect("start_assembly", Callable(self, "assemble"))
@@ -43,12 +43,12 @@ func assemble() -> void:
 	#product.scale = Vector3(10,10,10)
 	product.visible = true
 	#Remove items after building
-	for slot: DraggableItem in inventory.get_slots():
+	for slot: ItemSlot in inventory.get_slots():
 		if slot != product_slot:
 			slot.setup(null, inventory) 
 	product_slot.regenerate_icon(true)
 	
-func _get_product_slot() -> DraggableItem:
+func _get_product_slot() -> ItemSlot:
 	return inventory.ui.get_node("ProductSlot")
 	
 func _part_slot_update():

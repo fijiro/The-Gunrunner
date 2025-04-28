@@ -1,5 +1,5 @@
 extends InteractableObject
-var sell_slot: DraggableItem
+var sell_slot: ItemSlot
 func _ready() -> void:
 	super._ready()
 	inventory.ui.connect("sold_item", Callable(self, "_sell_item"))

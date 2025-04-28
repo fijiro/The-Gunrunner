@@ -15,7 +15,7 @@ func _ready() -> void:
 	ui = ui_scene.instantiate()
 	get_node("/root/Main/UI").add_child(ui)
 	#Connect all nodes to item slots
-	for item_slot: DraggableItem in ui.get_node("ItemSlots").get_children():
+	for item_slot: ItemSlot in ui.get_node("ItemSlots").get_children():
 		item_slot.setup(null, self)
 		#item_slot.dropped_data.connect(add_item)
 	#Add existing items in inventory
@@ -23,9 +23,9 @@ func _ready() -> void:
 		add_item(child)
 		
 ## Return true if item was successfully added to inventory.
-func add_item(item: Node3D, slot: DraggableItem = null) -> bool:
+func add_item(item: Node3D, slot: ItemSlot = null) -> bool:
 	if item == null: return false
-	var item_slot: DraggableItem = slot if slot else get_first_empty_slot()
+	var item_slot: ItemSlot = slot if slot else get_first_empty_slot()
 	if(item_slot == null): return false
 	
 	if item.get_parent(): item.reparent(self)
@@ -34,8 +34,8 @@ func add_item(item: Node3D, slot: DraggableItem = null) -> bool:
 	item.visible = false
 	return true
 
-## Returns null or DraggableItem slot for index.
-func get_ui_slot(index: Variant) -> DraggableItem:
+## Returns null or ItemSlot slot for index.
+func get_ui_slot(index: Variant) -> ItemSlot:
 	if index is int:
 		return ui.get_node("ItemSlots").get_child(index) if index > -1 else null
 	elif index is String:
@@ -43,14 +43,14 @@ func get_ui_slot(index: Variant) -> DraggableItem:
 	else: return null
 	
 ## Returns all inventory slots.
-func get_slots() -> Array[DraggableItem]:
-	var slots: Array[DraggableItem] = []
+func get_slots() -> Array[ItemSlot]:
+	var slots: Array[ItemSlot] = []
 	for item in ui.get_node("ItemSlots").get_children():
-		if item is DraggableItem: slots.append(item)
+		if item is ItemSlot: slots.append(item)
 	return slots
 ## Returns first empty slot under ItemSlots.
-func get_first_empty_slot() -> DraggableItem:
-	for slot: DraggableItem in ui.get_node("ItemSlots").get_children():
+func get_first_empty_slot() -> ItemSlot:
+	for slot: ItemSlot in ui.get_node("ItemSlots").get_children():
 		if slot.item == null: return slot
 	return null
 ## Returns existing items under ItemSlots
