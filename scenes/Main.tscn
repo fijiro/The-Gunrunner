@@ -1,0 +1,133 @@
+[gd_scene load_steps=29 format=3 uid="uid://of4xisxwlrda"]
+
+[ext_resource type="Script" uid="uid://be1nh11w0wt4d" path="res://scripts/ui/icon_renderer.gd" id="1_nfivy"]
+[ext_resource type="PackedScene" uid="uid://dcnalrmgg8gld" path="res://scenes/World/Player.tscn" id="2_1nqs0"]
+[ext_resource type="PackedScene" uid="uid://b2gvbwpg4b8b0" path="res://scenes/World/Npc.tscn" id="3_1iba3"]
+[ext_resource type="PackedScene" uid="uid://nd2xy7bggbpd" path="res://scenes/World/Crafting/Workbench.tscn" id="4_yxlcp"]
+[ext_resource type="PackedScene" uid="uid://d1qyoh5usnukp" path="res://scenes/Part/Grip/ak_Grip.tscn" id="5_ebg2g"]
+[ext_resource type="PackedScene" uid="uid://flvrdlal5a7y" path="res://scenes/Part/Receiver/ak_Receiver.tscn" id="6_2ofn6"]
+[ext_resource type="PackedScene" uid="uid://dxo5ngr6nq0ue" path="res://scenes/Part/Barrel/ak_Barrel.tscn" id="7_xa025"]
+[ext_resource type="PackedScene" uid="uid://bxne2ne1es1t0" path="res://scenes/Part/Magazine/ak_Magazine.tscn" id="8_36rkl"]
+[ext_resource type="PackedScene" uid="uid://dupqjrut5li2m" path="res://scenes/Part/Stock/ak_Stock.tscn" id="9_fs0b5"]
+[ext_resource type="PackedScene" uid="uid://c083j4tpjc6d2" path="res://scenes/Part/Handguard/ak_Handguard.tscn" id="10_ma7h6"]
+[ext_resource type="PackedScene" uid="uid://5q41qki46vl0" path="res://scenes/World/Scrate.tscn" id="11_e2s0e"]
+[ext_resource type="PackedScene" uid="uid://b1gas7b3mdm20" path="res://scenes/World/Crafting/DrawingPress.tscn" id="12_gsxep"]
+[ext_resource type="PackedScene" uid="uid://bw04oqsmrrltc" path="res://scenes/Crafting/BrassCoil.tscn" id="13_v0vrg"]
+[ext_resource type="PackedScene" uid="uid://c2dufqu8ev64u" path="res://scenes/World/Crafting/BulletPress.tscn" id="14_dg70y"]
+[ext_resource type="PackedScene" uid="uid://dyv8q7b12d1g5" path="res://scenes/Crafting/LeadCoil.tscn" id="15_pnhog"]
+[ext_resource type="PackedScene" uid="uid://cn07wnn6x5iek" path="res://scenes/World/Crafting/CartridgeAssembler.tscn" id="16_2c4at"]
+[ext_resource type="PackedScene" uid="uid://bwn5ukmxln763" path="res://scenes/Cartridge/Primer/Primer.tscn" id="17_g6wdg"]
+[ext_resource type="PackedScene" uid="uid://yldcfn52ps7b" path="res://scenes/Cartridge/Case/RifleCase.tscn" id="18_hq6as"]
+[ext_resource type="PackedScene" uid="uid://cv1qabwpjnk0" path="res://scenes/Cartridge/Bullet/RifleFMJ.tscn" id="19_kxyth"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ap7x"]
+sky_top_color = Color(0.22776, 0.686502, 0.822227, 1)
+ground_bottom_color = Color(0.443982, 0.386758, 0.320462, 1)
+
+[sub_resource type="Sky" id="Sky_r3fl7"]
+sky_material = SubResource("ProceduralSkyMaterial_5ap7x")
+
+[sub_resource type="Environment" id="Environment_jka67"]
+background_mode = 2
+sky = SubResource("Sky_r3fl7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rarhs"]
+metallic = 0.49
+roughness = 0.25
+
+[sub_resource type="BoxMesh" id="BoxMesh_vcsgt"]
+material = SubResource("StandardMaterial3D_rarhs")
+size = Vector3(2, 2, 0.01)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a202f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a202f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sugp2"]
+albedo_color = Color(0.239216, 0.580392, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a202f"]
+material = SubResource("StandardMaterial3D_sugp2")
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jka67")
+
+[node name="World Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.00829686, -0.869943, 0.493082, 0.014636, 0.493152, 0.86982, -0.999858, -2.32798e-08, 0.0168241, 7.90739, 8.32861, 0)
+
+[node name="IconRenderer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-06, 5.76593, -7.15256e-06)
+script = ExtResource("1_nfivy")
+
+[node name="Background" type="MeshInstance3D" parent="IconRenderer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("BoxMesh_vcsgt")
+skeleton = NodePath("../..")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -25, 0)
+physics_material_override = SubResource("PhysicsMaterial_a202f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_a202f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_a202f")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Player" parent="." instance=ExtResource("2_1nqs0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.78886, 0)
+
+[node name="Npc" parent="." instance=ExtResource("3_1iba3")]
+transform = Transform3D(-0.0225652, 0, 0.999745, 0, 1, 0, -0.999745, 0, -0.0225652, 4.61511, 1.2664, -3.77227)
+
+[node name="Workbench" parent="." instance=ExtResource("4_yxlcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.783875, 0.504993, -6.09394)
+
+[node name="AkGrip" parent="Workbench/WorkbenchInventory" index="0" instance=ExtResource("5_ebg2g")]
+
+[node name="AkReceiver" parent="Workbench/WorkbenchInventory" index="1" instance=ExtResource("6_2ofn6")]
+
+[node name="AkBarrel" parent="Workbench/WorkbenchInventory" index="2" instance=ExtResource("7_xa025")]
+
+[node name="AkMagazine" parent="Workbench/WorkbenchInventory" index="3" instance=ExtResource("8_36rkl")]
+
+[node name="AkStock" parent="Workbench/WorkbenchInventory" index="4" instance=ExtResource("9_fs0b5")]
+
+[node name="AkHandguard" parent="Workbench/WorkbenchInventory" index="5" instance=ExtResource("10_ma7h6")]
+
+[node name="ShipmentCrate" parent="." instance=ExtResource("11_e2s0e")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.96983, 0.25, -3.60281)
+
+[node name="DrawingPress" parent="." instance=ExtResource("12_gsxep")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.056, 0.5, -0.697)
+
+[node name="BrassCoil" parent="DrawingPress/PressInventory" index="0" instance=ExtResource("13_v0vrg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.697, 2.28886, 4.056)
+
+[node name="BulletPress" parent="." instance=ExtResource("14_dg70y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.35725, 0.5, 1.71321)
+
+[node name="LeadCoil" parent="BulletPress/PressInventory" index="0" instance=ExtResource("15_pnhog")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.71321, 2.28886, 4.35725)
+
+[node name="CartridgeAssembler" parent="." instance=ExtResource("16_2c4at")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.27491, 0.5, 4.23522)
+
+[node name="Primer" parent="CartridgeAssembler/AssemblerInventory" index="0" instance=ExtResource("17_g6wdg")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.83803, -0.25, 7.24474)
+
+[node name="RifleCase" parent="CartridgeAssembler/AssemblerInventory" index="1" instance=ExtResource("18_hq6as")]
+
+[node name="RifleFmj" parent="CartridgeAssembler/AssemblerInventory" index="2" instance=ExtResource("19_kxyth")]
+price = 100.0
+
+[editable path="Player"]
+[editable path="Workbench"]
+[editable path="DrawingPress"]
+[editable path="BulletPress"]
+[editable path="CartridgeAssembler"]
