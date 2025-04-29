@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://6e4j46ntd53x"]
+[gd_scene load_steps=5 format=3 uid="uid://6e4j46ntd53x"]
 
 [ext_resource type="Script" uid="uid://k0e77ufxcdxd" path="res://scripts/ui/inventory/item_slot.gd" id="1_428eu"]
 
@@ -13,6 +13,11 @@ border_width_right = 8
 border_width_bottom = 8
 border_color = Color(1, 1, 0, 1)
 border_blend = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_fb20s"]
+font_size = 28
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="ItemSlot" type="TextureRect"]
 custom_minimum_size = Vector2(100, 100)
@@ -29,12 +34,16 @@ offset_bottom = 100.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fb20s")
 
-[node name="Label" type="Label" parent="."]
+[node name="StackSizeLabel" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.41
-anchor_right = 1.0
-anchor_bottom = 0.64
+offset_left = 1.0
+offset_top = 58.0
+offset_right = 47.0
+offset_bottom = 97.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_fb20s")
 horizontal_alignment = 1

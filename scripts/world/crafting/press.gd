@@ -14,8 +14,7 @@ func _ready() -> void:
 func press() -> void:
 	if not coil_slot.item or finish_slot.item: return
 	var product := product_scene.instantiate()
-	inventory.add_child(product)
-	finish_slot.setup(product, inventory)
+	inventory.add_item(product, finish_slot)
 
 func _get_finish_slot() -> ItemSlot:
 	return inventory.ui.get_node("FinishSlot")
