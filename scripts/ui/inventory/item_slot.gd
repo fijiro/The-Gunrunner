@@ -42,9 +42,10 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	preview.custom_minimum_size = Vector2(50,50)
 	set_drag_preview(preview)
 	# drop the data. data has icon,item and inventory
-	var slot_data: Dictionary
-	slot_data.set("slot", self)
-	return slot_data
+	var data: Dictionary
+	data.set("slot", self)
+	data.set("shift", Input.is_key_pressed(KEY_SHIFT))
+	return data
 	
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	var d_slot: ItemSlot = data.get("slot")
@@ -62,14 +63,16 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	#Move data to the new item slot
 	var d_slot = data.get("slot") as ItemSlot
 	if !d_slot: return
-	#TODO later: if shift is held stack one, not all
 	if !item:
 		var dupe: Item = d_slot.item.duplicate()
 		inventory.add_item(dupe, self)
 		# Stack amount is set after
 		stack_size = 0
-	var extra = set_stacks(d_slot.stack_size + stack_size)
-	d_slot.set_stacks(extra)
+	# Holding shift moves only one item
+	var amount = d_slot.stack_size if !data.get("shift") else 1
+	var extra = set_stacks(stack_size + amount)
+	d_slot.set_stacks(d_slot.stack_size - amount + extra)
+
 	
 	emit_signal("dropped_data")
 	d_slot.emit_signal("dropped_data")
