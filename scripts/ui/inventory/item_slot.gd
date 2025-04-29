@@ -17,12 +17,10 @@ func setup(item_node: Item, inventory_node: InventoryBase) -> void:
 	stack_size = 1 if item else 0
 	inventory = inventory_node
 	_regenerate_icon(true)
-	print("set up: %s, %s, %s." % [item, inventory, stack_size])
 
 ## @param amount of available nodes
 ## Returns how many didn't fit in slot.
 func set_stacks(amount: int) -> int:
-	print("SET STACKS: %s: %s=>%s" % [item, stack_size, amount])
 	stack_size = min(amount, item.max_stack)
 	# Clear an empty slot
 	if !stack_size and item:
@@ -32,8 +30,6 @@ func set_stacks(amount: int) -> int:
 		_regenerate_icon()
 	$StackSizeLabel.visible = stack_size > 1
 	$StackSizeLabel.text = "%s" % stack_size
-	print("NEW STACKS: %s: %s" % [item, stack_size])
-	print("RETURNING %s" % [amount - stack_size])
 	return amount - stack_size
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
