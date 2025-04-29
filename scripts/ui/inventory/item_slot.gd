@@ -67,8 +67,6 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	var d_slot = data.get("slot") as ItemSlot
 	if !d_slot: return
 	#TODO later: if shift is held stack one, not all
-	#print("Adding to inv..: ", inventory.add_item(d_slot.item, self))
-
 	if !item:
 		var dupe: Item = d_slot.item.duplicate()
 		inventory.add_item(dupe, self)
@@ -83,8 +81,9 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 func _regenerate_icon(force: bool = false) -> void:
 	texture = await icon_renderer.render_icon(item, force)
 
+#BUG
 func take_one() -> bool:
 	return set_stacks(stack_size - 1)
-	
+#BUG
 func add_one() -> bool:
 	return set_stacks(stack_size + 1)
