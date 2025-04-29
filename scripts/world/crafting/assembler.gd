@@ -20,11 +20,12 @@ func assemble() -> void:
 	else: print("ASSEMBLY POSSIBLE")
 	if !inventory.add_item(product, product_slot): print("ERROR: COULDNT ADD ITEM")
 	product_slot.visible = true
-	#product_slot.item = product
+	var part: CartridgePart
 	for part_name in items.keys():
-		var part: CartridgePart = items[part_name]
+		part = items.get(part_name).duplicate()
 		part.visible = true
-		part.reparent(product)
+		if part.get_parent(): part.reparent(product)
+		else: product.add_child(part)
 		if part_name == "case": continue
 		var case_to_part: Marker3D = case.find_child("%s_Attach" % part_name.capitalize())
 		var part_to_case: Marker3D = part.find_child("Case_Attach")
@@ -36,17 +37,14 @@ func assemble() -> void:
 		product.price += part.price
 		product.weight += part.weight
 		product.accuracy *= part.accuracy
-		#product.ergo *= part.ergo
 		
 	product.position = $ProductPosition.position
 	product.rotation = $ProductPosition.rotation
-	#product.scale = Vector3(10,10,10)
 	product.visible = true
-	#Remove items after building
+	#Remove one after assembly
 	for slot: ItemSlot in inventory.get_slots():
-		if slot != product_slot:
-			slot.setup(null, inventory) 
-	product_slot.regenerate_icon(true)
+		if slot != product_slot: slot.take_one()
+	product_slot._regenerate_icon(true)
 	
 func _get_product_slot() -> ItemSlot:
 	return inventory.ui.get_node("ProductSlot")

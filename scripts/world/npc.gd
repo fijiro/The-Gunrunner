@@ -15,7 +15,7 @@ func _sell_item() -> void:
 	var player_inventory = (get_node("/root/Main/Player/PlayerInventory") as PlayerInventory)
 	player_inventory.adjust_money(label.text.to_int())
 	sell_slot.item.queue_free()
-	sell_slot.regenerate_icon(true)
+	sell_slot._regenerate_icon(true)
 	label.text = "0 €"
 func _update_price() -> void:
 	# get label Price

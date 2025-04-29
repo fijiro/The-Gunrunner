@@ -81,8 +81,9 @@ func _regenerate_icon(force: bool = false) -> void:
 	texture = await icon_renderer.render_icon(item, force)
 
 #BUG
-func take_one() -> bool:
-	return set_stacks(stack_size - 1)
+func take_one() -> void:
+	if !item or !stack_size: return 
+	set_stacks(stack_size - 1)
 #BUG
 func add_one() -> bool:
 	return set_stacks(stack_size + 1)

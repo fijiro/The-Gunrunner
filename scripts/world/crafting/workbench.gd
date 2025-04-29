@@ -42,7 +42,7 @@ func _build_weapon() -> void:
 		if icon != (inventory.get_ui_slot(6) as ItemSlot):
 			icon.item = null
 			#icon.visible = false
-		icon.regenerate_icon(true)
+		icon._regenerate_icon(true)
 	#Physical item positions, todo later:
 	#grip.global_position = (get_node("GripPosition") as Marker3D).global_position
 	#grip.rotation = (get_node("GripPosition") as Marker3D).rotation
