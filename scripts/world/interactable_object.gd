@@ -5,7 +5,8 @@ class_name InteractableObject extends Node3D
 var player_in_range = false
 var player_camera: Camera3D
 var original_camera_transform: Transform3D
-var zoomed_in = false
+var zoomed_in := false
+var exiting_menu := false
 @export var inventory: InventoryBase
 
 func _ready():
@@ -45,10 +46,9 @@ func _zoom_in_and_show_menu():
 	inventory.ui.visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-#BUG: Spamming input during tween breaks camera
 func exit_menu():
-	if not player_camera:
-		return
+	if exiting_menu or not player_camera: return
+	exiting_menu = true
 	var tween = create_tween()
 	tween.tween_property(player_camera, "global_transform", original_camera_transform, zoom_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
@@ -59,3 +59,4 @@ func exit_menu():
 		if player.has_method("set_input_enabled"):
 			player.set_input_enabled(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	exiting_menu = false
