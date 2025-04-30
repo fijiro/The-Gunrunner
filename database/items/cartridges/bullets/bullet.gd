@@ -1,4 +1,4 @@
-class_name Bullet extends CartridgePart
+class_name Bullet extends Cartridge
 
 func _ready() -> void:
 	super._ready()

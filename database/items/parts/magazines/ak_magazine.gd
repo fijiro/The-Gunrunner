@@ -1,4 +1,5 @@
 extends Magazine
+
 func _init() -> void:
 	super._init()
 	part = "AK Magazine"

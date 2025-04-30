@@ -117,6 +117,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.713
 
 [node name="CartridgeAssembler" parent="." instance=ExtResource("16_2c4at")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.27491, 0.5, 4.23522)
+zoom_duration = null
 
 [node name="Primer" parent="CartridgeAssembler/AssemblerInventory" index="0" instance=ExtResource("17_g6wdg")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.83803, -0.25, 7.24474)

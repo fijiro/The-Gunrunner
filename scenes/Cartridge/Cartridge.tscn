@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b3h1foxedo06f"]
 
-[ext_resource type="Script" uid="uid://cai4qc5qxqegm" path="res://database/items/cartridges/cartridge_part.gd" id="1_7371n"]
+[ext_resource type="Script" uid="uid://cai4qc5qxqegm" path="res://database/items/cartridges/cartridge.gd" id="1_7371n"]
 
 [node name="Cartridge" type="Node3D"]
 script = ExtResource("1_7371n")

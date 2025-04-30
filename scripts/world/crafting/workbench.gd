@@ -11,6 +11,8 @@ func _build_weapon() -> void:
 	print(parts)
 	var weapon: GunPart = weapon_scene.instantiate()
 	var receiver: GunPart = parts["receiver"] if parts.has("receiver") else null
+	receiver.position = Vector3.ZERO
+	receiver.rotation = Vector3.ZERO
 	var build_slot = (inventory.get_ui_slot(6) as ItemSlot)
 	if null in [receiver]: return
 	else: print("BUILD POSSIBLE")

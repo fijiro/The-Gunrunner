@@ -14,13 +14,13 @@ func assemble() -> void:
 		return
 	var items: Dictionary = inventory.get_items()
 	print(items)
-	var product: CartridgePart = product_scene.instantiate()
-	var case: CartridgePart = items.get("case")
+	var product: Cartridge = product_scene.instantiate()
+	var case: Cartridge = items.get("case")
 	if items.size() < 3: return
 	else: print("ASSEMBLY POSSIBLE")
 	if !inventory.add_item(product, product_slot): print("ERROR: COULDNT ADD ITEM")
 	product_slot.visible = true
-	var part: CartridgePart
+	var part: Cartridge
 	for part_name in items.keys():
 		part = items.get(part_name).duplicate()
 		part.visible = true

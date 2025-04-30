@@ -1,4 +1,4 @@
-class_name CartridgePart extends Item
+class_name Cartridge extends Item
 
 @export var accuracy := 1
 
