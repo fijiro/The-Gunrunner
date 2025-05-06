@@ -17,9 +17,10 @@ func _sell_item() -> void:
 	sell_slot.item.queue_free()
 	sell_slot._regenerate_icon(true)
 	label.text = "0 €"
+
 func _update_price() -> void:
 	# get label Price
 	var label: Label = inventory.ui.get_node("Price")
 	# get receiver price
-	var price = (sell_slot.item as GunPart).price if sell_slot.item != null else 0.0
+	var price = (sell_slot.item as Item).price if sell_slot.item != null else 0.0
 	label.text = "%s€" % price

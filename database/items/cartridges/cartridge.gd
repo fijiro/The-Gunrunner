@@ -4,9 +4,9 @@ class_name Cartridge extends Item
 
 func _ready() -> void:
 	super._ready()
-	part = "Cartridge Part"
+	part = "Cartridge"
 	desc = "Standard rifle cartridge."
-	type = "cartridge_part"
+	type = "cartridge"
 	price = 1
 	weight = 0
 	max_stack = 10
