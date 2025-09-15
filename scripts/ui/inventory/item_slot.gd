@@ -62,18 +62,21 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	#Move data to the new item slot
 	var d_slot = data.get("slot") as ItemSlot
-	if !d_slot: return
-	if !item:
-		#var dupe: Item = d_slot.item.duplicate()
+	if !d_slot: push_error("ERR: NO SLOT"); return
+	if !item and d_slot.item.max_stack == 1:
+		print("Max stack = 1")
 		inventory.add_item(d_slot.item, self)
 		d_slot.item = null
-		# Stack amount is set after
-		stack_size = 0
+	elif !item:
+		var dupe: Item = d_slot.item.duplicate()
+		inventory.add_item(dupe, self)
+	# Stack amount is set after
+	# stack_size = 0
 	# Holding shift moves only one item
 	var amount = d_slot.stack_size if !data.get("shift") else 1
-	var extra = set_stacks(stack_size + amount)
+	var extra = set_stacks(amount)
 	d_slot.set_stacks(d_slot.stack_size - amount + extra)
-	
+	print("dropped ", amount)
 	emit_signal("dropped_data")
 	d_slot.emit_signal("dropped_data")
 	

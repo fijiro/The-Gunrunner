@@ -29,7 +29,6 @@ func add_item(item: Node3D, slot: ItemSlot = null) -> bool:
 	if(item_slot == null): return false
 	
 	if item.get_parent(): 
-		print("WARN: Reparenting")
 		item.reparent(self)
 	else: add_child(item)
 	item_slot.setup(item, self)

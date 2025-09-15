@@ -20,7 +20,7 @@ func fire():
 	# TODO: spawn bullet at the end of barrel
 	bullet.global_transform = global_transform
 	get_tree().current_scene.add_child(bullet)
-	var case: Case = case_scene.instantiate()
+	var case: RigidBody3D = case_scene.instantiate()
 	case.global_transform = global_transform
 	get_tree().current_scene.add_child(case)
 	# Apply impulse in the forward (local -Z) direction
@@ -30,10 +30,11 @@ func fire():
 	var impulse = direction * 10 # Adjust the magnitude as needed
 	bullet.apply_impulse(impulse)
 	# TODO: Spawn case at ejector
-	#case.apply_impulse(impulse)
+	direction = case.transform.basis.z.normalized()
+	case.apply_impulse(direction)
 	# TODO: Firerate
 	print(rpm/60, " Fire rate ", rpm)
-	await get_tree().create_timer(100/rpm).timeout
+	await get_tree().create_timer(1/(rpm/60)).timeout
 	can_fire = true
 	await get_tree().create_timer(1).timeout
 	case.queue_free()
