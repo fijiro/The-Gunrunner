@@ -31,6 +31,7 @@ func _input(event):
 
 func _zoom_in_and_show_menu():
 	# Disable player input
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if player_camera:
 		var player = player_camera.get_parent().get_parent()
 		if player.has_method("set_input_enabled"):
@@ -44,7 +45,6 @@ func _zoom_in_and_show_menu():
 	await tween.finished
 	# Set up UI
 	inventory.ui.visible = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 func exit_menu():
 	if exiting_menu or not player_camera: return

@@ -32,8 +32,7 @@ func fire():
 	# TODO: Spawn case at ejector
 	direction = case.transform.basis.z.normalized()
 	case.apply_impulse(direction)
-	# TODO: Firerate
-	print(rpm/60, " Fire rate ", rpm)
+	# Firerate from rpm
 	await get_tree().create_timer(1/(rpm/60)).timeout
 	can_fire = true
 	await get_tree().create_timer(1).timeout

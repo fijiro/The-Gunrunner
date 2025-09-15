@@ -76,7 +76,7 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	var amount = d_slot.stack_size if !data.get("shift") else 1
 	var extra = set_stacks(stack_size + amount)
 	d_slot.set_stacks(d_slot.stack_size - amount + extra)
-	print("dropped ", amount)
+
 	emit_signal("dropped_data")
 	d_slot.emit_signal("dropped_data")
 	

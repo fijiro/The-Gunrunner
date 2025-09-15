@@ -13,5 +13,4 @@ func on_impact():
 func start_despawn_timer():
 	#TODO: despawn bullet after firing
 	await get_tree().create_timer(4).timeout
-	print("Removing ", self, " at ", Time.get_ticks_msec())
 	queue_free()
