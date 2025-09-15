@@ -19,3 +19,6 @@ mesh = SubResource("CapsuleMesh_g2qyn")
 
 [node name="Receiver_Attach" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.196396, 0.000673091, 0)
+
+[node name="Muzzle_Attach" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205837, 0, 0)
