@@ -9,14 +9,14 @@ func _ready():
 func _build_weapon() -> void:
 	var parts: Dictionary = inventory.get_items()
 	print(parts)
-	var weapon: GunPart = weapon_scene.instantiate()
-	var receiver: GunPart = parts["receiver"] if parts.has("receiver") else null
+	var weapon: Weapon = weapon_scene.instantiate()
+	var receiver: Receiver = parts["receiver"] if parts.has("receiver") else null
 	receiver.position = Vector3.ZERO
 	receiver.rotation = Vector3.ZERO
 	var build_slot = (inventory.get_ui_slot(6) as ItemSlot)
 	if null in [receiver]: return
 	else: print("BUILD POSSIBLE")
-	if !inventory.add_item(weapon): print("ERROR: COULDNT ADD ITEM")
+	if !inventory.add_item(weapon): push_error("ERROR: COULDNT ADD ITEM")
 	build_slot.visible = true
 	build_slot.item = weapon
 	for part_name in parts.keys():
@@ -28,14 +28,16 @@ func _build_weapon() -> void:
 		var part_to_receiver = part.find_child("Receiver_Attach")
 		if receiver_to_part and part_to_receiver:
 			part.global_transform = receiver_to_part.global_transform * part_to_receiver.transform.affine_inverse()
-		else: print("ERROR: NO ATTACH POINT FOUND")
+		else: push_error("ERROR: NO ATTACH POINT FOUND")
 		# Recalculate stats
 		weapon.price += part.price
 		weapon.weight += part.weight
 		weapon.accuracy *= part.accuracy
 		weapon.ergo *= part.ergo
-	
-	#ItemSlot Based implementation
+	print("Setting weapon rpm to ", receiver.rpm)
+	weapon.rpm = receiver.rpm
+	print(weapon, " RPM: ", weapon.rpm)
+	#ItemSlot Based implementation?? No, better to permabuild
 
 	weapon.position = $ReceiverPosition.position
 	weapon.rotation = $ReceiverPosition.rotation

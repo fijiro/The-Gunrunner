@@ -12,8 +12,11 @@ albedo_color = Color(0.62, 0.62, 0.62, 1)
 material = SubResource("StandardMaterial3D_mdl7e")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a202f"]
+margin = 0.1
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("inventory")]
+collision_layer = 17
+safe_margin = 0.01
 script = ExtResource("1_g2els")
 escape_ui_scene = ExtResource("2_qu4a1")
 inventory = NodePath("PlayerInventory")
@@ -29,10 +32,10 @@ script = ExtResource("2_v6fml")
 ui_scene = ExtResource("4_mdl7e")
 
 [node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09612, -0.266973)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12675, -0.0238052)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 0.964007, 0.265876, 0, -0.265876, 0.964007, 0, 0.221264, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.221264, 0)
 
 [node name="Hand" type="Node3D" parent="Head"]
-transform = Transform3D(0.330103, 0, 0.943946, 0, 1, 0, -0.943946, 0, 0.330103, -0.422886, -0.303599, -0.710021)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.422886, -0.0708055, -0.710021)

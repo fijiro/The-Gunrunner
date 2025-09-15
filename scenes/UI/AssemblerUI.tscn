@@ -6,7 +6,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_s1tmv"]
 font_size = 41
 
-[node name="AssemblerUi" type="CanvasLayer"]
+[node name="AssemblerUI" type="CanvasLayer"]
 script = ExtResource("1_ndrju")
 
 [node name="Panel" type="Panel" parent="."]

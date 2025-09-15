@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkjfc1kdjd3ss"]
+
+[ext_resource type="Script" uid="uid://cmjiraus3c0lk" path="res://scripts/world/crafting/packager.gd" id="1_lqq7u"]
+[ext_resource type="PackedScene" uid="uid://cii662mjy024q" path="res://scenes/Item/Package/Package.tscn" id="2_fctv6"]
+[ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="2_t86hd"]
+[ext_resource type="PackedScene" uid="uid://0ac0bb0ln8cs" path="res://scenes/UI/PackagerStationUI.tscn" id="3_fctv6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfihh"]
+transparency = 1
+albedo_color = Color(0.66, 0, 0, 0.658824)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7w3hm"]
+material = SubResource("StandardMaterial3D_qfihh")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l4ogl"]
+size = Vector3(0.25, 0.5, 0.5)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7rqw5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8j27g"]
+
+[node name="PackagerStation" type="Node3D" node_paths=PackedStringArray("inventory")]
+script = ExtResource("1_lqq7u")
+product_scene = ExtResource("2_fctv6")
+zoom_target = NodePath("CameraPosition")
+inventory = NodePath("PackagerInventory")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_7w3hm")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.565, 0.485267)
+shape = SubResource("BoxShape3D_l4ogl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_7rqw5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_8j27g")
+
+[node name="PackagerInventory" type="Node3D" parent="."]
+script = ExtResource("2_t86hd")
+ui_scene = ExtResource("3_fctv6")
+
+[node name="CameraPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0236118, 0.61928, 1.14704)
+
+[node name="ProductPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515303, 0.460711)

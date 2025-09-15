@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cv1qabwpjnk0"]
+
+[ext_resource type="Material" uid="uid://brbn8u1qk37lm" path="res://scenes/Item/Cartridge/Bullet/FMJ.tres" id="1_oqi1r"]
+[ext_resource type="Script" uid="uid://ctam6et4w57bl" path="res://database/items/cartridges/bullets/bullet.gd" id="1_q0xey"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dn324"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_oqi1r"]
+material = ExtResource("1_oqi1r")
+radius = 0.004
+height = 0.015
+radial_segments = 8
+rings = 7
+is_hemisphere = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ifo8x"]
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="RifleFmj" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_dn324")
+script = ExtResource("1_q0xey")
+part = "Bullet"
+desc = "Standard rifle cartridge bullet."
+type = "bullet"
+price = 1.0
+weight = 0.015
+max_stack = 10
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.08702e-07, 9.35, 0, -9.35, -4.08702e-07, 0, 0, 0, 9.35, -0.00584609, 0, 0)
+mesh = SubResource("SphereMesh_oqi1r")
+
+[node name="Case_Attach" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00587667, 0, 0)
+gizmo_extents = 0.15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ifo8x")

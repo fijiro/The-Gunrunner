@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxne2ne1es1t0"]
+[gd_scene load_steps=5 format=3 uid="uid://bxne2ne1es1t0"]
 
 [ext_resource type="Script" uid="uid://cl6f7leydvfof" path="res://database/items/parts/magazines/ak_magazine.gd" id="1_6lfn3"]
-[ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="2_ykwpf"]
-[ext_resource type="PackedScene" uid="uid://dctqwvyon5qeb" path="res://scenes/UI/MagazineSlot.tscn" id="3_ykwpf"]
+[ext_resource type="Script" uid="uid://brk75eoad7vv4" path="res://scripts/ui/inventory/magazine_inventory.gd" id="2_tryft"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hh72p"]
 albedo_color = Color(0.11, 0.11, 0.11, 1)
@@ -22,5 +21,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015668, 0.0700903, 0)
 
 [node name="MagazineInventory" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-script = ExtResource("2_ykwpf")
-ui_scene = ExtResource("3_ykwpf")
+script = ExtResource("2_tryft")

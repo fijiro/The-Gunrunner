@@ -4,3 +4,9 @@
 
 [node name="Cartridge" type="Node3D"]
 script = ExtResource("1_7371n")
+part = "Cartridge"
+desc = "Standard rifle cartridge."
+type = "cartridge"
+price = 1.0
+weight = 0.0
+max_stack = 10

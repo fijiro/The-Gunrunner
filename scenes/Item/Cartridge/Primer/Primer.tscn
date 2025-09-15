@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwn5ukmxln763"]
 
-[ext_resource type="Material" uid="uid://b3jpfkfcu5qmw" path="res://scenes/Cartridge/Primer/Metal.tres" id="1_12r2v"]
+[ext_resource type="Material" uid="uid://b3jpfkfcu5qmw" path="res://scenes/Item/Cartridge/Primer/Metal.tres" id="1_12r2v"]
 [ext_resource type="Script" uid="uid://ddsgi4rvu0mri" path="res://database/items/cartridges/primers/primer.gd" id="1_seoc0"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_12r2v"]
@@ -13,6 +13,12 @@ rings = 1
 
 [node name="Primer" type="Node3D"]
 script = ExtResource("1_seoc0")
+part = "primer"
+desc = "Standard rifle cartridge primer."
+type = "primer"
+price = 1.0
+weight = 0.005
+max_stack = 10
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)

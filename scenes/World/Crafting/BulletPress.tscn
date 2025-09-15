@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c2dufqu8ev64u"]
 
 [ext_resource type="Script" uid="uid://cpy8m5jb2pxyx" path="res://scripts/world/crafting/press.gd" id="1_7eos0"]
-[ext_resource type="PackedScene" uid="uid://cv1qabwpjnk0" path="res://scenes/Cartridge/Bullet/RifleFMJ.tscn" id="2_jwhcy"]
+[ext_resource type="PackedScene" uid="uid://cv1qabwpjnk0" path="res://scenes/Item/Cartridge/Bullet/RifleFMJ.tscn" id="2_jwhcy"]
 [ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="3_ve8yw"]
 [ext_resource type="PackedScene" uid="uid://capxwr2vn2ms1" path="res://scenes/UI/PressUI.tscn" id="4_isfkm"]
 

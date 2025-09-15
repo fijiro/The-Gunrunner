@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cn07wnn6x5iek"]
 
 [ext_resource type="Script" uid="uid://cd6yaw1ovi5ql" path="res://scripts/world/crafting/assembler.gd" id="1_8nkjp"]
-[ext_resource type="PackedScene" uid="uid://b3h1foxedo06f" path="res://scenes/Cartridge/Cartridge.tscn" id="2_dmvep"]
+[ext_resource type="PackedScene" uid="uid://b3h1foxedo06f" path="res://scenes/Item/Cartridge/Cartridge.tscn" id="2_dmvep"]
 [ext_resource type="PackedScene" uid="uid://dffyp6jpjwr8y" path="res://scenes/UI/AssemblerUI.tscn" id="3_8nkjp"]
 [ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="3_qfce5"]
 

@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bedswvpssh8fn"
-path="res://.godot/imported/AK_STOCK.blend-fde003040a0b42e45531bd8701deeb6a.scn"
+valid=false
 
 [deps]
 
-source_file="res://scenes/Part/Stock/AK_STOCK.blend"
-dest_files=["res://.godot/imported/AK_STOCK.blend-fde003040a0b42e45531bd8701deeb6a.scn"]
+source_file="res://scenes/Item/Part/Stock/AK_STOCK.blend"
 
 [params]
 
