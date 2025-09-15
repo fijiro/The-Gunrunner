@@ -14,9 +14,9 @@ func bullet_spawn() -> Transform3D:
 	if !barrel_exit: 
 		barrel_exit = find_child("Muzzle_Attach", true, false)
 	return barrel_exit.global_transform
+
 func _process(_delta):
-	if Input.is_action_pressed("fire") and can_fire and is_equipped and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		fire()
+	if Input.is_action_pressed("fire") and can_fire and is_equipped and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED: fire()
 
 func fire():
 	can_fire = false
