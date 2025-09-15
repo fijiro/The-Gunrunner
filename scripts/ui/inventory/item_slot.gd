@@ -67,12 +67,11 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 		print("Max stack = 1")
 		inventory.add_item(d_slot.item, self)
 		d_slot.item = null
-		stack_size = 0
 	elif !item:
 		var dupe: Item = d_slot.item.duplicate()
 		inventory.add_item(dupe, self)
-		stack_size = 0
 	# Stack amount is set after
+	stack_size = 0
 	# Holding shift moves only one item
 	var amount = d_slot.stack_size if !data.get("shift") else 1
 	var extra = set_stacks(stack_size + amount)
