@@ -29,6 +29,8 @@ inventory = NodePath("WorkbenchInventory")
 mesh = SubResource("BoxMesh_7tolv")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.565, 0.485267)
@@ -47,6 +49,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0618
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.348457, 0.504068, 0.313661)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 31
 physics_material_override = SubResource("PhysicsMaterial_7rqw5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]

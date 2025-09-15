@@ -29,12 +29,16 @@ inventory = NodePath("AssemblerInventory")
 mesh = SubResource("BoxMesh_7tolv")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 31
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.565, 0.485267)
 shape = SubResource("BoxShape3D_l4ogl")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 31
 physics_material_override = SubResource("PhysicsMaterial_7rqw5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]

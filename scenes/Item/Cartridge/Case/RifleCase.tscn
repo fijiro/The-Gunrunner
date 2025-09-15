@@ -47,6 +47,8 @@ cap_top = false
 size = Vector3(0.04, 0.01, 0.01)
 
 [node name="RifleCase" type="RigidBody3D"]
+collision_layer = 32
+collision_mask = 63
 physics_material_override = SubResource("PhysicsMaterial_16i1a")
 script = ExtResource("1_83yhl")
 part = "Rifle Case"

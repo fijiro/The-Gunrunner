@@ -12,10 +12,9 @@ albedo_color = Color(0.62, 0.62, 0.62, 1)
 material = SubResource("StandardMaterial3D_mdl7e")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a202f"]
-margin = 0.1
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("inventory")]
-collision_layer = 17
+collision_mask = 26
 safe_margin = 0.01
 script = ExtResource("1_g2els")
 escape_ui_scene = ExtResource("2_qu4a1")
