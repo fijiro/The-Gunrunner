@@ -21,13 +21,13 @@ func setup(item_node: Item, inventory_node: InventoryBase) -> void:
 ## @param amount of available nodes
 ## Returns how many didn't fit in slot.
 func set_stacks(amount: int) -> int:
-	stack_size = min(amount, item.max_stack)
+	stack_size = min(amount, item.max_stack if item else 0)
 	# Clear an empty slot
 	if !stack_size and item:
 		item.get_parent().remove_child(item)
 		item.queue_free()
 		item = null
-		_regenerate_icon()
+	_regenerate_icon()
 	$StackSizeLabel.visible = stack_size > 1
 	$StackSizeLabel.text = "%s" % stack_size
 	return amount - stack_size
@@ -57,22 +57,22 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	elif item != null and d_slot.item.part != item.part: return false
 	#Item must be whitelisted if whitelist exists in slot
 	elif !whitelist.is_empty() and d_slot.item.type not in whitelist: return false
-	else: return true
+	return true
 
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	#Move data to the new item slot
 	var d_slot = data.get("slot") as ItemSlot
 	if !d_slot: return
 	if !item:
-		var dupe: Item = d_slot.item.duplicate()
-		inventory.add_item(dupe, self)
+		#var dupe: Item = d_slot.item.duplicate()
+		inventory.add_item(d_slot.item, self)
+		d_slot.item = null
 		# Stack amount is set after
 		stack_size = 0
 	# Holding shift moves only one item
 	var amount = d_slot.stack_size if !data.get("shift") else 1
 	var extra = set_stacks(stack_size + amount)
 	d_slot.set_stacks(d_slot.stack_size - amount + extra)
-
 	
 	emit_signal("dropped_data")
 	d_slot.emit_signal("dropped_data")

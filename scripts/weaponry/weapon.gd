@@ -33,7 +33,7 @@ func fire():
 	#case.apply_impulse(impulse)
 	# TODO: Firerate
 	print(rpm/60, " Fire rate ", rpm)
-	await get_tree().create_timer(1/rpm).timeout
+	await get_tree().create_timer(100/rpm).timeout
 	can_fire = true
 	await get_tree().create_timer(1).timeout
 	case.queue_free()

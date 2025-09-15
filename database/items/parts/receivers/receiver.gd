@@ -3,6 +3,7 @@ class_name Receiver extends GunPart
 
 func _init() -> void:
 	super._init()
+	print("Running Receiver Init")
 	part = "Receiver"
 	desc = "A standard Receiver."
 	type = "receiver"

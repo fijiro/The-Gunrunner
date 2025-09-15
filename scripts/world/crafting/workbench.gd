@@ -30,7 +30,7 @@ func _build_weapon() -> void:
 			part.global_transform = receiver_to_part.global_transform * part_to_receiver.transform.affine_inverse()
 		else: push_error("ERROR: NO ATTACH POINT FOUND")
 		# Recalculate stats
-		weapon.price += part.price
+		weapon.price += part.price + 100
 		weapon.weight += part.weight
 		weapon.accuracy *= part.accuracy
 		weapon.ergo *= part.ergo

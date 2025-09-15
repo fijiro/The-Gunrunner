@@ -28,7 +28,9 @@ func add_item(item: Node3D, slot: ItemSlot = null) -> bool:
 	var item_slot: ItemSlot = slot if slot else get_first_empty_slot()
 	if(item_slot == null): return false
 	
-	if item.get_parent(): item.reparent(self)
+	if item.get_parent(): 
+		print("WARN: Reparenting")
+		item.reparent(self)
 	else: add_child(item)
 	item_slot.setup(item, self)
 	item.visible = false
@@ -48,11 +50,13 @@ func get_slots() -> Array[ItemSlot]:
 	for item in ui.get_node("ItemSlots").get_children():
 		if item is ItemSlot: slots.append(item)
 	return slots
+	
 ## Returns first empty slot under ItemSlots.
 func get_first_empty_slot() -> ItemSlot:
 	for slot: ItemSlot in ui.get_node("ItemSlots").get_children():
 		if slot.item == null: return slot
 	return null
+	
 ## Returns existing items under ItemSlots
 func get_items() -> Dictionary[String, Item]:
 	var items: Dictionary[String, Item] = {}
