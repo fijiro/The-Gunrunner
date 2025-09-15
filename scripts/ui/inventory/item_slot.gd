@@ -4,7 +4,7 @@ signal dropped_data
 var item: Item
 var inventory: InventoryBase
 var icon_renderer: IconRenderer
-var draggable = true
+var draggable := true
 var stack_size := 0
 @export var whitelist: Array[String]
 
@@ -14,7 +14,7 @@ func _ready():
 
 func setup(item_node: Item, inventory_node: InventoryBase) -> void:
 	item = item_node if item_node and !item_node.is_queued_for_deletion() else null
-	stack_size = 1 if item else 0
+	set_stacks(1 if item else 0)
 	inventory = inventory_node
 	_regenerate_icon(true)
 
@@ -67,14 +67,15 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 		print("Max stack = 1")
 		inventory.add_item(d_slot.item, self)
 		d_slot.item = null
+		stack_size = 0
 	elif !item:
 		var dupe: Item = d_slot.item.duplicate()
 		inventory.add_item(dupe, self)
+		stack_size = 0
 	# Stack amount is set after
-	# stack_size = 0
 	# Holding shift moves only one item
 	var amount = d_slot.stack_size if !data.get("shift") else 1
-	var extra = set_stacks(amount)
+	var extra = set_stacks(stack_size + amount)
 	d_slot.set_stacks(d_slot.stack_size - amount + extra)
 	print("dropped ", amount)
 	emit_signal("dropped_data")
