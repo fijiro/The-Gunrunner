@@ -7,8 +7,8 @@ var can_fire := true
 var is_equipped := false
 var bullet_script := preload("res://scripts/weaponry/fired_bullet.gd")
 var weapon_name := "Pea Shooter"
-var rpm = 100
-func _process(delta):
+var rpm: float = 100
+func _process(_delta):
 	# TODO: and not in menu
 	if Input.is_action_pressed("fire") and can_fire and is_equipped:
 		fire()
@@ -35,6 +35,8 @@ func fire():
 	print(rpm/60, " Fire rate ", rpm)
 	await get_tree().create_timer(0.5).timeout
 	can_fire = true
+	await get_tree().create_timer(4).timeout
+	case.queue_free()
 	
 func set_equipped(equipped):
 	is_equipped = equipped

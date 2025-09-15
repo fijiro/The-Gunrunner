@@ -9,14 +9,14 @@ func _ready():
 func _build_weapon() -> void:
 	var parts: Dictionary = inventory.get_items()
 	print(parts)
-	var weapon: Weapon = weapon_scene.instantiate()
 	var receiver: Receiver = parts["receiver"] if parts.has("receiver") else null
-	receiver.position = Vector3.ZERO
-	receiver.rotation = Vector3.ZERO
-	var build_slot = (inventory.get_ui_slot(6) as ItemSlot)
 	if null in [receiver]: return
 	else: print("BUILD POSSIBLE")
+	receiver.position = Vector3.ZERO
+	receiver.rotation = Vector3.ZERO
+	var weapon: Weapon = weapon_scene.instantiate()
 	if !inventory.add_item(weapon): push_error("ERROR: COULDNT ADD ITEM")
+	var build_slot = (inventory.get_ui_slot(6) as ItemSlot)
 	build_slot.visible = true
 	build_slot.item = weapon
 	for part_name in parts.keys():

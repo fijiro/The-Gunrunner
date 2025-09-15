@@ -1,5 +1,5 @@
 class_name Receiver extends GunPart
-@export var rpm: int = 500
+@export var rpm: float = 500
 
 func _init() -> void:
 	super._init()
