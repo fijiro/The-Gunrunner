@@ -32,10 +32,11 @@ script = ExtResource("2_v6fml")
 head = NodePath("../Head")
 ui_scene = ExtResource("4_mdl7e")
 
-[node name="Head" type="Node3D" parent="." node_paths=PackedStringArray("hand")]
+[node name="Head" type="Node3D" parent="." node_paths=PackedStringArray("hand", "player_inv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12675, -0.0238052)
 script = ExtResource("5_qttn6")
 hand = NodePath("Hand")
+player_inv = NodePath("../PlayerInventory")
 recoil_amount = Vector3(0.1, 0.1, 0.2)
 snap_amount = 5.0
 speed = 5.0

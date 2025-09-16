@@ -8,7 +8,7 @@ var can_fire := true
 var bullet_script := preload("res://scripts/weaponry/fired_bullet.gd")
 var weapon_name := "Pea Shooter"
 var rpm: float = 100
-var ammo: int
+var ammo: int = 30
 signal weapon_fired
 
 func _bullet_spawn() -> Transform3D:

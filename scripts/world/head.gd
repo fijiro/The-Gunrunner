@@ -2,6 +2,7 @@
 class_name Head extends Node3D
 var weapon: Weapon
 @export var hand: Node3D
+@export var player_inv: PlayerInventory
 @export var recoil_amount: Vector3
 @export var snap_amount: float
 @export var speed: float
@@ -15,11 +16,13 @@ var recoil_velocity: Vector3 = Vector3.ZERO
 func setup() -> void:
 	if weapon:
 		weapon.weapon_fired.disconnect(add_recoil)
+		weapon.weapon_fired.disconnect(player_inv.adjust_ammo)
 		weapon = null
 	
 	if !hand.get_child_count(): return
 	weapon = hand.get_child(0)
 	weapon.weapon_fired.connect(add_recoil)
+	weapon.weapon_fired.connect(player_inv.adjust_ammo)
 
 func _process(delta: float) -> void:
 	if !weapon: return

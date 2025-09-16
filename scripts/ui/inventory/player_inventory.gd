@@ -41,4 +41,6 @@ func equip_slot(index: int):
 func adjust_money(amount: int) -> void:
 	money += amount
 	player_ui.update_money(money)
-	
+
+func adjust_ammo(_amount: int = 1) -> void:
+	player_ui.update_ammo(head.weapon.ammo)
