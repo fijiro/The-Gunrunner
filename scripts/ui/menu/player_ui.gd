@@ -11,6 +11,9 @@ func set_ui_visible(enabled: bool) -> void:
 func update_money(money: int) -> void:
 	$Money.text = "%s €" % money
 
+func update_ammo(ammo: int) -> void:
+	$Ammo.text = "%s/30" % ammo
+
 func toggle_stylebox_color(panel: Panel) -> void:
 	var style := (panel.get_theme_stylebox("panel") as StyleBoxFlat).duplicate()
 	style.border_color = Color.RED if style.border_color == Color.YELLOW else Color.YELLOW

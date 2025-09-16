@@ -19,10 +19,7 @@ func equip_slot(index: int):
 		equipped_item.visible = false
 		equipped_item.reparent(self)
 		player_ui.toggle_stylebox_color(ui_slot.get_node("Outline"))
-		#TODO: disable weapon firing when unequipped
-		if equipped_item is Weapon: 
-			equipped_item.set_equipped(false)
-			head.setup()
+		head.setup()
 	
 	# Reselecting a slot only clears it
 	if index == equipped_index:
@@ -35,15 +32,11 @@ func equip_slot(index: int):
 	equipped_item = ui_slot.item
 	ui_slot.draggable = false
 	equipped_item.visible = true
-	equipped_item.reparent(get_parent().get_node("Head/Hand"))
+	equipped_item.reparent(head.hand)
 	equipped_item.rotation = Vector3.ZERO
 	equipped_item.position = Vector3.ZERO
 	player_ui.toggle_stylebox_color(ui_slot.get_node("Outline"))
-	
-	# Make weapon fireable and listen to left clicks
-	if equipped_item is Weapon: 
-		equipped_item.set_equipped(true)
-		head.setup()
+	head.setup()
 
 func adjust_money(amount: int) -> void:
 	money += amount

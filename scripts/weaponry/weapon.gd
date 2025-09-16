@@ -4,7 +4,7 @@ class_name Weapon extends GunPart
 var magazine: Magazine
 var barrel_exit: Marker3D
 var can_fire := true
-var is_equipped := false
+#var is_equipped := false
 var bullet_script := preload("res://scripts/weaponry/fired_bullet.gd")
 var weapon_name := "Pea Shooter"
 var rpm: float = 100
@@ -43,6 +43,6 @@ func fire():
 	await get_tree().create_timer(1).timeout
 	case.queue_free()
 	
-func set_equipped(equipped: bool):
-	is_equipped = equipped
+#func set_equipped(equipped: bool):
+#	is_equipped = equipped
 	
