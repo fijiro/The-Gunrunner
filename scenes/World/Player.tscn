@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcnalrmgg8gld"]
+[gd_scene load_steps=9 format=3 uid="uid://dcnalrmgg8gld"]
 
 [ext_resource type="Script" uid="uid://bywnheoxx05hd" path="res://scripts/world/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://ceukhfs3la5va" path="res://scenes/UI/EscUI.tscn" id="2_qu4a1"]
 [ext_resource type="Script" uid="uid://clvc26qjt7ui3" path="res://scripts/ui/inventory/player_inventory.gd" id="2_v6fml"]
 [ext_resource type="PackedScene" uid="uid://d1khoen7g4diq" path="res://scenes/UI/PlayerUI.tscn" id="4_mdl7e"]
+[ext_resource type="Script" uid="uid://tp00u5umryxw" path="res://scripts/world/head.gd" id="5_qttn6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdl7e"]
 albedo_color = Color(0.62, 0.62, 0.62, 1)
@@ -26,12 +27,15 @@ mesh = SubResource("CapsuleMesh_a202f")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_a202f")
 
-[node name="PlayerInventory" type="Node3D" parent="."]
+[node name="PlayerInventory" type="Node3D" parent="." node_paths=PackedStringArray("head")]
 script = ExtResource("2_v6fml")
+head = NodePath("../Head")
 ui_scene = ExtResource("4_mdl7e")
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12675, -0.0238052)
+script = ExtResource("5_qttn6")
+recoil_amount = Vector3(1, 1, 1)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.221264, 0)

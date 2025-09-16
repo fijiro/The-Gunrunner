@@ -10,3 +10,4 @@ func _init() -> void:
 	price = 100
 	weight = 3.5
 	ergo = 1
+	rpm = 750
