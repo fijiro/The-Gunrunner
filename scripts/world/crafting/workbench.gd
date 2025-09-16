@@ -11,7 +11,6 @@ func _build_weapon() -> void:
 	print(parts)
 	var receiver: Receiver = parts["receiver"] if parts.has("receiver") else null
 	if null in [receiver]: return
-	else: print("BUILD POSSIBLE")
 	receiver.position = Vector3.ZERO
 	receiver.rotation = Vector3.ZERO
 	var weapon: Weapon = weapon_scene.instantiate()
@@ -34,9 +33,7 @@ func _build_weapon() -> void:
 		weapon.weight += part.weight
 		weapon.accuracy *= part.accuracy
 		weapon.ergo *= part.ergo
-	print("Setting weapon rpm to ", receiver.rpm)
 	weapon.rpm = receiver.rpm
-	print(weapon, " RPM: ", weapon.rpm)
 	#ItemSlot Based implementation?? No, better to permabuild
 
 	weapon.position = $ReceiverPosition.position

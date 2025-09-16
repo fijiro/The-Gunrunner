@@ -19,7 +19,7 @@ func equip_slot(index: int):
 		equipped_item.visible = false
 		equipped_item.reparent(self)
 		player_ui.toggle_stylebox_color(ui_slot.get_node("Outline"))
-		head.setup()
+		head.equip_item()
 	
 	# Reselecting a slot only clears it
 	if index == equipped_index:
@@ -36,11 +36,11 @@ func equip_slot(index: int):
 	equipped_item.rotation = Vector3.ZERO
 	equipped_item.position = Vector3.ZERO
 	player_ui.toggle_stylebox_color(ui_slot.get_node("Outline"))
-	head.setup()
+	head.equip_item()
 
 func adjust_money(amount: int) -> void:
 	money += amount
 	player_ui.update_money(money)
 
-func adjust_ammo(_amount: int = 1) -> void:
+func adjust_ammo() -> void:
 	player_ui.update_ammo(head.weapon.ammo)

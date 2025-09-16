@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcnalrmgg8gld"]
+[gd_scene load_steps=12 format=3 uid="uid://dcnalrmgg8gld"]
 
-[ext_resource type="Script" uid="uid://bywnheoxx05hd" path="res://scripts/world/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://bywnheoxx05hd" path="res://scripts/world/player/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://ceukhfs3la5va" path="res://scenes/UI/EscUI.tscn" id="2_qu4a1"]
 [ext_resource type="Script" uid="uid://clvc26qjt7ui3" path="res://scripts/ui/inventory/player_inventory.gd" id="2_v6fml"]
 [ext_resource type="PackedScene" uid="uid://d1khoen7g4diq" path="res://scenes/UI/PlayerUI.tscn" id="4_mdl7e"]
-[ext_resource type="Script" uid="uid://tp00u5umryxw" path="res://scripts/world/head.gd" id="5_qttn6"]
+[ext_resource type="Script" uid="uid://tp00u5umryxw" path="res://scripts/world/player/head.gd" id="5_qttn6"]
+[ext_resource type="Script" uid="uid://d1fgahxbwr6in" path="res://scripts/world/player/hand.gd" id="6_51nuk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdl7e"]
 albedo_color = Color(0.62, 0.62, 0.62, 1)
@@ -13,6 +14,16 @@ albedo_color = Color(0.62, 0.62, 0.62, 1)
 material = SubResource("StandardMaterial3D_mdl7e")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a202f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51nuk"]
+albedo_color = Color(0.830032, 0.6154099, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6wi46"]
+material = SubResource("StandardMaterial3D_51nuk")
+radius = 0.075
+height = 0.15
+radial_segments = 16
+rings = 8
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("inventory")]
 collision_mask = 26
@@ -37,12 +48,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12675, -0.0238052)
 script = ExtResource("5_qttn6")
 hand = NodePath("Hand")
 player_inv = NodePath("../PlayerInventory")
-recoil_amount = Vector3(0.1, 0.1, 0.2)
-snap_amount = 5.0
-speed = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.221264, 0)
 
-[node name="Hand" type="Node3D" parent="Head"]
+[node name="Hand" type="MeshInstance3D" parent="Head"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.422886, -0.0708055, -0.710021)
+mesh = SubResource("SphereMesh_6wi46")
+script = ExtResource("6_51nuk")
+recoil_amount = Vector3(1, 1, 2)
+snap_amount = 8.0
+speed = 8.0

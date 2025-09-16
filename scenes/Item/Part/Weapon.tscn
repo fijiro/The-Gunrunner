@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://0etrnktxs7vg"]
+[gd_scene load_steps=5 format=3 uid="uid://0etrnktxs7vg"]
 
 [ext_resource type="Script" uid="uid://cpv5l6ubmgrxd" path="res://scripts/weaponry/weapon.gd" id="1_ro0p6"]
 [ext_resource type="PackedScene" uid="uid://cv1qabwpjnk0" path="res://scenes/Item/Cartridge/Bullet/RifleFMJ.tscn" id="3_ajlp8"]
 [ext_resource type="PackedScene" uid="uid://yldcfn52ps7b" path="res://scenes/Item/Cartridge/Case/RifleCase.tscn" id="3_iknl4"]
+[ext_resource type="PackedScene" uid="uid://bxne2ne1es1t0" path="res://scenes/Item/Part/Magazine/ak_Magazine.tscn" id="4_iknl4"]
 
 [node name="Weapon" type="Node3D"]
 script = ExtResource("1_ro0p6")
 bullet_scene = ExtResource("3_ajlp8")
 case_scene = ExtResource("3_iknl4")
+magazine_scene = ExtResource("4_iknl4")
 part = "Weapon"
 desc = "Built Weapon"
 type = "weapon"
