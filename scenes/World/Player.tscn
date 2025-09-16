@@ -37,7 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12675, -0.0238052)
 script = ExtResource("5_qttn6")
 recoil_amount = Vector3(0.1, 0.1, 0.2)
 snap_amount = 5.0
-speed = 1.0
+speed = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.221264, 0)
