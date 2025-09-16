@@ -8,6 +8,7 @@ var can_fire := true
 var bullet_script := preload("res://scripts/weaponry/fired_bullet.gd")
 var weapon_name := "Pea Shooter"
 var rpm: float = 100
+var ammo: int
 signal weapon_fired
 
 func _bullet_spawn() -> Transform3D:
@@ -17,6 +18,8 @@ func _bullet_spawn() -> Transform3D:
 	return barrel_exit.global_transform
 
 func fire():
+	if !ammo > 0: return
+	ammo -= 1
 	can_fire = false
 	var bullet: RigidBody3D = bullet_scene.instantiate()
 	bullet.set_script(bullet_script)
