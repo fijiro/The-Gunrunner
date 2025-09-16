@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 	
 	target_rotation = lerp(target_rotation, Vector3.ZERO, speed * delta)
 	current_rotation = lerp(current_rotation, target_rotation, snap_amount * delta)
-	#weapon.basis = Quaternion.from_euler(current_rotation)
+	weapon.basis = Quaternion.from_euler(current_rotation)
 
 func add_recoil() -> void:
 	target_rotation += Vector3(
