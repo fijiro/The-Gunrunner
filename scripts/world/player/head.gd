@@ -10,9 +10,10 @@ func equip_item() -> void:
 		weapon.weapon_fired.disconnect(hand.recoil_weapon)
 		weapon.weapon_fired.disconnect(player_inv.adjust_ammo)
 		weapon = null
-	if !hand.get_child_count(): return
-	
-	weapon = hand.get_child(0)
+	if hand.get_child_count() < 3: return
+	var item = hand.get_child(2)
+	if hand.get_child(2).is_class("Weapon"): print("is weapon")
+	weapon = hand.get_child(2)
 	hand.weapon = weapon
 	weapon.weapon_fired.connect(hand.recoil_weapon)
 	weapon.weapon_fired.connect(player_inv.adjust_ammo)

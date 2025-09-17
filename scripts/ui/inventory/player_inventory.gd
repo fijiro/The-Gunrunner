@@ -5,7 +5,7 @@ var equipped_item : Node3D
 var money := 0
 var player_ui: PlayerUI
 @export var head: Head
-
+@export var hand: Hand
 func _ready():
 	super._ready()
 	player_ui = ui
@@ -32,7 +32,7 @@ func equip_slot(index: int):
 	equipped_item = ui_slot.item
 	ui_slot.draggable = false
 	equipped_item.visible = true
-	equipped_item.reparent(head.hand)
+	equipped_item.reparent(hand)
 	equipped_item.rotation = Vector3.ZERO
 	equipped_item.position = Vector3.ZERO
 	player_ui.toggle_stylebox_color(ui_slot.get_node("Outline"))

@@ -1,4 +1,4 @@
-class_name Hand extends Node3D
+class_name Hand extends RigidBody3D
 var weapon: Weapon
 @export var recoil_amount: Vector3
 @export var snap_amount: float
@@ -17,6 +17,7 @@ func recoil_weapon() -> void:
 		randf_range(-recoil_amount.x, recoil_amount.x),
 		randf_range(-recoil_amount.y, recoil_amount.y),
 		randf_range(-recoil_amount.z, recoil_amount.z))
+	apply_impulse(-current_rotation*5)
 
 func reload_weapon():
 	weapon.ammo = weapon.magazine.max_rounds
