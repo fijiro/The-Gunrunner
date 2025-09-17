@@ -13,6 +13,7 @@ func equip_item() -> void:
 	if hand.get_child_count() < 3: return
 	var item = hand.get_child(2)
 	if hand.get_child(2).is_class("Weapon"): print("is weapon")
+	print(item.get_class())
 	weapon = hand.get_child(2)
 	hand.weapon = weapon
 	weapon.weapon_fired.connect(hand.recoil_weapon)
