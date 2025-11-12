@@ -37,6 +37,8 @@ func equip_slot(index: int):
 	equipped_item.position = Vector3.ZERO
 	player_ui.toggle_stylebox_color(ui_slot.get_node("Outline"))
 	head.equip_item()
+	#if(equipped_item is Weapon): 
+	#	equipped_item.position = equipped_item.get_left_grip().global_transform - hand.global_transform
 
 func adjust_money(amount: int) -> void:
 	money += amount

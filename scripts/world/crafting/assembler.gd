@@ -20,10 +20,11 @@ func assemble() -> void:
 	else: print("ASSEMBLY POSSIBLE")
 	if !inventory.add_item(product, product_slot): print("ERROR: COULDNT ADD ITEM")
 	product_slot.visible = true
-	var part: Cartridge
+	var part
 	for part_name in items.keys():
 		part = items.get(part_name).duplicate()
 		part.visible = true
+		if part is RigidBody3D: part.freeze = true
 		if part.get_parent(): part.reparent(product)
 		else: product.add_child(part)
 		if part_name == "case": continue
@@ -37,11 +38,12 @@ func assemble() -> void:
 		product.price += part.price
 		product.weight += part.weight
 		product.accuracy *= part.accuracy
-		
 	product.position = $ProductPosition.position
 	product.rotation = $ProductPosition.rotation
 	product.visible = true
-	#Remove one after assembly
+	product.freeze = true
+	
+	#Remove one part after assembly
 	for slot: ItemSlot in inventory.get_slots():
 		if slot != product_slot: slot.take_one()
 	product_slot._regenerate_icon(true)

@@ -4,6 +4,7 @@ class_name Weapon extends GunPart
 @export var magazine_scene: PackedScene
 var magazine: Magazine
 var barrel_exit: Marker3D
+var left_grip: Marker3D
 var can_fire := true
 var bullet_script := preload("res://scripts/weaponry/fired_bullet.gd")
 var weapon_name := "Pea Shooter"
@@ -20,6 +21,11 @@ func _bullet_spawn() -> Transform3D:
 	if !barrel_exit: 
 		barrel_exit = find_child("Muzzle_Attach", true, false)
 	return barrel_exit.global_transform
+
+func get_left_grip() -> Marker3D:
+	if !left_grip:
+		left_grip = find_child("Left_Grip", true, false)
+	return left_grip
 
 func fire():
 	if !ammo > 0: return

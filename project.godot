@@ -120,6 +120,10 @@ reload={
 3d_physics/layer_5="Npc"
 3d_physics/layer_6="Item"
 
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

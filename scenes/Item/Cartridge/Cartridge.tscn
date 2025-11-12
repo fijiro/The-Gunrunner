@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cai4qc5qxqegm" path="res://database/items/cartridges/cartridge.gd" id="1_7371n"]
 
-[node name="Cartridge" type="Node3D"]
+[node name="Cartridge" type="RigidBody3D"]
 script = ExtResource("1_7371n")
 part = "Cartridge"
 desc = "Standard rifle cartridge."

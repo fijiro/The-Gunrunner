@@ -12,6 +12,7 @@ var camera: Camera3D
 var rotation_y := 0.0
 var rotation_x := 0.0
 var input_enabled: bool = true 
+var mouse_delta := Vector2.ZERO
 
 func _ready() -> void:
 	head = $Head
@@ -21,28 +22,24 @@ func _ready() -> void:
 	get_node("/root/Main/UI").add_child(escape_ui)
 	escape_ui.visible = false
 	
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and input_enabled:
-		rotation_y -= event.relative.x * mouse_sensitivity
-		rotation_x -= event.relative.y * mouse_sensitivity
-		rotation_x = clamp(rotation_x, deg_to_rad(-90), deg_to_rad(90))
-		rotation.y = rotation_y
-		head.rotation.x = rotation_x
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
 		escape_ui.visible = not escape_ui.visible
 		input_enabled = not input_enabled
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if not input_enabled else Input.MOUSE_MODE_CAPTURED)
+	
 	#TODO: 16.09.2025 future me clean this up
 	elif event.is_action_pressed("item_slot_1"): inventory.equip_slot(0)
 	elif event.is_action_pressed("item_slot_2"): inventory.equip_slot(1)
 	elif event.is_action_pressed("item_slot_3"): inventory.equip_slot(2)
-
+	
+	# Mouse look
+	elif event is InputEventMouseMotion and !(event as InputEventMouseMotion).relative.is_zero_approx() and input_enabled:
+		mouse_delta = event.relative
 
 func _physics_process(delta):
-	if not input_enabled: return 
-	
+	if not input_enabled: return
 	#Player Actions
 	if Input.is_action_just_pressed("reload"): head.reload_input()
 	if Input.is_action_pressed("fire"): head.fire_input()
@@ -55,21 +52,32 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_right"): input_dir.x += 1
 	input_dir = input_dir.normalized()
 
-	# Rotate input based on camera direction (if needed)
+	# Rotate player and camera
+	rotation_y -= mouse_delta.x * mouse_sensitivity
+	#rotation_x -= mouse_delta.y * mouse_sensitivity
+	#rotation_x = clamp(rotation_x, deg_to_rad(-90), deg_to_rad(90))
+	rotation_x = clamp(rotation_x - mouse_delta.y * mouse_sensitivity, deg_to_rad(-90), deg_to_rad(90))
+	rotation.y = rotation_y
+	head.rotation.x = rotation_x
+	# Reset mouse delta
+	mouse_delta = Vector2.ZERO
+	
+	# Rotate input based on camera direction
 	var direction = global_transform.basis * input_dir
 	direction.y = 0
 	direction = direction.normalized()
-
-	# Movement
-	velocity.x = direction.x * speed
-	velocity.z = direction.z * speed
-
+	
 	# Gravity
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	elif Input.is_action_just_pressed("jump"):
 		velocity.y = jump_velocity
-
+		
+	# Movement
+	var target_velocity = direction * speed
+	velocity.x = move_toward(velocity.x, target_velocity.x, 20 * delta)
+	velocity.z = move_toward(velocity.z, target_velocity.z, 20 * delta)
+	
 	# Move the character
 	move_and_slide()
 	

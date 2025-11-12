@@ -33,4 +33,3 @@ func reload_input():
 	if !weapon: return
 	hand.reload_weapon()
 	player_inv.adjust_ammo()
-	

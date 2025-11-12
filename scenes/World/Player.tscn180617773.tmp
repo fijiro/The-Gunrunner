@@ -16,9 +16,6 @@ material = SubResource("StandardMaterial3D_mdl7e")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a202f"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_51nuk"]
-size = Vector3(0.5, 0.5, 0.5)
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_51nuk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51nuk"]
@@ -34,6 +31,9 @@ is_hemisphere = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_51nuk"]
 radius = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_51nuk"]
+size = Vector3(0.5, 0.5, 0.5)
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("inventory", "head")]
 collision_mask = 26
@@ -52,49 +52,51 @@ shape = SubResource("CapsuleShape3D_a202f")
 [node name="PlayerInventory" type="Node3D" parent="." node_paths=PackedStringArray("head", "hand")]
 script = ExtResource("2_v6fml")
 head = NodePath("../Head")
-hand = NodePath("../Head/Hand")
+hand = NodePath("../Hand")
 ui_scene = ExtResource("4_mdl7e")
+
+[node name="Hand" type="RigidBody3D" parent="." node_paths=PackedStringArray("arm_joint")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.422886, 1.0559444, -0.7338262)
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_51nuk")
+script = ExtResource("6_51nuk")
+recoil_amount = Vector3(0.2, 0.4, 0.2)
+snap_amount = 10.0
+speed = 10.0
+max_distance = 0.04
+arm_joint = NodePath("../Head/HandJoint")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hand"]
+transform = Transform3D(0.88376564, 0.4679298, 0, -0.4679298, 0.88376564, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_6wi46")
+skeleton = NodePath("../../Head")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hand"]
+shape = SubResource("SphereShape3D_51nuk")
+disabled = true
 
 [node name="Head" type="StaticBody3D" parent="." node_paths=PackedStringArray("hand", "player_inv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12675, -0.0238052)
 script = ExtResource("5_qttn6")
-hand = NodePath("Hand")
+hand = NodePath("../Hand")
 player_inv = NodePath("../PlayerInventory")
 
 [node name="HandJoint" type="Generic6DOFJoint3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.422886, -0.07080555, -0.710021)
-node_a = NodePath("..")
-node_b = NodePath("../Hand")
-linear_limit_x/upper_distance = 0.01
-linear_limit_x/lower_distance = -0.01
-linear_limit_y/upper_distance = 0.01
-linear_limit_y/lower_distance = -0.01
-linear_limit_z/upper_distance = 0.01
-linear_limit_z/lower_distance = -0.01
-linear_spring_x/enabled = true
-linear_spring_x/stiffness = 1000.0
-linear_spring_x/damping = 1.0
-linear_spring_y/enabled = true
-linear_spring_y/stiffness = 1000.0
-linear_spring_y/damping = 1.0
-linear_spring_z/enabled = true
-linear_spring_z/stiffness = 1000.0
-linear_spring_z/damping = 1.0
-angular_limit_x/upper_angle = 0.17453292
-angular_limit_x/lower_angle = -0.17453292
-angular_limit_y/upper_angle = 0.17453292
-angular_limit_y/lower_angle = -0.17453292
-angular_limit_z/upper_angle = 0.17453292
-angular_limit_z/lower_angle = -0.17453292
-angular_spring_x/enabled = true
-angular_spring_x/stiffness = 1000.0
-angular_spring_x/damping = 1.0
-angular_spring_y/enabled = true
-angular_spring_y/stiffness = 1000.0
-angular_spring_y/damping = 1.0
-angular_spring_z/enabled = true
-angular_spring_z/stiffness = 1000.0
-angular_spring_z/damping = 1.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10164976, 0.2501849, -0.6803004)
+node_a = NodePath("../../Hand")
+node_b = NodePath("..")
+linear_limit_x/upper_distance = 0.03
+linear_limit_x/lower_distance = 0.03
+linear_limit_x/softness = 0.1
+linear_limit_x/restitution = 0.15
+linear_limit_y/upper_distance = 0.03
+linear_limit_y/lower_distance = 0.03
+linear_limit_y/softness = 0.1
+linear_limit_y/restitution = 0.1
+linear_limit_z/upper_distance = 0.005
+linear_limit_z/lower_distance = 0.005
+linear_limit_z/softness = 0.1
+linear_limit_z/restitution = 0.1
 script = ExtResource("7_6wi46")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head"]
@@ -102,24 +104,3 @@ shape = SubResource("BoxShape3D_51nuk")
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.221264, 0)
-
-[node name="Hand" type="RigidBody3D" parent="Head" node_paths=PackedStringArray("hand_joint")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.422886, -0.07080555, -0.710021)
-collision_mask = 0
-physics_material_override = SubResource("PhysicsMaterial_51nuk")
-can_sleep = false
-script = ExtResource("6_51nuk")
-recoil_amount = Vector3(0.2, 0.4, 0.2)
-snap_amount = 10.0
-speed = 10.0
-max_distance = 0.04
-hand_joint = NodePath("../HandJoint")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Hand"]
-transform = Transform3D(0.88376564, 0.4679298, 0, -0.4679298, 0.88376564, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("SphereMesh_6wi46")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Hand"]
-shape = SubResource("SphereShape3D_51nuk")
-disabled = true
