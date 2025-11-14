@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dcnalrmgg8gld"]
+[gd_scene load_steps=15 format=3 uid="uid://dcnalrmgg8gld"]
 
 [ext_resource type="Script" uid="uid://bywnheoxx05hd" path="res://scripts/world/player/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://ceukhfs3la5va" path="res://scenes/UI/EscUI.tscn" id="2_qu4a1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://tp00u5umryxw" path="res://scripts/world/player/head.gd" id="5_qttn6"]
 [ext_resource type="Script" uid="uid://d1fgahxbwr6in" path="res://scripts/world/player/hand.gd" id="6_51nuk"]
 [ext_resource type="Script" uid="uid://dm4g781hqj2yc" path="res://scripts/world/player/hand_joint.gd" id="7_6wi46"]
+[ext_resource type="ArrayMesh" uid="uid://dh21hk8yiglxo" path="res://scenes/World/Player/model_0.obj" id="8_lymgr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdl7e"]
 albedo_color = Color(0.62, 0.62, 0.62, 1)
@@ -20,17 +21,6 @@ material = SubResource("StandardMaterial3D_mdl7e")
 size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_51nuk"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51nuk"]
-albedo_color = Color(0.830032, 0.6154099, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_6wi46"]
-material = SubResource("StandardMaterial3D_51nuk")
-radius = 0.075
-height = 0.15
-radial_segments = 32
-rings = 16
-is_hemisphere = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_51nuk"]
 radius = 0.1
@@ -116,8 +106,8 @@ max_distance = 0.04
 hand_joint = NodePath("../HandJoint")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Hand"]
-transform = Transform3D(0.88376564, 0.4679298, 0, -0.4679298, 0.88376564, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("SphereMesh_6wi46")
+transform = Transform3D(0.52394503, -0.044694412, 0.20666152, 0.2079134, 0.008476143, -0.5252858, 0.038452476, 0.5631656, 0.024307258, -0.19215733, -0.06608796, 1.7881393e-07)
+mesh = ExtResource("8_lymgr")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Hand"]

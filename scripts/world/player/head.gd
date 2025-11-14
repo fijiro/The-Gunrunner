@@ -17,11 +17,15 @@ func equip_item() -> void:
 	if item is Weapon: 
 		print("is weapon")
 		weapon = hand.get_child(2)
-		hand.weapon = weapon
+		hand.item = weapon
 		weapon.weapon_fired.connect(hand.recoil_weapon)
 		weapon.weapon_fired.connect(player_inv.adjust_ammo)
+	# TODO: Might have gravity issues?
 	if item.is_class("RigidBody3D"):
-		(item as RigidBody3D).freeze = true
+		#(item as RigidBody3D).gravity_scale = 0
+		#(item as RigidBody3D).freeze = true
+		pass
+	hand.grab_item()
 
 # Handle input here so unequipped weapons don't care about input
 func fire_input():

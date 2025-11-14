@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://of4xisxwlrda"]
 
 [ext_resource type="Script" uid="uid://be1nh11w0wt4d" path="res://scripts/ui/icon_renderer.gd" id="1_nfivy"]
-[ext_resource type="PackedScene" uid="uid://dcnalrmgg8gld" path="res://scenes/World/Player.tscn" id="2_1nqs0"]
+[ext_resource type="PackedScene" uid="uid://dcnalrmgg8gld" path="res://scenes/World/Player/Player.tscn" id="2_1nqs0"]
 [ext_resource type="PackedScene" uid="uid://dfdnmokcey2wl" path="res://scenes/World/Ground.tscn" id="2_ebg2g"]
 [ext_resource type="PackedScene" uid="uid://b2gvbwpg4b8b0" path="res://scenes/World/Npc.tscn" id="3_1iba3"]
 [ext_resource type="PackedScene" uid="uid://nd2xy7bggbpd" path="res://scenes/World/Crafting/Workbench.tscn" id="4_yxlcp"]

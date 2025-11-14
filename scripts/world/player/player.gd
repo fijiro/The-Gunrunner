@@ -54,8 +54,6 @@ func _physics_process(delta):
 
 	# Rotate player and camera
 	rotation_y -= mouse_delta.x * mouse_sensitivity
-	#rotation_x -= mouse_delta.y * mouse_sensitivity
-	#rotation_x = clamp(rotation_x, deg_to_rad(-90), deg_to_rad(90))
 	rotation_x = clamp(rotation_x - mouse_delta.y * mouse_sensitivity, deg_to_rad(-90), deg_to_rad(90))
 	rotation.y = rotation_y
 	head.rotation.x = rotation_x
