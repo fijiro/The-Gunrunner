@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://of4xisxwlrda"]
+[gd_scene load_steps=30 format=3 uid="uid://of4xisxwlrda"]
 
 [ext_resource type="Script" uid="uid://be1nh11w0wt4d" path="res://scripts/ui/icon_renderer.gd" id="1_nfivy"]
 [ext_resource type="PackedScene" uid="uid://dcnalrmgg8gld" path="res://scenes/World/Player/Player.tscn" id="2_1nqs0"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b1gas7b3mdm20" path="res://scenes/World/Crafting/DrawingPress.tscn" id="12_gsxep"]
 [ext_resource type="PackedScene" uid="uid://bw04oqsmrrltc" path="res://scenes/Item/Crafting/BrassCoil.tscn" id="13_v0vrg"]
 [ext_resource type="PackedScene" uid="uid://c2dufqu8ev64u" path="res://scenes/World/Crafting/BulletPress.tscn" id="14_dg70y"]
+[ext_resource type="PackedScene" uid="uid://b36v3yddxqru8" path="res://scenes/World/Shop.tscn" id="15_2ofn6"]
 [ext_resource type="PackedScene" uid="uid://dyv8q7b12d1g5" path="res://scenes/Item/Crafting/LeadCoil.tscn" id="15_pnhog"]
 [ext_resource type="PackedScene" uid="uid://cn07wnn6x5iek" path="res://scenes/World/Crafting/CartridgeAssembler.tscn" id="16_2c4at"]
 [ext_resource type="PackedScene" uid="uid://bwn5ukmxln763" path="res://scenes/Item/Cartridge/Primer/Primer.tscn" id="17_g6wdg"]
@@ -89,6 +90,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.783875, 0.504993, -6.09394)
 
 [node name="ShipmentCrate" parent="." instance=ExtResource("11_e2s0e")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.96983, 0.25, -3.60281)
+
+[node name="Shop" parent="." instance=ExtResource("15_2ofn6")]
+transform = Transform3D(0.011588748, 0, 0.9999328, 0, 1, 0, -0.9999328, 0, 0.011588748, -3.333322, 0.5, 3.6999063)
 
 [node name="DrawingPress" parent="." instance=ExtResource("12_gsxep")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.056, 0.5, -0.697)

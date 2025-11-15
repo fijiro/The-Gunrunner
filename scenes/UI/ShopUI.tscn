@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://rbq026s3gauk"]
+
+[ext_resource type="PackedScene" uid="uid://6e4j46ntd53x" path="res://scenes/UI/ItemSlot.tscn" id="1_i6mk6"]
+[ext_resource type="Script" uid="uid://06uibhmcnvwp" path="res://scripts/ui/menu/shop_ui.gd" id="1_sqpqv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sqpqv"]
+font_size = 29
+
+[node name="ShopUI" type="CanvasLayer"]
+script = ExtResource("1_sqpqv")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -512.5
+offset_top = -396.0
+offset_right = 512.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 35.0
+offset_right = 618.0
+offset_bottom = 75.0
+text = "SHOP"
+label_settings = SubResource("LabelSettings_sqpqv")
+
+[node name="ItemSlots" type="GridContainer" parent="."]
+offset_left = 252.0
+offset_top = 356.0
+offset_right = 863.0
+offset_bottom = 560.0
+columns = 2
+
+[node name="ItemSlot0" parent="ItemSlots" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+
+[node name="ItemSlot1" parent="ItemSlots" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="ItemSlots" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="ItemSlots" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="."]
+offset_left = 897.0
+offset_top = 508.0
+offset_right = 1023.0
+offset_bottom = 581.0
+text = "CLOSE
+"
