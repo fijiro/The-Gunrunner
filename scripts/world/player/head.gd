@@ -23,7 +23,7 @@ func equip_item() -> void:
 	# TODO: Might have gravity issues?
 	if item.is_class("RigidBody3D"):
 		#(item as RigidBody3D).gravity_scale = 0
-		#(item as RigidBody3D).freeze = true
+		(item as RigidBody3D).freeze = true
 		pass
 	hand.grab_item()
 

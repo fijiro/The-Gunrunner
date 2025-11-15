@@ -5,7 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://yldcfn52ps7b" path="res://scenes/Item/Cartridge/Case/RifleCase.tscn" id="3_iknl4"]
 [ext_resource type="PackedScene" uid="uid://bxne2ne1es1t0" path="res://scenes/Item/Part/Magazine/ak_Magazine.tscn" id="4_iknl4"]
 
-[node name="Weapon" type="Node3D"]
+[node name="Weapon" type="RigidBody3D"]
+gravity_scale = 0.0
+freeze_mode = 1
 script = ExtResource("1_ro0p6")
 bullet_scene = ExtResource("3_ajlp8")
 case_scene = ExtResource("3_iknl4")
