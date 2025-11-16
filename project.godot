@@ -28,6 +28,7 @@ version_control/autoload_on_startup=true
 [file_customization]
 
 folder_colors={
+"res://Theme/": "gray",
 "res://addons/": "gray",
 "res://audio/": "red",
 "res://build/": "gray",
