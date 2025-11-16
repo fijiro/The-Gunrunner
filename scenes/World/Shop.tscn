@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://b36v3yddxqru8"]
 
 [ext_resource type="Script" uid="uid://cfnvfbvp72dse" path="res://scripts/world/shop.gd" id="1_nrvu5"]
-[ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="2_66sc5"]
+[ext_resource type="Script" uid="uid://hgn455u4n21t" path="res://scripts/ui/inventory/shop_inventory.gd" id="2_o2qt0"]
 [ext_resource type="PackedScene" uid="uid://rbq026s3gauk" path="res://scenes/UI/ShopUI.tscn" id="3_o2qt0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w8xi3"]
@@ -49,6 +49,6 @@ shape = SubResource("BoxShape3D_0n7nc")
 transform = Transform3D(1, 0, 0, 0, 0.984832, 0.17351067, 0, -0.17351067, 0.984832, 0.0236118, 0.710379, 1.2248003)
 
 [node name="ShopInventory" type="Node3D" parent="."]
-script = ExtResource("2_66sc5")
+script = ExtResource("2_o2qt0")
 ui_scene = ExtResource("3_o2qt0")
 metadata/_custom_type_script = "uid://bw4h4e6lw16o7"

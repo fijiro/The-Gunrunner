@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://of4xisxwlrda"]
+[gd_scene load_steps=31 format=3 uid="uid://of4xisxwlrda"]
 
 [ext_resource type="Script" uid="uid://be1nh11w0wt4d" path="res://scripts/ui/icon_renderer.gd" id="1_nfivy"]
 [ext_resource type="PackedScene" uid="uid://dcnalrmgg8gld" path="res://scenes/World/Player/Player.tscn" id="2_1nqs0"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b1gas7b3mdm20" path="res://scenes/World/Crafting/DrawingPress.tscn" id="12_gsxep"]
 [ext_resource type="PackedScene" uid="uid://bw04oqsmrrltc" path="res://scenes/Item/Crafting/BrassCoil.tscn" id="13_v0vrg"]
 [ext_resource type="PackedScene" uid="uid://c2dufqu8ev64u" path="res://scenes/World/Crafting/BulletPress.tscn" id="14_dg70y"]
+[ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="14_xa025"]
 [ext_resource type="PackedScene" uid="uid://b36v3yddxqru8" path="res://scenes/World/Shop.tscn" id="15_2ofn6"]
 [ext_resource type="PackedScene" uid="uid://dyv8q7b12d1g5" path="res://scenes/Item/Crafting/LeadCoil.tscn" id="15_pnhog"]
 [ext_resource type="PackedScene" uid="uid://cn07wnn6x5iek" path="res://scenes/World/Crafting/CartridgeAssembler.tscn" id="16_2c4at"]
@@ -94,6 +95,21 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.969
 [node name="Shop" parent="." instance=ExtResource("15_2ofn6")]
 transform = Transform3D(0.011588748, 0, 0.9999328, 0, 1, 0, -0.9999328, 0, 0.011588748, -3.333322, 0.5, 3.6999063)
 
+[node name="ShopInventory" parent="Shop" index="4"]
+script = ExtResource("14_xa025")
+
+[node name="AkBarrel" parent="Shop/ShopInventory" index="0" instance=ExtResource("7_xa025")]
+
+[node name="AkGrip" parent="Shop/ShopInventory" index="1" instance=ExtResource("5_ebg2g")]
+
+[node name="AkReceiver" parent="Shop/ShopInventory" index="2" instance=ExtResource("6_2ofn6")]
+
+[node name="AkHandguard" parent="Shop/ShopInventory" index="3" instance=ExtResource("10_ma7h6")]
+
+[node name="AkMagazine" parent="Shop/ShopInventory" index="4" instance=ExtResource("8_36rkl")]
+
+[node name="AkStock" parent="Shop/ShopInventory" index="5" instance=ExtResource("9_fs0b5")]
+
 [node name="DrawingPress" parent="." instance=ExtResource("12_gsxep")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.056, 0.5, -0.697)
 
@@ -110,12 +126,16 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.27491, 0.5, 4.23522)
 
 [node name="Primer" parent="CartridgeAssembler/AssemblerInventory" index="0" instance=ExtResource("17_g6wdg")]
+price = 100
 
 [node name="RifleCase" parent="CartridgeAssembler/AssemblerInventory" index="1" instance=ExtResource("18_hq6as")]
+price = 100
 
 [node name="SmokelessPowder" parent="CartridgeAssembler/AssemblerInventory" index="2" instance=ExtResource("19_1nqs0")]
+price = 100
 
 [node name="RifleFmj" parent="CartridgeAssembler/AssemblerInventory" index="3" instance=ExtResource("19_kxyth")]
+price = 100
 
 [node name="PackagerStation" parent="." instance=ExtResource("21_1iba3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.20888, 0.5, 6.75246)
@@ -123,6 +143,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.2088
 [node name="Package" parent="PackagerStation/PackagerInventory" index="0" instance=ExtResource("22_yxlcp")]
 
 [editable path="Workbench"]
+[editable path="Shop"]
 [editable path="DrawingPress"]
 [editable path="BulletPress"]
 [editable path="CartridgeAssembler"]

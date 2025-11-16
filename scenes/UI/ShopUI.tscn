@@ -10,49 +10,255 @@ font_size = 29
 script = ExtResource("1_sqpqv")
 
 [node name="Panel" type="Panel" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = -1
+anchor_top = 0.24700001
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -512.5
-offset_top = -396.0
-offset_right = 512.5
+offset_top = -0.055999756
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="Panel"]
-layout_mode = 0
-offset_left = 376.0
-offset_top = 35.0
-offset_right = 618.0
-offset_bottom = 75.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.0
+offset_right = 39.0
+offset_bottom = 142.0
+grow_horizontal = 2
 text = "SHOP"
 label_settings = SubResource("LabelSettings_sqpqv")
-
-[node name="ItemSlots" type="GridContainer" parent="."]
-offset_left = 252.0
-offset_top = 356.0
-offset_right = 863.0
-offset_bottom = 560.0
-columns = 2
-
-[node name="ItemSlot0" parent="ItemSlots" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-
-[node name="ItemSlot1" parent="ItemSlots" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-
-[node name="ItemSlot2" parent="ItemSlots" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-
-[node name="ItemSlot3" parent="ItemSlots" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
+vertical_alignment = 1
 
 [node name="CloseButton" type="Button" parent="."]
-offset_left = 897.0
-offset_top = 508.0
-offset_right = 1023.0
-offset_bottom = 581.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -258.0
+offset_top = -128.0
+offset_right = -132.0
+offset_bottom = -55.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "CLOSE
 "
+
+[node name="AmountBox" type="SpinBox" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -232.432
+offset_top = -15.5
+offset_right = -145.86896
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+rounded = true
+
+[node name="BuyButton" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -258.0
+offset_top = -240.0
+offset_right = -132.0
+offset_bottom = -168.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "BUY"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+offset_left = 100.0
+offset_top = 298.0
+offset_right = 757.0
+offset_bottom = 593.0
+current_tab = 0
+
+[node name="Receivers" type="ScrollContainer" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Receivers" type="GridContainer" parent="TabContainer/Receivers"]
+layout_mode = 2
+columns = 6
+
+[node name="ItemSlot1" parent="TabContainer/Receivers/Receivers" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot2" parent="TabContainer/Receivers/Receivers" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot3" parent="TabContainer/Receivers/Receivers" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot4" parent="TabContainer/Receivers/Receivers" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot5" parent="TabContainer/Receivers/Receivers" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot6" parent="TabContainer/Receivers/Receivers" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="Barrels" type="GridContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+columns = 2
+metadata/_tab_index = 1
+
+[node name="ItemSlot1" parent="TabContainer/Barrels" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot2" parent="TabContainer/Barrels" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot3" parent="TabContainer/Barrels" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot4" parent="TabContainer/Barrels" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot5" parent="TabContainer/Barrels" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot6" parent="TabContainer/Barrels" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="Grips" type="GridContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+columns = 2
+metadata/_tab_index = 2
+
+[node name="ItemSlot1" parent="TabContainer/Grips" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot2" parent="TabContainer/Grips" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot3" parent="TabContainer/Grips" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot4" parent="TabContainer/Grips" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot5" parent="TabContainer/Grips" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot6" parent="TabContainer/Grips" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="Handguards" type="GridContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+columns = 2
+metadata/_tab_index = 3
+
+[node name="ItemSlot1" parent="TabContainer/Handguards" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot2" parent="TabContainer/Handguards" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot3" parent="TabContainer/Handguards" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot4" parent="TabContainer/Handguards" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot5" parent="TabContainer/Handguards" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot6" parent="TabContainer/Handguards" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="Stocks" type="GridContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+columns = 2
+metadata/_tab_index = 4
+
+[node name="ItemSlot1" parent="TabContainer/Stocks" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot2" parent="TabContainer/Stocks" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot3" parent="TabContainer/Stocks" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot4" parent="TabContainer/Stocks" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot5" parent="TabContainer/Stocks" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot6" parent="TabContainer/Stocks" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="Magazines" type="GridContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+columns = 2
+metadata/_tab_index = 5
+
+[node name="ItemSlot1" parent="TabContainer/Magazines" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot2" parent="TabContainer/Magazines" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot3" parent="TabContainer/Magazines" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot4" parent="TabContainer/Magazines" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot5" parent="TabContainer/Magazines" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
+
+[node name="ItemSlot6" parent="TabContainer/Magazines" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+metadata/_tab_index = 6
