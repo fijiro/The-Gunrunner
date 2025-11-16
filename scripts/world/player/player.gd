@@ -8,7 +8,6 @@ extends CharacterBody3D
 @export var inventory: PlayerInventory
 @export var head: Head
 var escape_ui: CanvasLayer
-var camera: Camera3D
 var rotation_y := 0.0
 var rotation_x := 0.0
 var input_enabled: bool = true 
@@ -16,7 +15,6 @@ var mouse_delta := Vector2.ZERO
 
 func _ready() -> void:
 	head = $Head
-	camera = $Head/Camera3D
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	escape_ui = escape_ui_scene.instantiate()
 	get_node("/root/Main/UI").add_child(escape_ui)
@@ -79,7 +77,7 @@ func _physics_process(delta):
 	
 	# Move the character
 	move_and_slide()
-	
+
 func get_camera() -> Camera3D:
 	return $Head/Camera3D
 
