@@ -35,7 +35,7 @@ func equip_slot(index: int):
 	equipped_item.reparent(hand)
 	equipped_item.rotation = Vector3.ZERO
 	equipped_item.position = Vector3.ZERO
-	player_ui.toggle_stylebox_color(ui_slot.get_node("Outline"))
+	ui_slot.toggle_stylebox_color()
 	head.equip_item()
 	#if(equipped_item is Weapon): 
 	#	equipped_item.position = equipped_item.get_left_grip().global_transform - hand.global_transform

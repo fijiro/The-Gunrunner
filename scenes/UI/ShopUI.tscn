@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://rbq026s3gauk"]
+[gd_scene load_steps=5 format=3 uid="uid://rbq026s3gauk"]
 
-[ext_resource type="PackedScene" uid="uid://6e4j46ntd53x" path="res://scenes/UI/ItemSlot.tscn" id="1_i6mk6"]
 [ext_resource type="Script" uid="uid://06uibhmcnvwp" path="res://scripts/ui/menu/shop_ui.gd" id="1_sqpqv"]
+[ext_resource type="Theme" uid="uid://b3xypqglic85n" path="res://Theme/Theme.tres" id="2_ad4n3"]
+[ext_resource type="PackedScene" uid="uid://dm14o2crp5f5i" path="res://scenes/UI/ShopSlot.tscn" id="5_l4yji"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sqpqv"]
 font_size = 29
@@ -82,183 +83,236 @@ offset_bottom = 593.0
 current_tab = 0
 
 [node name="Receivers" type="ScrollContainer" parent="TabContainer"]
+custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="Receivers" type="GridContainer" parent="TabContainer/Receivers"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Receivers"]
 layout_mode = 2
-columns = 6
+theme = ExtResource("2_ad4n3")
 
-[node name="ItemSlot1" parent="TabContainer/Receivers/Receivers" instance=ExtResource("1_i6mk6")]
+[node name="Panel" type="HBoxContainer" parent="TabContainer/Receivers/VBoxContainer"]
 layout_mode = 2
-metadata/_tab_index = 6
+theme = ExtResource("2_ad4n3")
 
-[node name="ItemSlot2" parent="TabContainer/Receivers/Receivers" instance=ExtResource("1_i6mk6")]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Receivers/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-metadata/_tab_index = 6
 
-[node name="ItemSlot3" parent="TabContainer/Receivers/Receivers" instance=ExtResource("1_i6mk6")]
+[node name="ShopSlot" parent="TabContainer/Receivers/VBoxContainer/Panel" instance=ExtResource("5_l4yji")]
 layout_mode = 2
-metadata/_tab_index = 6
+whitelist = Array[String](["receiver"])
 
-[node name="ItemSlot4" parent="TabContainer/Receivers/Receivers" instance=ExtResource("1_i6mk6")]
+[node name="VSeparator2" type="VSeparator" parent="TabContainer/Receivers/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-metadata/_tab_index = 6
 
-[node name="ItemSlot5" parent="TabContainer/Receivers/Receivers" instance=ExtResource("1_i6mk6")]
+[node name="ItemLabel" type="Label" parent="TabContainer/Receivers/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
-metadata/_tab_index = 6
+text = "TEXT FOR ITEM"
+autowrap_mode = 2
 
-[node name="ItemSlot6" parent="TabContainer/Receivers/Receivers" instance=ExtResource("1_i6mk6")]
+[node name="Panel2" type="HBoxContainer" parent="TabContainer/Receivers/VBoxContainer"]
 layout_mode = 2
-metadata/_tab_index = 6
+theme = ExtResource("2_ad4n3")
 
-[node name="Barrels" type="GridContainer" parent="TabContainer"]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Receivers/VBoxContainer/Panel2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="ShopSlot" parent="TabContainer/Receivers/VBoxContainer/Panel2" instance=ExtResource("5_l4yji")]
+layout_mode = 2
+whitelist = Array[String](["receiver"])
+
+[node name="VSeparator2" type="VSeparator" parent="TabContainer/Receivers/VBoxContainer/Panel2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="ItemLabel" type="Label" parent="TabContainer/Receivers/VBoxContainer/Panel2"]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+text = "TEXT FOR ITEM"
+autowrap_mode = 2
+
+[node name="Barrels" type="ScrollContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
-columns = 2
 metadata/_tab_index = 1
 
-[node name="ItemSlot1" parent="TabContainer/Barrels" instance=ExtResource("1_i6mk6")]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Barrels"]
 layout_mode = 2
-metadata/_tab_index = 6
+theme = ExtResource("2_ad4n3")
 
-[node name="ItemSlot2" parent="TabContainer/Barrels" instance=ExtResource("1_i6mk6")]
+[node name="Panel" type="HBoxContainer" parent="TabContainer/Barrels/VBoxContainer"]
 layout_mode = 2
-metadata/_tab_index = 6
+theme = ExtResource("2_ad4n3")
 
-[node name="ItemSlot3" parent="TabContainer/Barrels" instance=ExtResource("1_i6mk6")]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Barrels/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-metadata/_tab_index = 6
 
-[node name="ItemSlot4" parent="TabContainer/Barrels" instance=ExtResource("1_i6mk6")]
+[node name="ShopSlot" parent="TabContainer/Barrels/VBoxContainer/Panel" instance=ExtResource("5_l4yji")]
 layout_mode = 2
-metadata/_tab_index = 6
+whitelist = Array[String](["barrel"])
 
-[node name="ItemSlot5" parent="TabContainer/Barrels" instance=ExtResource("1_i6mk6")]
+[node name="VSeparator2" type="VSeparator" parent="TabContainer/Barrels/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-metadata/_tab_index = 6
 
-[node name="ItemSlot6" parent="TabContainer/Barrels" instance=ExtResource("1_i6mk6")]
+[node name="ItemLabel" type="Label" parent="TabContainer/Barrels/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
-metadata/_tab_index = 6
+text = "TEXT FOR ITEM"
+autowrap_mode = 2
 
-[node name="Grips" type="GridContainer" parent="TabContainer"]
+[node name="Grips" type="ScrollContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
-columns = 2
 metadata/_tab_index = 2
 
-[node name="ItemSlot1" parent="TabContainer/Grips" instance=ExtResource("1_i6mk6")]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Grips"]
 layout_mode = 2
-metadata/_tab_index = 6
 
-[node name="ItemSlot2" parent="TabContainer/Grips" instance=ExtResource("1_i6mk6")]
+[node name="Panel" type="HBoxContainer" parent="TabContainer/Grips/VBoxContainer"]
 layout_mode = 2
-metadata/_tab_index = 6
+theme = ExtResource("2_ad4n3")
 
-[node name="ItemSlot3" parent="TabContainer/Grips" instance=ExtResource("1_i6mk6")]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Grips/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-metadata/_tab_index = 6
 
-[node name="ItemSlot4" parent="TabContainer/Grips" instance=ExtResource("1_i6mk6")]
+[node name="ShopSlot" parent="TabContainer/Grips/VBoxContainer/Panel" instance=ExtResource("5_l4yji")]
 layout_mode = 2
-metadata/_tab_index = 6
 
-[node name="ItemSlot5" parent="TabContainer/Grips" instance=ExtResource("1_i6mk6")]
+[node name="VSeparator2" type="VSeparator" parent="TabContainer/Grips/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-metadata/_tab_index = 6
 
-[node name="ItemSlot6" parent="TabContainer/Grips" instance=ExtResource("1_i6mk6")]
+[node name="ItemLabel" type="Label" parent="TabContainer/Grips/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
-metadata/_tab_index = 6
+text = "TEXT FOR ITEM"
+autowrap_mode = 2
 
-[node name="Handguards" type="GridContainer" parent="TabContainer"]
+[node name="Panel2" type="HBoxContainer" parent="TabContainer/Grips/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ad4n3")
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Grips/VBoxContainer/Panel2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="ShopSlot" parent="TabContainer/Grips/VBoxContainer/Panel2" instance=ExtResource("5_l4yji")]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="TabContainer/Grips/VBoxContainer/Panel2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="ItemLabel" type="Label" parent="TabContainer/Grips/VBoxContainer/Panel2"]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+text = "TEXT FOR ITEM"
+autowrap_mode = 2
+
+[node name="Panel3" type="HBoxContainer" parent="TabContainer/Grips/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ad4n3")
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Grips/VBoxContainer/Panel3"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="ShopSlot" parent="TabContainer/Grips/VBoxContainer/Panel3" instance=ExtResource("5_l4yji")]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="TabContainer/Grips/VBoxContainer/Panel3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="ItemLabel" type="Label" parent="TabContainer/Grips/VBoxContainer/Panel3"]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+text = "TEXT FOR ITEM"
+autowrap_mode = 2
+
+[node name="Panel4" type="HBoxContainer" parent="TabContainer/Grips/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ad4n3")
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Grips/VBoxContainer/Panel4"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="ShopSlot" parent="TabContainer/Grips/VBoxContainer/Panel4" instance=ExtResource("5_l4yji")]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="TabContainer/Grips/VBoxContainer/Panel4"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="ItemLabel" type="Label" parent="TabContainer/Grips/VBoxContainer/Panel4"]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+text = "TEXT FOR ITEM"
+autowrap_mode = 2
+
+[node name="Panel5" type="HBoxContainer" parent="TabContainer/Grips/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ad4n3")
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Grips/VBoxContainer/Panel5"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="ShopSlot" parent="TabContainer/Grips/VBoxContainer/Panel5" instance=ExtResource("5_l4yji")]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="TabContainer/Grips/VBoxContainer/Panel5"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="ItemLabel" type="Label" parent="TabContainer/Grips/VBoxContainer/Panel5"]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+text = "TEXT FOR ITEM"
+autowrap_mode = 2
+
+[node name="Handguards" type="ScrollContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
-columns = 2
 metadata/_tab_index = 3
 
-[node name="ItemSlot1" parent="TabContainer/Handguards" instance=ExtResource("1_i6mk6")]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Handguards"]
 layout_mode = 2
-metadata/_tab_index = 6
 
-[node name="ItemSlot2" parent="TabContainer/Handguards" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-metadata/_tab_index = 6
-
-[node name="ItemSlot3" parent="TabContainer/Handguards" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-metadata/_tab_index = 6
-
-[node name="ItemSlot4" parent="TabContainer/Handguards" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-metadata/_tab_index = 6
-
-[node name="ItemSlot5" parent="TabContainer/Handguards" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-metadata/_tab_index = 6
-
-[node name="ItemSlot6" parent="TabContainer/Handguards" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-metadata/_tab_index = 6
-
-[node name="Stocks" type="GridContainer" parent="TabContainer"]
+[node name="Stocks" type="ScrollContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
-columns = 2
 metadata/_tab_index = 4
 
-[node name="ItemSlot1" parent="TabContainer/Stocks" instance=ExtResource("1_i6mk6")]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Stocks"]
 layout_mode = 2
-metadata/_tab_index = 6
 
-[node name="ItemSlot2" parent="TabContainer/Stocks" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-metadata/_tab_index = 6
-
-[node name="ItemSlot3" parent="TabContainer/Stocks" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-metadata/_tab_index = 6
-
-[node name="ItemSlot4" parent="TabContainer/Stocks" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-metadata/_tab_index = 6
-
-[node name="ItemSlot5" parent="TabContainer/Stocks" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-metadata/_tab_index = 6
-
-[node name="ItemSlot6" parent="TabContainer/Stocks" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-metadata/_tab_index = 6
-
-[node name="Magazines" type="GridContainer" parent="TabContainer"]
+[node name="Magazines" type="ScrollContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
-columns = 2
 metadata/_tab_index = 5
 
-[node name="ItemSlot1" parent="TabContainer/Magazines" instance=ExtResource("1_i6mk6")]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Magazines"]
 layout_mode = 2
-metadata/_tab_index = 6
 
-[node name="ItemSlot2" parent="TabContainer/Magazines" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-metadata/_tab_index = 6
-
-[node name="ItemSlot3" parent="TabContainer/Magazines" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-metadata/_tab_index = 6
-
-[node name="ItemSlot4" parent="TabContainer/Magazines" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-metadata/_tab_index = 6
-
-[node name="ItemSlot5" parent="TabContainer/Magazines" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-metadata/_tab_index = 6
-
-[node name="ItemSlot6" parent="TabContainer/Magazines" instance=ExtResource("1_i6mk6")]
-layout_mode = 2
-metadata/_tab_index = 6
+[node name="PriceLabel" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -221.0
+offset_top = -273.0
+offset_right = -181.0
+offset_bottom = -250.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "0 $"

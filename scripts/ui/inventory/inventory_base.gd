@@ -23,9 +23,9 @@ func _ready() -> void:
 		add_item(child)
 		
 ## Return true if item was successfully added to inventory.
-func add_item(item: Node3D, slot: ItemSlot = null) -> bool:
+func add_item(item: Item, slot: ItemSlot = null) -> bool:
 	if item == null: return false
-	var item_slot: ItemSlot = slot if slot else get_first_empty_slot()
+	var item_slot: ItemSlot = slot if slot else get_first_empty_slot(item.type)
 	if(item_slot == null): return false
 	
 	if item.get_parent(): 
@@ -46,14 +46,15 @@ func get_ui_slot(index: Variant) -> ItemSlot:
 ## Returns all inventory slots.
 func get_slots() -> Array[ItemSlot]:
 	var slots: Array[ItemSlot] = []
-	for item in ui.find_children("*","ItemSlot",true,false):
-		if item is ItemSlot: slots.append(item)
+	for child in ui.find_children("*","ItemSlot",true,false):
+		if child is ItemSlot: slots.append(child)
 	return slots
 	
-## Returns first empty slot under ItemSlots.
-func get_first_empty_slot(type: String = "*") -> ItemSlot:
+## Returns first empty slot of type under ItemSlots 
+func get_first_empty_slot(type: String = "") -> ItemSlot:
 	for slot: ItemSlot in get_slots():
 		if slot.item == null and slot.is_whitelisted(type): return slot
+	print( "COULDNT FIND SLOT FOR ", type)
 	return null
 	
 ## Returns existing items under ItemSlots

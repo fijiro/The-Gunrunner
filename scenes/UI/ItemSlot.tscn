@@ -89,3 +89,6 @@ text = "Type"
 label_settings = SubResource("LabelSettings_b2tsh")
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="slot_pressed" from="." to="." method="_on_slot_pressed"]

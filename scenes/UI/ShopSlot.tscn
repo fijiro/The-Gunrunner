@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm14o2crp5f5i"]
+
+[ext_resource type="PackedScene" uid="uid://6e4j46ntd53x" path="res://scenes/UI/ItemSlot.tscn" id="1_i02kc"]
+[ext_resource type="Script" uid="uid://b7d6v44t8uwj5" path="res://scripts/ui/inventory/shop_slot.gd" id="2_56ds0"]
+
+[node name="ShopSlot" instance=ExtResource("1_i02kc")]
+script = ExtResource("2_56ds0")

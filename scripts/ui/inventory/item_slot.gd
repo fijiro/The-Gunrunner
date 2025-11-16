@@ -1,6 +1,6 @@
 class_name ItemSlot extends TextureRect
-
 signal dropped_data
+signal slot_pressed
 var item: Item
 var inventory: InventoryBase
 var icon_renderer: IconRenderer
@@ -94,4 +94,16 @@ func add_one() -> bool:
 	return set_stacks(stack_size + 1)
 
 func is_whitelisted(type: String) -> bool:
-	return whitelist.is_empty() or whitelist.has(type)
+	return type == "" or whitelist.is_empty() or whitelist.has(type)
+
+func _on_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		emit_signal("slot_pressed")
+
+func _on_slot_pressed() -> void:
+	pass
+
+func toggle_stylebox_color() -> void:
+	var style := ($Outline.get_theme_stylebox("panel") as StyleBoxFlat).duplicate()
+	style.border_color = Color.RED if style.border_color == Color.YELLOW else Color.YELLOW
+	$Outline.add_theme_stylebox_override("panel", style)
