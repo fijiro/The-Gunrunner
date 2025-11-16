@@ -22,5 +22,5 @@ func _update_price() -> void:
 	# get label Price
 	var label: Label = inventory.ui.get_node("Price")
 	# get receiver price
-	var price = (sell_slot.item as Item).price if sell_slot.item != null else 0.0
+	var price = (sell_slot.item as Item).price if sell_slot.item != null else 0
 	label.text = "%s€" % price
