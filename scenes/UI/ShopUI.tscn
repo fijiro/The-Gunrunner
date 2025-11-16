@@ -37,7 +37,16 @@ offset_right = 863.0
 offset_bottom = 560.0
 columns = 2
 
-[node name="ItemSlot" parent="ItemSlots" instance=ExtResource("1_i6mk6")]
+[node name="ItemSlot0" parent="ItemSlots" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+
+[node name="ItemSlot1" parent="ItemSlots" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="ItemSlots" instance=ExtResource("1_i6mk6")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="ItemSlots" instance=ExtResource("1_i6mk6")]
 layout_mode = 2
 
 [node name="CloseButton" type="Button" parent="."]
