@@ -25,7 +25,7 @@ func equip_item() -> void:
 		#(item as RigidBody3D).gravity_scale = 0
 		(item as RigidBody3D).freeze = true
 		pass
-	hand.grab_item()
+	hand.grip_item()
 
 # Handle input here so unequipped weapons don't care about input
 func fire_input():
