@@ -51,9 +51,9 @@ func get_slots() -> Array[ItemSlot]:
 	return slots
 	
 ## Returns first empty slot under ItemSlots.
-func get_first_empty_slot() -> ItemSlot:
+func get_first_empty_slot(type: String = "*") -> ItemSlot:
 	for slot: ItemSlot in get_slots():
-		if slot.item == null: return slot
+		if slot.item == null and slot.whitelist == type: return slot
 	return null
 	
 ## Returns existing items under ItemSlots
