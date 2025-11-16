@@ -7,7 +7,7 @@ func _init():
 	part = "Gun Part"
 	desc = "Description for Gun Part."
 	type = "gun_part"
-	price = 100.0
+	price = 100
 	weight = 1.0
 
 	pass
