@@ -25,9 +25,12 @@ font_size = 20
 [sub_resource type="LabelSettings" id="LabelSettings_b2tsh"]
 
 [node name="ItemSlot" type="TextureRect"]
+clip_contents = true
 custom_minimum_size = Vector2(100, 100)
 offset_right = 100.0
 offset_bottom = 100.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 tooltip_text = "Tooltip for ItemSlot
 - Item name
 - Weight"
@@ -81,7 +84,7 @@ offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
 tooltip_text = "Tooltip for Attachement type"
-mouse_filter = 0
+mouse_filter = 1
 text = "Type"
 label_settings = SubResource("LabelSettings_b2tsh")
 horizontal_alignment = 1
