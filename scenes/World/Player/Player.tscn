@@ -31,6 +31,7 @@ inventory = NodePath("PlayerInventory")
 head = NodePath("Head")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_a202f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -24,12 +24,13 @@ func _ready() -> void:
 	
 
 func _unhandled_input(event: InputEvent) -> void:
+	# TODO: breaks with InteractableObject
 	if event.is_action_pressed("escape"):
 		escape_ui.visible = not escape_ui.visible
 		input_enabled = not input_enabled
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if not input_enabled else Input.MOUSE_MODE_CAPTURED)
 	
-	#TODO: 16.09.2025 future me clean this up
+	#TODO: 16.09.2025 future me clean this up, will have 10? slots
 	elif event.is_action_pressed("item_slot_1"): inventory.equip_slot(0)
 	elif event.is_action_pressed("item_slot_2"): inventory.equip_slot(1)
 	elif event.is_action_pressed("item_slot_3"): inventory.equip_slot(2)
