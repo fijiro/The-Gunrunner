@@ -15,7 +15,7 @@ func _ready() -> void:
 	ui = ui_scene.instantiate()
 	get_node("/root/Main/UI").add_child(ui)
 	#Connect all nodes to item slots
-	for item_slot: ItemSlot in ui.get_node("ItemSlots").get_children():
+	for item_slot: ItemSlot in get_slots():
 		item_slot.setup(null, self)
 		#item_slot.dropped_data.connect(add_item)
 	#Add existing items in inventory
@@ -46,13 +46,13 @@ func get_ui_slot(index: Variant) -> ItemSlot:
 ## Returns all inventory slots.
 func get_slots() -> Array[ItemSlot]:
 	var slots: Array[ItemSlot] = []
-	for item in ui.get_node("ItemSlots").get_children():
+	for item in ui.find_children("*","ItemSlot",true,false):
 		if item is ItemSlot: slots.append(item)
 	return slots
 	
 ## Returns first empty slot under ItemSlots.
 func get_first_empty_slot() -> ItemSlot:
-	for slot: ItemSlot in ui.get_node("ItemSlots").get_children():
+	for slot: ItemSlot in get_slots():
 		if slot.item == null: return slot
 	return null
 	
