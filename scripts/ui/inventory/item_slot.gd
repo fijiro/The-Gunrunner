@@ -7,6 +7,7 @@ var icon_renderer: IconRenderer
 var draggable := true
 var stack_size := 0
 @export var whitelist: Array[String]
+
 func _ready():
 	icon_renderer = get_node("/root/Main/IconRenderer")
 
@@ -44,7 +45,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	data.set("slot", self)
 	data.set("shift", Input.is_key_pressed(KEY_SHIFT))
 	return data
-	
+
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	var d_slot: ItemSlot = data.get("slot")
 	# Cannot drop on itself
@@ -77,7 +78,7 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 
 	emit_signal("dropped_data")
 	d_slot.emit_signal("dropped_data")
-	
+
 func _regenerate_icon(force: bool = false) -> void:
 	texture = await icon_renderer.render_icon(item, force)
 	#TODO: Use part icons instead
@@ -88,6 +89,9 @@ func _regenerate_icon(force: bool = false) -> void:
 func take_one() -> void:
 	if !item or !stack_size: return 
 	set_stacks(stack_size - 1)
-	
+
 func add_one() -> bool:
 	return set_stacks(stack_size + 1)
+
+func is_whitelisted(type: String) -> bool:
+	return whitelist.is_empty() or whitelist.has(type)
