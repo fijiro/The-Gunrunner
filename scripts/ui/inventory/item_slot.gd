@@ -9,15 +9,12 @@ var stack_size := 0
 @export var whitelist: Array[String]
 func _ready():
 	icon_renderer = get_node("/root/Main/IconRenderer")
-	mouse_filter = Control.MOUSE_FILTER_PASS
 
 func setup(item_node: Item, inventory_node: InventoryBase) -> void:
 	item = item_node if item_node and !item_node.is_queued_for_deletion() else null
 	set_stacks(1 if item else 0)
 	inventory = inventory_node
 	_regenerate_icon(true)
-	$TypeLabel.text = item.type if item else ""
-	$PriceLabel.text = "%s$" % item.price if item else ""
 
 ## @param amount of available nodes
 ## Returns how many didn't fit in slot.
@@ -61,9 +58,10 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	return true
 
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
-	#Move data to the new item slot
+	# Move data to the new item slot
 	var d_slot = data.get("slot") as ItemSlot
 	if !d_slot: push_error("ERR: NO SLOT"); return
+	# Combine stackable item to fill new slot
 	if !item:
 		if d_slot.item.max_stack == 1:
 			inventory.add_item(d_slot.item, self)
@@ -82,6 +80,10 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	
 func _regenerate_icon(force: bool = false) -> void:
 	texture = await icon_renderer.render_icon(item, force)
+	#TODO: Use part icons instead
+	$TypeLabel.text = item.type if item else ""
+	$PriceLabel.text = "%s$" % item.price if item else ""
+	tooltip_text = item.desc if item else ""
 
 func take_one() -> void:
 	if !item or !stack_size: return 
