@@ -7,7 +7,6 @@ var icon_renderer: IconRenderer
 var draggable := true
 var stack_size := 0
 @export var whitelist: Array[String]
-
 func _ready():
 	icon_renderer = get_node("/root/Main/IconRenderer")
 	mouse_filter = Control.MOUSE_FILTER_PASS
@@ -17,6 +16,8 @@ func setup(item_node: Item, inventory_node: InventoryBase) -> void:
 	set_stacks(1 if item else 0)
 	inventory = inventory_node
 	_regenerate_icon(true)
+	$TypeLabel.text = item.type if item else ""
+	$PriceLabel.text = "%s$" % item.price if item else ""
 
 ## @param amount of available nodes
 ## Returns how many didn't fit in slot.
