@@ -4,6 +4,7 @@ class_name InteractableObject extends Node3D
 @export var zoom_target: NodePath
 var player_in_range = false
 var player_camera: Camera3D
+var player: Player
 var original_camera_transform: Transform3D
 var zoomed_in := false
 var exiting_menu := false
@@ -20,7 +21,9 @@ func _ready():
 func _on_body_entered(body):
 	if body.has_method("get_camera"):
 		player_in_range = true
+		player = body
 		player_camera = body.get_camera()
+		
 func _on_body_exited(body):
 	if body.has_method("get_camera"):
 		player_in_range = false
@@ -33,7 +36,6 @@ func _zoom_in_and_show_menu():
 	# Disable player input
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if player_camera:
-		var player = player_camera.get_parent().get_parent()
 		if player.has_method("set_input_enabled"):
 			player.set_input_enabled(false)
 	# Zoom in
@@ -55,7 +57,6 @@ func exit_menu():
 	inventory.ui.visible = false
 	zoomed_in = false
 	if player_camera:
-		var player = player_camera.get_parent().get_parent()
 		if player.has_method("set_input_enabled"):
 			player.set_input_enabled(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
