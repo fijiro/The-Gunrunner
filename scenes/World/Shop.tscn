@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b36v3yddxqru8"]
+[gd_scene load_steps=12 format=3 uid="uid://b36v3yddxqru8"]
 
 [ext_resource type="Script" uid="uid://cfnvfbvp72dse" path="res://scripts/world/shop.gd" id="1_nrvu5"]
 [ext_resource type="Script" uid="uid://hgn455u4n21t" path="res://scripts/ui/inventory/shop_inventory.gd" id="2_o2qt0"]
+[ext_resource type="PackedScene" uid="uid://5q41qki46vl0" path="res://scenes/World/Scrate.tscn" id="2_y2l7k"]
+[ext_resource type="PackedScene" uid="uid://6e4j46ntd53x" path="res://scenes/UI/ItemSlot.tscn" id="3_0n7nc"]
 [ext_resource type="PackedScene" uid="uid://rbq026s3gauk" path="res://scenes/UI/ShopUI.tscn" id="3_o2qt0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w8xi3"]
@@ -24,6 +26,8 @@ size = Vector3(0.3, 0.57, 0.675)
 
 [node name="Shop" type="Node3D" node_paths=PackedStringArray("inventory")]
 script = ExtResource("1_nrvu5")
+shipment_scene = ExtResource("2_y2l7k")
+item_slot_scene = ExtResource("3_0n7nc")
 zoom_target = NodePath("CameraPosition")
 inventory = NodePath("ShopInventory")
 
