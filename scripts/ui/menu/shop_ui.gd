@@ -1,10 +1,13 @@
 extends CanvasLayer
 signal menu_closed
-func _ready():
-	get_node("CloseButton").pressed.connect(_on_close_pressed)
+signal buy_pressed
+signal amount_changed(value: float)
 
 func _on_close_pressed():
 	emit_signal("menu_closed")
 
-func _on_slot_pressed():
-	emit_signal("slot_pressed")
+func _on_buy_pressed():
+	emit_signal("buy_pressed")
+
+func _on_value_changed(value: float) -> void:
+	emit_signal("amount_changed", value)
