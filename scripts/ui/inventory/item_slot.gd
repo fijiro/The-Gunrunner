@@ -7,6 +7,7 @@ var icon_renderer: IconRenderer
 var draggable := true
 var stack_size := 0
 @export var whitelist: Array[String]
+@export var remove_only := false
 
 func _ready():
 	icon_renderer = get_node("/root/Main/IconRenderer")
@@ -48,13 +49,13 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	var d_slot: ItemSlot = data.get("slot")
-	# Cannot drop on itself
-	if d_slot == self: return false
+	# Cannot drop on itself or remove only -slots
+	if d_slot == self or d_slot.remove_only: return false
 	# Old slot must have an item
 	elif typeof(data) != TYPE_DICTIONARY or !d_slot.item: return false
 	# If new slot has an item, it must be the same type
 	elif item != null and d_slot.item.part != item.part: return false
-	#Item must be whitelisted if whitelist exists in slot
+	# Finally item must be whitelisted if whitelist exists in slot
 	elif !whitelist.is_empty() and d_slot.item.type not in whitelist: return false
 	return true
 
