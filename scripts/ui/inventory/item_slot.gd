@@ -50,7 +50,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	var d_slot: ItemSlot = data.get("slot")
 	# Cannot drop on itself or remove only -slots
-	if d_slot == self or d_slot.remove_only: return false
+	if d_slot == self or remove_only: return false
 	# Old slot must have an item
 	elif typeof(data) != TYPE_DICTIONARY or !d_slot.item: return false
 	# If new slot has an item, it must be the same type
