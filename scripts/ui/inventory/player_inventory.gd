@@ -9,6 +9,7 @@ var player_ui: PlayerUI
 func _ready():
 	super._ready()
 	player_ui = ui
+	adjust_money(1000)
 	
 func equip_slot(index: int):
 	if index < 0 or index >= 3 or !get_ui_slot(index).item: return
