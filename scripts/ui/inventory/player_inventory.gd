@@ -19,7 +19,7 @@ func equip_slot(index: int):
 		ui_slot.draggable = true
 		equipped_item.visible = false
 		equipped_item.reparent(self)
-		player_ui.toggle_stylebox_color(ui_slot.get_node("Outline"))
+		ui_slot.toggle_stylebox_color()
 		head.equip_item()
 	
 	# Reselecting a slot only clears it
