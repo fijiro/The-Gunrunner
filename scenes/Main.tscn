@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://of4xisxwlrda"]
+[gd_scene load_steps=31 format=3 uid="uid://of4xisxwlrda"]
 
 [ext_resource type="Script" uid="uid://be1nh11w0wt4d" path="res://scripts/ui/icon_renderer.gd" id="1_nfivy"]
 [ext_resource type="PackedScene" uid="uid://dcnalrmgg8gld" path="res://scenes/World/Player/Player.tscn" id="2_1nqs0"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://cv1qabwpjnk0" path="res://scenes/Item/Cartridge/Bullet/RifleFMJ.tscn" id="19_kxyth"]
 [ext_resource type="PackedScene" uid="uid://dkjfc1kdjd3ss" path="res://scenes/World/Crafting/PackagerStation.tscn" id="21_1iba3"]
 [ext_resource type="PackedScene" uid="uid://cii662mjy024q" path="res://scenes/Item/Package/Package.tscn" id="22_yxlcp"]
+[ext_resource type="PackedScene" uid="uid://dxb6qq60wgsuf" path="res://scenes/World/Target.tscn" id="25_xa025"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ap7x"]
 sky_top_color = Color(0.22776, 0.686502, 0.822227, 1)
@@ -143,6 +144,9 @@ price = 100
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.20888, 0.5, 6.75246)
 
 [node name="Package" parent="PackagerStation/PackagerInventory" index="0" instance=ExtResource("22_yxlcp")]
+
+[node name="Target" parent="." instance=ExtResource("25_xa025")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.3927436, 0.09718616, 0.17249943)
 
 [editable path="Workbench"]
 [editable path="Shop"]
