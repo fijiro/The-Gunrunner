@@ -133,6 +133,7 @@ mesh = SubResource("TubeTrailMesh_t6lyi")
 
 [node name="Board" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3211444, 1.294328, 0)
+mass = 0.089
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Board"]
 mesh = SubResource("BoxMesh_xhexy")
