@@ -11,19 +11,19 @@ func equip_item() -> void:
 		weapon.weapon_fired.disconnect(hand.recoil_weapon)
 		weapon.weapon_fired.disconnect(player_inv.adjust_ammo)
 		weapon = null
-	if hand.get_child_count() < 3: return
-	var item = hand.get_child(2)
+	var items_in_hand: Array = hand.get_children().filter(func(c): return c is Item)
+	if items_in_hand.is_empty(): return
+	var item_node = items_in_hand.front()
 	# Equip new item
-	if item is Weapon: 
-		print("is weapon")
-		weapon = hand.get_child(2)
+	if item_node is Weapon: 
+		weapon = item_node
 		hand.item = weapon
 		weapon.weapon_fired.connect(hand.recoil_weapon)
 		weapon.weapon_fired.connect(player_inv.adjust_ammo)
-	# TODO: Might have gravity issues?
-	if item.is_class("RigidBody3D"):
+	# TODO: Might have gravity issues, unfreeze unequipped
+	if item_node.is_class("RigidBody3D"):
 		#(item as RigidBody3D).gravity_scale = 0
-		(item as RigidBody3D).freeze = true
+		(item_node as RigidBody3D).freeze = true
 		pass
 	hand.grip_item()
 

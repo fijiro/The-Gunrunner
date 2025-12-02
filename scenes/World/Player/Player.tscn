@@ -97,7 +97,7 @@ collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_51nuk")
 can_sleep = false
 script = ExtResource("6_51nuk")
-recoil_amount = Vector3(0.2, 0.4, 0.2)
+recoil_amount = Vector3(1, 0.4, 0.2)
 snap_amount = 10.0
 speed = 10.0
 max_distance = 0.04
@@ -109,5 +109,6 @@ mesh = ExtResource("8_lymgr")
 skeleton = NodePath("../..")
 
 [node name="GrabJoint" type="PinJoint3D" parent="Head/Hand"]
+process_mode = 4
 node_a = NodePath("..")
 node_b = NodePath("..")

@@ -6,11 +6,12 @@ var money := 0
 var player_ui: PlayerUI
 @export var head: Head
 @export var hand: Hand
+
 func _ready():
 	super._ready()
 	player_ui = ui
 	adjust_money(1000)
-	
+
 func equip_slot(index: int):
 	if index < 0 or index >= 3 or !get_ui_slot(index).item: return
 	var ui_slot = get_ui_slot(equipped_index)
@@ -38,8 +39,6 @@ func equip_slot(index: int):
 	equipped_item.position = Vector3.ZERO
 	ui_slot.toggle_stylebox_color()
 	head.equip_item()
-	#if(equipped_item is Weapon): 
-	#	equipped_item.position = equipped_item.get_left_grip().global_transform - hand.global_transform
 
 func adjust_money(amount: int) -> void:
 	money += amount

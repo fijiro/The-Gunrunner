@@ -14,12 +14,10 @@ var input_enabled: bool = true
 var mouse_delta := Vector2.ZERO
 
 func _ready() -> void:
-	head = $Head
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	escape_ui = escape_ui_scene.instantiate()
 	get_node("/root/Main/UI").add_child(escape_ui)
 	escape_ui.visible = false
-	
 
 func _unhandled_input(event: InputEvent) -> void:
 	# TODO: breaks with InteractableObject
@@ -69,7 +67,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 	elif Input.is_action_just_pressed("jump"):
 		velocity.y = jump_velocity
-		
+	
 	# Movement
 	var target_velocity = direction * speed
 	velocity.x = move_toward(velocity.x, target_velocity.x, 20 * delta)
