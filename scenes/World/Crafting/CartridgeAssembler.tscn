@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://cn07wnn6x5iek"]
+
+[ext_resource type="Script" uid="uid://cd6yaw1ovi5ql" path="res://scripts/world/crafting/assembler.gd" id="1_8nkjp"]
+[ext_resource type="PackedScene" uid="uid://b3h1foxedo06f" path="res://scenes/Item/Cartridge/Cartridge.tscn" id="2_dmvep"]
+[ext_resource type="PackedScene" uid="uid://dffyp6jpjwr8y" path="res://scenes/UI/AssemblerUI.tscn" id="3_8nkjp"]
+[ext_resource type="Script" uid="uid://bw4h4e6lw16o7" path="res://scripts/ui/inventory/inventory_base.gd" id="3_qfce5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5602k"]
+transparency = 1
+albedo_color = Color(0.655757, 0.461158, 7.70092e-07, 0.658824)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7tolv"]
+material = SubResource("StandardMaterial3D_5602k")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l4ogl"]
+size = Vector3(0.25, 0.5, 0.5)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7rqw5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8j27g"]
+
+[node name="CartridgeAssembler" type="Node3D" node_paths=PackedStringArray("inventory")]
+script = ExtResource("1_8nkjp")
+product_scene = ExtResource("2_dmvep")
+zoom_target = NodePath("CameraPosition")
+inventory = NodePath("AssemblerInventory")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_7tolv")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 31
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.565, 0.485267)
+shape = SubResource("BoxShape3D_l4ogl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 31
+physics_material_override = SubResource("PhysicsMaterial_7rqw5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_8j27g")
+
+[node name="AssemblerInventory" type="Node3D" parent="."]
+script = ExtResource("3_qfce5")
+ui_scene = ExtResource("3_8nkjp")
+
+[node name="CameraPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0236118, 0.61928, 1.14704)
+
+[node name="ProductPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515303, 0.460711)

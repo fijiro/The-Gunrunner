@@ -3,7 +3,7 @@ class_name InventoryBase extends Node3D
 
 @export var ui_scene: PackedScene
 var ui: CanvasLayer
-var items: Array[Node3D] = []
+#var items: Array[Node3D] = []
 # When inventory is created: 
 # 1. Generate UI, items (3D nodes) and set them invisible ✔
 # 	1.1 Dummy values for now ✔
@@ -15,30 +15,51 @@ func _ready() -> void:
 	ui = ui_scene.instantiate()
 	get_node("/root/Main/UI").add_child(ui)
 	#Connect all nodes to item slots
-	for item_slot: TextureRect in ui.get_node("ItemSlots").get_children():
+	for item_slot: ItemSlot in get_slots():
 		item_slot.setup(null, self)
+		#item_slot.dropped_data.connect(add_item)
 	#Add existing items in inventory
 	for child in get_children():
 		add_item(child)
 		
-## Returns was item successfully added to inventory.
-func add_item(item: Node3D) -> bool:
+## Return true if item was successfully added to inventory.
+func add_item(item: Item, slot: ItemSlot = null) -> bool:
 	if item == null: return false
-	items.append(item)
-	if item.get_parent(): item.reparent(self)
+	var item_slot: ItemSlot = slot if slot else get_first_empty_slot(item.type)
+	if(item_slot == null): return false
+	
+	if item.get_parent(): 
+		item.reparent(self)
 	else: add_child(item)
-	var item_slot: DraggableItem = get_ui_slot(items.find(item))
 	item_slot.setup(item, self)
 	item.visible = false
 	return true
 
-## Returns null or DraggableItem slot for index.
-func get_ui_slot(index: int) -> DraggableItem:
-	return ui.get_node("ItemSlots").get_child(index) if index > -1 else null
+## Returns null or ItemSlot slot for index.
+func get_ui_slot(index: Variant) -> ItemSlot:
+	if index is int:
+		return ui.get_node("ItemSlots").get_child(index) if index > -1 else null
+	elif index is String:
+		return ui.get_node("ItemSlots").get_node(index)
+	else: return null
 	
 ## Returns all inventory slots.
-func get_slots() -> Array[DraggableItem]:
-	var slots: Array[DraggableItem] = []
-	for item in ui.get_node("ItemSlots").get_children():
-		if item is DraggableItem: slots.append(item)
+func get_slots() -> Array[ItemSlot]:
+	var slots: Array[ItemSlot] = []
+	for child in ui.find_children("*","ItemSlot",true,false):
+		if child is ItemSlot: slots.append(child)
 	return slots
+	
+## Returns first empty slot of type under ItemSlots 
+func get_first_empty_slot(type: String = "") -> ItemSlot:
+	for slot: ItemSlot in get_slots():
+		if slot.item == null and slot.is_whitelisted(type): return slot
+	print( "COULDNT FIND SLOT FOR ", type)
+	return null
+	
+## Returns existing items under ItemSlots
+func get_items() -> Dictionary[String, Item]:
+	var items: Dictionary[String, Item] = {}
+	for slot in get_slots():
+		if slot.item != null: items.set((slot.item as Item).type, slot.item)
+	return items

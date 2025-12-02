@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxne2ne1es1t0"]
+
+[ext_resource type="Script" uid="uid://cl6f7leydvfof" path="res://database/items/parts/magazines/ak_magazine.gd" id="1_6lfn3"]
+[ext_resource type="Script" uid="uid://brk75eoad7vv4" path="res://scripts/ui/inventory/magazine_inventory.gd" id="2_tryft"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hh72p"]
+albedo_color = Color(0.11, 0.11, 0.11, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6lfn3"]
+material = SubResource("StandardMaterial3D_hh72p")
+size = Vector3(0.07, 0.15, 0.03)
+
+[node name="AkMagazine" type="Node3D"]
+script = ExtResource("1_6lfn3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_6lfn3")
+
+[node name="Receiver_Attach" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015668, 0.0700903, 0)
+
+[node name="MagazineInventory" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("2_tryft")

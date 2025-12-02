@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dctqwvyon5qeb"]
+
+[ext_resource type="PackedScene" uid="uid://6e4j46ntd53x" path="res://scenes/UI/ItemSlot.tscn" id="1_7oac0"]
+
+[node name="MagazineSlot" type="CanvasLayer"]
+
+[node name="ItemSlots" type="GridContainer" parent="."]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="ItemSlot" parent="ItemSlots" instance=ExtResource("1_7oac0")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+whitelist = Array[String](["cartridge"])
+
+[node name="Outline" parent="ItemSlots/ItemSlot" index="0"]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 0.0
+offset_bottom = 0.0
+
+[editable path="ItemSlots/ItemSlot"]

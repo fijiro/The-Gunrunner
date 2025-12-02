@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bucim7g0dsxau"]
+
+[ext_resource type="Script" uid="uid://bldfu1sh5avcf" path="res://database/items/cartridges/propellants/propellant.gd" id="1_w5fso"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2ns4"]
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.38
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w5fso"]
+material = SubResource("StandardMaterial3D_w2ns4")
+radius = 0.005
+height = 0.01
+
+[node name="SmokelessPowder" type="Node3D"]
+script = ExtResource("1_w5fso")
+part = "Propellant"
+desc = "Standard cartridge propellant."
+type = "propellant"
+price = 1.0
+weight = 0.003
+max_stack = 10
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_w5fso")
+
+[node name="Case_Attach" type="Marker3D" parent="."]
+gizmo_extents = 0.1

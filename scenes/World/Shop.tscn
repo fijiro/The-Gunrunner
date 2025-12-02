@@ -1,0 +1,58 @@
+[gd_scene load_steps=12 format=3 uid="uid://b36v3yddxqru8"]
+
+[ext_resource type="Script" uid="uid://cfnvfbvp72dse" path="res://scripts/world/shop.gd" id="1_nrvu5"]
+[ext_resource type="Script" uid="uid://hgn455u4n21t" path="res://scripts/ui/inventory/shop_inventory.gd" id="2_o2qt0"]
+[ext_resource type="PackedScene" uid="uid://5q41qki46vl0" path="res://scenes/World/Scrate.tscn" id="2_y2l7k"]
+[ext_resource type="PackedScene" uid="uid://6e4j46ntd53x" path="res://scenes/UI/ItemSlot.tscn" id="3_0n7nc"]
+[ext_resource type="PackedScene" uid="uid://rbq026s3gauk" path="res://scenes/UI/ShopUI.tscn" id="3_o2qt0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w8xi3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nrvu5"]
+albedo_color = Color(0, 0.7411765, 0.011764706, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_66sc5"]
+material = SubResource("StandardMaterial3D_nrvu5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o2qt0"]
+albedo_color = Color(0.73333335, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y2l7k"]
+material = SubResource("StandardMaterial3D_o2qt0")
+size = Vector3(0.56, 0.545, 0.55)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0n7nc"]
+size = Vector3(0.3, 0.57, 0.675)
+
+[node name="Shop" type="Node3D" node_paths=PackedStringArray("inventory")]
+script = ExtResource("1_nrvu5")
+shipment_scene = ExtResource("2_y2l7k")
+item_slot_scene = ExtResource("3_0n7nc")
+zoom_target = NodePath("CameraPosition")
+inventory = NodePath("ShopInventory")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_w8xi3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_66sc5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+mesh = SubResource("BoxMesh_y2l7k")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.825, 0.83)
+shape = SubResource("BoxShape3D_0n7nc")
+
+[node name="CameraPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984832, 0.17351067, 0, -0.17351067, 0.984832, 0.0236118, 0.710379, 1.2248003)
+
+[node name="ShopInventory" type="Node3D" parent="."]
+script = ExtResource("2_o2qt0")
+ui_scene = ExtResource("3_o2qt0")
+metadata/_custom_type_script = "uid://bw4h4e6lw16o7"

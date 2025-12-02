@@ -1,0 +1,106 @@
+[gd_scene load_steps=16 format=3 uid="uid://dcnalrmgg8gld"]
+
+[ext_resource type="Script" uid="uid://bywnheoxx05hd" path="res://scripts/world/player/player.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://ceukhfs3la5va" path="res://scenes/UI/EscUI.tscn" id="2_qu4a1"]
+[ext_resource type="Script" uid="uid://clvc26qjt7ui3" path="res://scripts/ui/inventory/player_inventory.gd" id="2_v6fml"]
+[ext_resource type="PackedScene" uid="uid://d1khoen7g4diq" path="res://scenes/UI/PlayerUI.tscn" id="4_mdl7e"]
+[ext_resource type="Script" uid="uid://tp00u5umryxw" path="res://scripts/world/player/head.gd" id="5_qttn6"]
+[ext_resource type="Script" uid="uid://d1fgahxbwr6in" path="res://scripts/world/player/hand.gd" id="6_51nuk"]
+[ext_resource type="Script" uid="uid://dm4g781hqj2yc" path="res://scripts/world/player/hand_joint.gd" id="7_6wi46"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdl7e"]
+albedo_color = Color(0.62, 0.62, 0.62, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_a202f"]
+material = SubResource("StandardMaterial3D_mdl7e")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a202f"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_51nuk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51nuk"]
+albedo_color = Color(0.830032, 0.6154099, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6wi46"]
+material = SubResource("StandardMaterial3D_51nuk")
+radius = 0.075
+height = 0.15
+radial_segments = 32
+rings = 16
+is_hemisphere = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_51nuk"]
+radius = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_51nuk"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("inventory", "head")]
+collision_mask = 26
+safe_margin = 0.01
+script = ExtResource("1_g2els")
+escape_ui_scene = ExtResource("2_qu4a1")
+inventory = NodePath("PlayerInventory")
+head = NodePath("Head")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_a202f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_a202f")
+
+[node name="PlayerInventory" type="Node3D" parent="." node_paths=PackedStringArray("head", "hand")]
+script = ExtResource("2_v6fml")
+head = NodePath("../Head")
+hand = NodePath("../Hand")
+ui_scene = ExtResource("4_mdl7e")
+
+[node name="Hand" type="RigidBody3D" parent="." node_paths=PackedStringArray("arm_joint")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.422886, 1.0559444, -0.7338262)
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_51nuk")
+script = ExtResource("6_51nuk")
+recoil_amount = Vector3(0.2, 0.4, 0.2)
+snap_amount = 10.0
+speed = 10.0
+max_distance = 0.04
+arm_joint = NodePath("../Head/HandJoint")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hand"]
+transform = Transform3D(0.88376564, 0.4679298, 0, -0.4679298, 0.88376564, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_6wi46")
+skeleton = NodePath("../../Head")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hand"]
+shape = SubResource("SphereShape3D_51nuk")
+disabled = true
+
+[node name="Head" type="StaticBody3D" parent="." node_paths=PackedStringArray("hand", "player_inv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12675, -0.0238052)
+script = ExtResource("5_qttn6")
+hand = NodePath("../Hand")
+player_inv = NodePath("../PlayerInventory")
+
+[node name="HandJoint" type="Generic6DOFJoint3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10164976, 0.2501849, -0.6803004)
+node_a = NodePath("../../Hand")
+node_b = NodePath("..")
+linear_limit_x/upper_distance = 0.03
+linear_limit_x/lower_distance = 0.03
+linear_limit_x/softness = 0.1
+linear_limit_x/restitution = 0.15
+linear_limit_y/upper_distance = 0.03
+linear_limit_y/lower_distance = 0.03
+linear_limit_y/softness = 0.1
+linear_limit_y/restitution = 0.1
+linear_limit_z/upper_distance = 0.005
+linear_limit_z/lower_distance = 0.005
+linear_limit_z/softness = 0.1
+linear_limit_z/restitution = 0.1
+script = ExtResource("7_6wi46")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head"]
+shape = SubResource("BoxShape3D_51nuk")
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.221264, 0)

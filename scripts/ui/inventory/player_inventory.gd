@@ -1,23 +1,48 @@
 class_name PlayerInventory extends InventoryBase
 
-var equipped_index = -1
+var equipped_index := -1
+var equipped_item : Node3D
+var money := 0
+var player_ui: PlayerUI
+@export var head: Head
+@export var hand: Hand
 
-func equip_item(index: int):
-	if index < 0 or index >= items.size():
-		print("Invalid item index")
+func _ready():
+	super._ready()
+	player_ui = ui
+	adjust_money(1000)
+
+func equip_slot(index: int):
+	if index < 0 or index >= 3 or !get_ui_slot(index).item: return
+	var ui_slot = get_ui_slot(equipped_index)
+	# Clear old slot
+	if equipped_index > -1:
+		ui_slot.draggable = true
+		equipped_item.visible = false
+		equipped_item.reparent(self)
+		ui_slot.toggle_stylebox_color()
+		head.equip_item()
+	
+	# Reselecting a slot only clears it
+	if index == equipped_index:
+		equipped_index = -1
 		return
 
-	# Hide all items
-	for item in items:
-		item.visible = false
-
-	# Show selected item
-	var selected_item = items[index]
-	selected_item.visible = true
+	# Apply new selected slot
+	ui_slot = get_ui_slot(index)
 	equipped_index = index
-	get_parent().get_node("Hand").add_child(selected_item)
+	equipped_item = ui_slot.item
+	ui_slot.draggable = false
+	equipped_item.visible = true
+	equipped_item.reparent(hand)
+	equipped_item.rotation = Vector3.ZERO
+	equipped_item.position = Vector3.ZERO
+	ui_slot.toggle_stylebox_color()
+	head.equip_item()
 
-func get_equipped_item() -> Node3D:
-	if equipped_index >= 0 and equipped_index < items.size():
-		return items[equipped_index]
-	return null
+func adjust_money(amount: int) -> void:
+	money += amount
+	player_ui.update_money(money)
+
+func adjust_ammo() -> void:
+	player_ui.update_ammo(head.weapon.ammo)

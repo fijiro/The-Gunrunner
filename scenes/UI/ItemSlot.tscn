@@ -1,24 +1,94 @@
-[gd_scene load_steps=3 format=3 uid="uid://6e4j46ntd53x"]
+[gd_scene load_steps=7 format=3 uid="uid://6e4j46ntd53x"]
 
-[ext_resource type="Script" uid="uid://k0e77ufxcdxd" path="res://scripts/ui/inventory/draggable.gd" id="1_428eu"]
+[ext_resource type="Script" uid="uid://k0e77ufxcdxd" path="res://scripts/ui/inventory/item_slot.gd" id="1_428eu"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xrrx1"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fb20s"]
+resource_name = "slot"
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 0, 1)
+border_blend = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_fb20s"]
+font_size = 28
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5adoc"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_b2tsh"]
+
 [node name="ItemSlot" type="TextureRect"]
+clip_contents = true
 custom_minimum_size = Vector2(100, 100)
 offset_right = 100.0
 offset_bottom = 100.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "Tooltip for ItemSlot
+- Item name
+- Weight"
 texture = SubResource("PlaceholderTexture2D_xrrx1")
 expand_mode = 2
 script = ExtResource("1_428eu")
 
-[node name="Label" type="Label" parent="."]
+[node name="Outline" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fb20s")
+
+[node name="StackSizeLabel" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.41
-anchor_right = 1.0
-anchor_bottom = 0.64
+offset_left = 1.0
+offset_top = 58.0
+offset_right = 47.0
+offset_bottom = 97.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "SLOT"
+text = "1"
+label_settings = SubResource("LabelSettings_fb20s")
 horizontal_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -41.0
+offset_bottom = 28.0
+grow_horizontal = 0
+text = "0 $"
+label_settings = SubResource("LabelSettings_5adoc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TypeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+tooltip_text = "Tooltip for Attachement type"
+mouse_filter = 1
+text = "Type"
+label_settings = SubResource("LabelSettings_b2tsh")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="slot_pressed" from="." to="." method="_on_slot_pressed"]
