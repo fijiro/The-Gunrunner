@@ -11,43 +11,29 @@ var target_rotation: Vector3
 func _ready() -> void:
 	top_level = true
 	pass
-	
-func _process(_delta: float) -> void:
-	#limit_arm_sway()
-	#if item is not Weapon: return
-	#reset_weapon(_delta)
-	#set_hand_responsiveness(1000,1000)
-	pass
 
+#TODO: move to Weapon, because weapon stats affect recoil
 func recoil_weapon() -> void:
 	var recoil = Vector3(
-		randf_range(0, recoil_amount.x* 5),
+		randf_range(0, recoil_amount.x),
 		randf_range(-recoil_amount.y, recoil_amount.y),
 		randf_range(-recoil_amount.z, recoil_amount.z))
-	apply_impulse(-(global_transform.basis * recoil) * 10, item.position)
+	apply_impulse(-(item.global_transform.basis * recoil) * 10, item.position)
 
 func reload_weapon() -> void:
 	item.ammo = item.magazine.max_rounds
-	
+
+## Reposition item to make hand grip it correctly
 func grip_item() -> void:
-	# TODO: hand might be offset from joint during movement,
-	# making weapon offset when grab
+	if not item: return
 	var grip_marker: Marker3D = item.find_child("Left_Hand", true, false)
 	if not grip_marker: return
-	#1. Get x, y, z distance between hand and item
-	var hand_to_item: Vector3 = self.to_local(item.global_position)
-	#2. Get distance between item and grab marker
 	var item_to_grip: Vector3 = item.to_local(grip_marker.global_position)
-	#2. reposition item to make hand and grip match
-	item.position = hand_to_item - item_to_grip
+	item.position = -item_to_grip # + hand_to_item
 	#attach_item_to_hand(grip_marker)
 
-func attach_item_to_hand(grip: Marker3D):
-	$GrabJoint.node_b = grip.get_path()
-	
 func ungrab_item() -> void:
 	item.position = Vector3.ZERO
-	$GrabJoint.node_b = $GrabJoint.node_a
 
 func set_hand_responsiveness(linear_stiffness: int, angular_stiffness: int) -> void:
 	hand_joint.set_param_x(hand_joint.Param.PARAM_LINEAR_SPRING_STIFFNESS, linear_stiffness)

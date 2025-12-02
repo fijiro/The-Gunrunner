@@ -7,7 +7,7 @@
 
 [node name="Weapon" type="RigidBody3D"]
 gravity_scale = 0.0
-freeze_mode = 1
+can_sleep = false
 script = ExtResource("1_ro0p6")
 bullet_scene = ExtResource("3_ajlp8")
 case_scene = ExtResource("3_iknl4")
@@ -15,5 +15,4 @@ magazine_scene = ExtResource("4_iknl4")
 part = "Weapon"
 desc = "Built Weapon"
 type = "weapon"
-price = 0.0
 weight = 0.0
