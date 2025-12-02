@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://flvrdlal5a7y"]
+[gd_scene load_steps=5 format=3 uid="uid://flvrdlal5a7y"]
 
 [ext_resource type="Script" uid="uid://dn6pf6b7m2d3h" path="res://database/items/parts/receivers/ak_receiver.gd" id="1_wkqak"]
 
@@ -10,12 +10,21 @@ material = SubResource("StandardMaterial3D_8wqdy")
 radius = 0.04
 height = 0.25
 
-[node name="AkReceiver" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_wku7t"]
+size = Vector3(0.25, 0.08, 0.08)
+
+[node name="AkReceiver" type="RigidBody3D"]
+freeze = true
 script = ExtResource("1_wkqak")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_8wqdy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_wku7t")
+disabled = true
 
 [node name="Grip_Attach" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0935079, -0.0334729, 0)
